@@ -1,0 +1,228 @@
+/* ==========================
+   BIRO CREATE RESEARCH PAGE
+========================== */
+
+
+.create-research{
+
+    min-height:80vh;
+
+    padding:70px 5%;
+
+    background:#f4f8fc;
+
+}
+
+
+/* MAIN CONTAINER */
+
+.create-container{
+
+    max-width:700px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:45px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+
+}
+
+
+/* TITLE */
+
+.create-container h1{
+
+    text-align:center;
+
+    color:#071c3f;
+
+    font-size:32px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/* FORM */
+
+.create-container form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+
+/* INPUTS */
+
+.create-container input,
+.create-container textarea,
+.create-container select{
+
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:1px solid #d9e2ec;
+
+    border-radius:10px;
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+
+
+.create-container input:focus,
+.create-container textarea:focus,
+.create-container select:focus{
+
+
+    border-color:#00d4ff;
+
+    box-shadow:0 0 8px rgba(0,212,255,.3);
+
+}
+
+
+
+
+/* TEXT AREA */
+
+.create-container textarea{
+
+    min-height:140px;
+
+    resize:vertical;
+
+}
+
+
+
+
+/* SELECT */
+
+.create-container select{
+
+    cursor:pointer;
+
+}
+
+
+
+
+/* BUTTON */
+
+.create-container button{
+
+
+    margin-top:10px;
+
+    padding:15px;
+
+    background:#071c3f;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.create-container button:hover{
+
+
+    background:#00d4ff;
+
+    color:#071c3f;
+
+}
+
+
+
+.create-container button:disabled{
+
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+
+
+/* MESSAGE */
+
+.create-container p{
+
+
+    margin-top:20px;
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:#071c3f;
+
+}
+
+
+
+
+/* RESPONSIVE */
+
+@media(max-width:700px){
+
+
+    .create-research{
+
+        padding:40px 20px;
+
+    }
+
+
+    .create-container{
+
+
+        padding:30px 20px;
+
+    }
+
+
+    .create-container h1{
+
+
+        font-size:26px;
+
+    }
+
+
+}

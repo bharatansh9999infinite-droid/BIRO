@@ -1,66 +1,95 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+/* ==========================
+        BIRO GLOBAL APP CSS
+========================== */
+
+
+/* Remove Vite default styling */
+
+#root{
+
+    width:100%;
+
+    min-height:100vh;
+
 }
 
-body{
-background:#06162f;
-color:white;
+
+
+/* Main App Container */
+
+.App{
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:white;
+
 }
 
-.header{
-background:#0a2348;
-padding:20px;
-text-align:center;
+
+
+/* ==========================
+        LOGO FIX
+========================== */
+
+
+.logo-image{
+
+    width:85px;
+
+    height:85px;
+
+    object-fit:contain;
+
+    animation:none !important;
+
+    transform:none !important;
+
 }
 
-.header h1{
-font-size:50px;
-color:#00d9ff;
+
+
+/* Remove old Vite animation */
+
+@keyframes logo-spin{
+
+    from{
+
+        transform:none;
+
+    }
+
+    to{
+
+        transform:none;
+
+    }
+
 }
 
-.header p{
-margin-top:10px;
-font-size:20px;
+
+
+/* ==========================
+        GLOBAL BUTTON
+========================== */
+
+
+button{
+
+    font-family:inherit;
+
 }
 
-.hero{
-text-align:center;
-padding:100px 20px;
-}
 
-.hero h2{
-font-size:45px;
-margin-bottom:20px;
-}
 
-.hero p{
-font-size:22px;
-max-width:900px;
-margin:auto;
-line-height:35px;
-}
+/* ==========================
+        SMOOTH SCROLL
+========================== */
 
-.hero button{
-margin-top:40px;
-padding:15px 40px;
-font-size:22px;
-background:#00d9ff;
-border:none;
-border-radius:10px;
-cursor:pointer;
-font-weight:bold;
-}
 
-.hero button:hover{
-background:white;
-}
-.logo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+html{
+
+    scroll-behavior:smooth;
+
 }
