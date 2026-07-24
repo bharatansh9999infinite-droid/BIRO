@@ -15,9 +15,9 @@ function Home() {
           </div>
 
           <h1>
-            Intelligence Driven
+            IDEA'S OF BHARATANSH AGED TO INNOVATIONS &
             <br />
-            Research Universe
+            COMMON RESEARCH
           </h1>
 
           <p>
@@ -50,7 +50,7 @@ function Home() {
             <div className="logo-circle">
               BIRO
               <span>
-                AI
+                GLOBAL RESEARCH
               </span>
             </div>
 
