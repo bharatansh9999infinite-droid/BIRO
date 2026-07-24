@@ -1,0 +1,127 @@
+.calls-page {
+
+  min-height: calc(100vh - 120px);
+  padding: 40px 20px;
+  background: #f5f7fb;
+
+}
+
+
+.calls-container {
+
+  max-width: 700px;
+  margin: auto;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+}
+
+
+.calls-container h1 {
+
+  text-align: center;
+  margin-bottom: 30px;
+
+}
+
+
+.search-box {
+
+  display: flex;
+  gap: 10px;
+
+}
+
+
+.search-box input {
+
+  flex: 1;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  border: 1px solid #ddd;
+
+}
+
+
+.search-box button {
+
+  padding: 14px 20px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  color: white;
+
+  cursor: pointer;
+
+}
+
+
+.user-card {
+
+  margin-top: 20px;
+
+  padding: 15px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border-radius: 15px;
+
+  background: #f8fafc;
+
+}
+
+
+.user-info {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+}
+
+
+.user-avatar {
+
+  width: 45px;
+
+  height: 45px;
+
+  border-radius: 50%;
+
+}
+
+
+.call-btn {
+
+  background: #16a34a;
+
+  color: white;
+
+  border: none;
+
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+}

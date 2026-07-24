@@ -1,0 +1,360 @@
+/* =========================
+   BIRO RESEARCH LIBRARY
+========================= */
+
+
+.research-page{
+
+  min-height:100vh;
+
+  padding:60px 5%;
+
+  background:
+  radial-gradient(
+  circle at top,
+  #123b68,
+  #020617 60%
+  );
+
+  color:white;
+
+}
+
+
+
+/* HEADER */
+
+.research-header{
+
+  text-align:center;
+
+  margin-bottom:45px;
+
+}
+
+
+
+.library-tag{
+
+  display:inline-block;
+
+  padding:8px 18px;
+
+  border-radius:30px;
+
+  background:rgba(0,212,255,.15);
+
+  border:1px solid rgba(0,212,255,.4);
+
+  color:#00d4ff;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  margin-bottom:20px;
+
+}
+
+
+
+.research-header h1{
+
+  font-size:48px;
+
+  margin-bottom:15px;
+
+  background:
+
+  linear-gradient(
+  90deg,
+  #ffffff,
+  #00d4ff
+  );
+
+  -webkit-background-clip:text;
+
+  color:transparent;
+
+}
+
+
+
+.research-header p{
+
+  color:#cbd5e1;
+
+  font-size:18px;
+
+}
+
+
+
+
+
+.research-count{
+
+  margin:25px auto;
+
+  width:150px;
+
+  padding:15px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(15px);
+
+  font-size:35px;
+
+  font-weight:800;
+
+  color:#00d4ff;
+
+}
+
+
+
+.research-count span{
+
+  display:block;
+
+  font-size:13px;
+
+  color:white;
+
+  margin-top:5px;
+
+}
+
+
+
+/* SEARCH */
+
+
+.search-box{
+
+  display:flex;
+
+  justify-content:center;
+
+  margin-bottom:25px;
+
+}
+
+
+
+.research-search{
+
+  width:60%;
+
+  padding:15px 25px;
+
+  border-radius:40px;
+
+  border:1px solid rgba(255,255,255,.2);
+
+  background:rgba(255,255,255,.08);
+
+  color:white;
+
+  font-size:16px;
+
+  outline:none;
+
+  backdrop-filter:blur(15px);
+
+}
+
+
+
+.research-search::placeholder{
+
+  color:#94a3b8;
+
+}
+
+
+
+
+
+/* CATEGORY BUTTONS */
+
+
+.category-buttons{
+
+  display:flex;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:12px;
+
+  margin-bottom:50px;
+
+}
+
+
+
+.category-buttons button{
+
+  padding:10px 20px;
+
+  border-radius:30px;
+
+  border:1px solid rgba(0,212,255,.4);
+
+  background:transparent;
+
+  color:white;
+
+  cursor:pointer;
+
+  transition:.3s;
+
+}
+
+
+
+.category-buttons button:hover,
+
+.category-buttons .active{
+
+  background:#00d4ff;
+
+  color:#00111f;
+
+}
+
+
+
+
+
+/* CARD GRID */
+
+
+.research-grid{
+
+  display:grid;
+
+  grid-template-columns:
+
+  repeat(4,260px);
+
+  justify-content:center;
+
+  gap:30px;
+
+}
+
+
+
+
+
+/* ERROR */
+
+
+.error-box{
+
+  text-align:center;
+
+  padding:30px;
+
+}
+
+
+
+.error-box button{
+
+  padding:10px 25px;
+
+  border-radius:25px;
+
+  border:none;
+
+  background:#00d4ff;
+
+  cursor:pointer;
+
+}
+
+
+
+
+
+.no-result{
+
+  text-align:center;
+
+  color:#cbd5e1;
+
+}
+
+
+
+
+
+/* RESPONSIVE */
+
+
+@media(max-width:1200px){
+
+
+.research-grid{
+
+grid-template-columns:
+
+repeat(3,260px);
+
+}
+
+
+}
+
+
+
+@media(max-width:900px){
+
+
+.research-grid{
+
+grid-template-columns:
+
+repeat(2,260px);
+
+}
+
+
+.research-search{
+
+width:90%;
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.research-grid{
+
+grid-template-columns:
+
+1fr;
+
+}
+
+
+.research-header h1{
+
+font-size:34px;
+
+}
+
+
+}

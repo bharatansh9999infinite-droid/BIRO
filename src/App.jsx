@@ -1,90 +1,129 @@
 import "./App.css";
-import logo from "./assets/BIRO.png";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import Research from "./pages/Research";
+import Community from "./pages/Community";
+import Meetings from "./pages/Meetings";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import ResearchDetails from "./pages/ResearchDetails";
+import CreateResearch from "./pages/CreateResearch";
+import MeetingRoom from "./pages/MeetingRoom";
+import CreateMeeting from "./pages/CreateMeeting";
+
+import Calls from "./pages/Calls";
 function App() {
+
   return (
-    <div className="App">
 
-      <header className="header">
-        <img src={logo} alt="BIRO Logo" className="logo" />
+    <BrowserRouter>
 
-        <h1>BIRO</h1>
-
-        <p>
-          BHARATANSH INTERNATIONAL RESEARCH ORGANISATION
-        </p>
-      </header>
+      <div className="App">
 
 
-      <section className="hero">
-
-        <h2>Welcome to BIRO</h2>
-
-        <p>
-          A Global Platform for Scientists, Philosophers and Researchers
-          to Collaborate, Share Research and Innovate Together.
-        </p>
-
-        <button>
-          Join BIRO
-        </button>
+        {/* Navbar */}
+        <Navbar />
 
 
-        <section className="groups">
-
-          <h2>Research Groups</h2>
-
-          <div className="group-container">
-
-            <button>
-              Biology Research
-            </button>
-
-            <button>
-              Physics Research
-            </button>
-
-            <button>
-              Chemistry Research
-            </button>
-
-            <button>
-              AI & Technology
-            </button>
-
-            <button>
-              Astronomy Research
-            </button>
-
-            <button>
-              Philosophy & Science
-            </button>
-
-          </div>
-
-        </section>
+        {/* Pages */}
+        <Routes>
 
 
-      </section>
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
 
-      <section className="contact">
-
-        <h2>Contact BIRO</h2>
-
-        <p>
-          Email: bharatansh9999infinite@gmail.com
-        </p>
-
-        <p>
-          Join our Facebook Research Community
-        </p>
-
-      </section>
+          <Route
+            path="/research"
+            element={<Research />}
+          />
 
 
-    </div>
+          <Route
+            path="/research/:id"
+            element={<ResearchDetails />}
+          />
+
+
+          <Route
+            path="/community"
+            element={<Community />}
+          />
+
+
+          <Route
+            path="/meetings"
+            element={<Meetings />}
+          />
+
+
+          <Route
+            path="/create-meeting"
+            element={<CreateMeeting />}
+          />
+
+
+          <Route
+            path="/meeting/:code"
+            element={<MeetingRoom />}
+          />
+
+
+          <Route
+            path="/contact"
+            element={<Contact />}
+          />
+<Route
+  path="/calls"
+  element={<Calls />}
+/>
+
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+
+
+          <Route
+            path="/signup"
+            element={<Signup />}
+          />
+
+
+          <Route
+            path="/profile"
+            element={<Profile />}
+          />
+
+
+          <Route
+            path="/create-research"
+            element={<CreateResearch />}
+          />
+
+
+        </Routes>
+
+
+        {/* Footer */}
+        <Footer />
+
+
+      </div>
+
+    </BrowserRouter>
+
   );
+
 }
 
 export default App;

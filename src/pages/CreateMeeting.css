@@ -1,0 +1,170 @@
+.create-meeting-page {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: #f5f7fb;
+}
+
+
+.create-meeting-card {
+
+  width: 100%;
+  max-width: 550px;
+
+  background: white;
+
+  padding: 35px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+}
+
+
+
+.create-meeting-card h1 {
+
+  text-align: center;
+
+  margin-bottom: 30px;
+
+  font-size: 30px;
+
+  color: #1e293b;
+
+}
+
+
+
+.create-meeting-card input,
+.create-meeting-card textarea {
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #dbe3f0;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+}
+
+
+
+.create-meeting-card textarea {
+
+  min-height: 120px;
+
+  resize: vertical;
+
+}
+
+
+
+.create-meeting-card input:focus,
+.create-meeting-card textarea:focus {
+
+  border-color: #2563eb;
+
+}
+
+
+
+.create-meeting-card label {
+
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-weight: 600;
+
+  color: #475569;
+
+}
+
+
+
+.create-meeting-card button {
+
+  width: 100%;
+
+  padding: 15px;
+
+  margin-top: 10px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+}
+
+
+
+.create-meeting-card button:hover {
+
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+
+}
+
+
+
+.create-meeting-card button:disabled {
+
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+}
+
+
+
+/* Mobile Responsive */
+
+@media(max-width:600px){
+
+  .create-meeting-page{
+
+    padding:20px 15px;
+
+  }
+
+
+  .create-meeting-card{
+
+    padding:25px 20px;
+
+  }
+
+
+  .create-meeting-card h1{
+
+    font-size:24px;
+
+  }
+
+}
