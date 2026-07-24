@@ -1,228 +1,184 @@
-/* ==========================
-   BIRO CREATE RESEARCH PAGE
-========================== */
+/* ==========================================
+   CREATE RESEARCH PAGE
+========================================== */
+
+.create-research-page{
+    min-height:100vh;
+    padding:60px 8%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.30),
+            rgba(0,0,0,.35)
+        ),
+        url("../assets/research-bg.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+}
 
 
-.create-research{
+/* ==========================================
+   FORM CARD
+========================================== */
 
-    min-height:80vh;
+.create-research-card{
 
-    padding:70px 5%;
+    width:100%;
+    max-width:900px;
 
-    background:#f4f8fc;
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
 
 }
 
 
-/* MAIN CONTAINER */
+/* ==========================================
+   TITLE
+========================================== */
 
-.create-container{
+.create-research-card h1{
 
-    max-width:700px;
-
-    margin:auto;
-
-    background:white;
-
-    padding:45px;
-
-    border-radius:20px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.12);
-
-}
-
-
-/* TITLE */
-
-.create-container h1{
+    color:#fff;
 
     text-align:center;
 
-    color:#071c3f;
+    font-size:42px;
 
-    font-size:32px;
+    margin-bottom:12px;
+
+    text-shadow:0 0 12px rgba(0,0,0,.8);
+
+}
+
+.create-research-card p{
+
+    color:#f3f3f3;
+
+    text-align:center;
 
     margin-bottom:35px;
 
-}
-
-
-
-/* FORM */
-
-.create-container form{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
+    font-size:18px;
 
 }
 
 
+/* ==========================================
+   INPUTS
+========================================== */
 
-
-/* INPUTS */
-
-.create-container input,
-.create-container textarea,
-.create-container select{
-
+.create-research-card input,
+.create-research-card textarea,
+.create-research-card select{
 
     width:100%;
 
     padding:15px 18px;
 
-    border:1px solid #d9e2ec;
+    margin-bottom:18px;
 
-    border-radius:10px;
-
-    font-size:16px;
+    border:none;
 
     outline:none;
 
-    transition:.3s;
+    border-radius:12px;
+
+    font-size:16px;
+
+    background:rgba(255,255,255,.92);
+
+    color:#111;
+
+    box-sizing:border-box;
 
 }
 
 
+.create-research-card textarea{
 
-.create-container input:focus,
-.create-container textarea:focus,
-.create-container select:focus{
-
-
-    border-color:#00d4ff;
-
-    box-shadow:0 0 8px rgba(0,212,255,.3);
-
-}
-
-
-
-
-/* TEXT AREA */
-
-.create-container textarea{
-
-    min-height:140px;
+    min-height:180px;
 
     resize:vertical;
 
 }
 
 
+/* ==========================================
+   BUTTON
+========================================== */
 
+.create-research-card button{
 
-/* SELECT */
+    width:100%;
 
-.create-container select{
-
-    cursor:pointer;
-
-}
-
-
-
-
-/* BUTTON */
-
-.create-container button{
-
-
-    margin-top:10px;
-
-    padding:15px;
-
-    background:#071c3f;
-
-    color:white;
+    padding:16px;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    font-size:17px;
+    font-size:18px;
 
-    font-weight:600;
+    font-weight:bold;
 
     cursor:pointer;
+
+    color:white;
+
+    background:#1565c0;
 
     transition:.3s;
 
 }
 
 
+.create-research-card button:hover{
 
-.create-container button:hover{
+    background:#0d47a1;
 
-
-    background:#00d4ff;
-
-    color:#071c3f;
+    transform:translateY(-2px);
 
 }
 
 
+/* ==========================================
+   RESPONSIVE
+========================================== */
 
-.create-container button:disabled{
+@media(max-width:768px){
 
+.create-research-page{
 
-    opacity:.6;
-
-    cursor:not-allowed;
-
-}
-
-
-
-
-/* MESSAGE */
-
-.create-container p{
-
-
-    margin-top:20px;
-
-    text-align:center;
-
-    font-weight:600;
-
-    color:#071c3f;
+padding:30px 15px;
 
 }
 
+.create-research-card{
 
+padding:25px;
 
+}
 
-/* RESPONSIVE */
+.create-research-card h1{
 
-@media(max-width:700px){
+font-size:30px;
 
-
-    .create-research{
-
-        padding:40px 20px;
-
-    }
-
-
-    .create-container{
-
-
-        padding:30px 20px;
-
-    }
-
-
-    .create-container h1{
-
-
-        font-size:26px;
-
-    }
-
+}
 
 }
