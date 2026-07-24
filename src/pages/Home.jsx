@@ -15,7 +15,7 @@ function Home() {
           </div>
 
           <h1>
-            IDEA'S OF BHARATANSH AGED TO INNOVATIONS &
+            IDEA'S TO SHARE 
             <br />
             COMMON RESEARCH
           </h1>
@@ -50,7 +50,7 @@ function Home() {
             <div className="logo-circle">
               BIRO
               <span>
-                GLOBAL RESEARCH
+                  GLOBAL 
               </span>
             </div>
 
