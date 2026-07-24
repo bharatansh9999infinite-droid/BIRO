@@ -1,30 +1,36 @@
-import "./CreateResearch.css";
 import { useState } from "react";
 import "./CreateResearch.css";
 
 function CreateResearch() {
 
   const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [author, setAuthor] = useState("");
+  const [file, setFile] = useState(null);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
 
-    alert("Research Submitted Successfully!");
+    e.preventDefault();
 
     console.log({
       title,
+      author,
       category,
       description,
-      author,
+      file
     });
 
+    alert("Research Submitted Successfully!");
+
     setTitle("");
+    setAuthor("");
     setCategory("");
     setDescription("");
-    setAuthor("");
+    setFile(null);
+
+    e.target.reset();
+
   };
 
   return (
@@ -36,7 +42,7 @@ function CreateResearch() {
         <h1>Create Research</h1>
 
         <p>
-          Publish your innovative research to the BIRO platform.
+          Publish your innovation and research to BIRO.
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -45,7 +51,7 @@ function CreateResearch() {
             type="text"
             placeholder="Research Title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e)=>setTitle(e.target.value)}
             required
           />
 
@@ -53,16 +59,18 @@ function CreateResearch() {
             type="text"
             placeholder="Author Name"
             value={author}
-            onChange={(e) => setAuthor(e.target.value)}
+            onChange={(e)=>setAuthor(e.target.value)}
             required
           />
 
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e)=>setCategory(e.target.value)}
             required
           >
-            <option value="">Select Research Category</option>
+
+            <option value="">Select Category</option>
+
             <option>Artificial Intelligence</option>
             <option>Medical Science</option>
             <option>Physics</option>
@@ -72,18 +80,46 @@ function CreateResearch() {
             <option>Mathematics</option>
             <option>Space Science</option>
             <option>Robotics</option>
+            <option>Cyber Security</option>
             <option>Other</option>
+
           </select>
 
           <textarea
-            placeholder="Write your research description..."
+            placeholder="Research Description"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e)=>setDescription(e.target.value)}
             required
           />
 
+          <label className="upload-label">
+
+            Upload Research File
+
+          </label>
+
+          <input
+            type="file"
+            accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png"
+            onChange={(e)=>setFile(e.target.files[0])}
+          />
+
+          {file && (
+
+            <p className="file-name">
+
+              Selected File :
+
+              <strong> {file.name}</strong>
+
+            </p>
+
+          )}
+
           <button type="submit">
+
             Publish Research
+
           </button>
 
         </form>
