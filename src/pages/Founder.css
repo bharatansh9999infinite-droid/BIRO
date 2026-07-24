@@ -3,16 +3,17 @@
     padding:80px 8%;
 
     background:
-    linear-gradient(
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.60)
-    ),
-    url("../assets/founder.png");
+        linear-gradient(
+            rgba(0,0,0,0.20),
+            rgba(0,0,0,0.20)
+        ),
+        url("../assets/founder.png");
 
-    /* Image ko thoda chhota dikhane ke liye */
-    background-size: 75%;
+    background-size:80%;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-color:#111;
 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #000;
+    position:relative;
 }
