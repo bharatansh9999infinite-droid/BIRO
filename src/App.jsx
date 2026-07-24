@@ -17,7 +17,7 @@ import ResearchDetails from "./pages/ResearchDetails";
 import CreateResearch from "./pages/CreateResearch";
 import MeetingRoom from "./pages/MeetingRoom";
 import CreateMeeting from "./pages/CreateMeeting";
-
+import Founder from "./pages/Founder";
 import Calls from "./pages/Calls";
 function App() {
 
@@ -82,6 +82,10 @@ function App() {
             path="/contact"
             element={<Contact />}
           />
+          <Route
+  path="/founder"
+  element={<Founder />}
+/>
 <Route
   path="/calls"
   element={<Calls />}

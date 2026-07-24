@@ -100,7 +100,9 @@ function Navbar() {
 
           </NavLink>
 
-
+<NavLink to="/founder">
+Founder
+</NavLink>
 
 
 
