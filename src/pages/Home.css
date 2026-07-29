@@ -3,12 +3,30 @@
 ========================= */
 
 .home{
+
   width:100%;
+
   min-height:100vh;
-  background:
-  radial-gradient(circle at top,#123b68,#020617 55%);
+
   color:white;
+
   overflow:hidden;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.55)
+  ),
+  url("../assets/home.png");
+
+  background-size:cover;
+
+  background-position:center;
+
+  background-repeat:no-repeat;
+
+  background-attachment:fixed;
+
 }
 
 
