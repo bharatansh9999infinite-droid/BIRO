@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "../supabaseClient";
 import "./CreateResearch.css";
 
 function CreateResearch() {
@@ -9,29 +10,42 @@ function CreateResearch() {
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
 
-    e.preventDefault();
+  e.preventDefault();
 
-    console.log({
-      title,
-      author,
-      category,
-      description,
-      file
-    });
+  const { error } = await supabase
+    .from("research_groups")
+    .insert([
+      {
+        title: title,
+        description: description,
+        category: category,
+        abstract: description,
+        members: 1,
+        projects: 0,
+        papers: 0,
+        featured: false,
+      },
+    ]);
 
-    alert("Research Submitted Successfully!");
+  if (error) {
+    alert(error.message);
+    console.log(error);
+    return;
+  }
 
-    setTitle("");
-    setAuthor("");
-    setCategory("");
-    setDescription("");
-    setFile(null);
+  alert("Research Published Successfully!");
 
-    e.target.reset();
+  setTitle("");
+  setAuthor("");
+  setCategory("");
+  setDescription("");
+  setFile(null);
 
-  };
+  e.target.reset();
+};
+  
 
   return (
 
