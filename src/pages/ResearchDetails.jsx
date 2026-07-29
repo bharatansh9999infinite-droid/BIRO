@@ -301,23 +301,23 @@ function ResearchDetails() {
         {/* MAIN IMAGE */}
 
 
-        {
+        
 
-          research.image && (
+          {
+  research.image_url && (
 
-            <img
+    <img
+      src={research.image_url}
+      alt={research.title}
+      className="details-image"
+    />
 
-              src={research.image}
+  )
+}
 
-              alt={research.title}
+          
 
-              className="details-image"
-
-            />
-
-          )
-
-        }
+        
 
 
 

@@ -20,14 +20,20 @@ function Research() {
 
 
   const categories = [
-    "All",
-    "AI",
-    "Physics",
-    "Biology",
-    "Mathematics",
-    "Space",
-    "Environment"
-  ];
+   
+  "All",
+  "Artificial Intelligence",
+  "Medical Science",
+  "Physics",
+  "Chemistry",
+  "Biology",
+  "Engineering",
+  "Mathematics",
+  "Space Science",
+  "Robotics",
+  "Cyber Security",
+  "Other"
+];
 
 
 
