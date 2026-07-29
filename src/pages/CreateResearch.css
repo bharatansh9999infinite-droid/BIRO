@@ -3,7 +3,6 @@
 =========================== */
 
 .create-research-page{
-
     width:100%;
     min-height:100vh;
 
@@ -14,17 +13,18 @@
     padding:80px 20px;
 
     background:
-    linear-gradient(
-        rgba(0,0,0,.35),
-        rgba(0,0,0,.55)
-    ),
-    url("../assets/create.png");
+        linear-gradient(
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.55)
+        ),
+        url("../assets/create.png");
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
     background-attachment:fixed;
 
+    overflow:hidden;
 }
 
 
@@ -35,20 +35,20 @@
 .create-research-card{
 
     width:100%;
-    max-width:750px;
+    max-width:760px;
 
     background:rgba(255,255,255,.12);
 
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
-    border:1px solid rgba(255,255,255,.20);
+    border:1px solid rgba(255,255,255,.18);
 
-    border-radius:30px;
+    border-radius:25px;
 
     padding:45px;
 
-    box-shadow:
-    0 20px 60px rgba(0,0,0,.45);
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
 
 }
 
@@ -59,30 +59,28 @@
 
 .create-research-card h1{
 
-    color:white;
-
     text-align:center;
+
+    color:#fff;
 
     font-size:42px;
 
     margin-bottom:15px;
-
-    font-weight:700;
 
 }
 
 
 .create-research-card p{
 
-    color:#e2e8f0;
-
     text-align:center;
+
+    color:#e5e7eb;
 
     margin-bottom:35px;
 
-    font-size:18px;
+    line-height:1.8;
 
-    line-height:1.7;
+    font-size:17px;
 
 }
 
@@ -97,7 +95,7 @@
 
     flex-direction:column;
 
-    gap:22px;
+    gap:20px;
 
 }
 
@@ -107,8 +105,8 @@
 =========================== */
 
 .create-research-card input,
-.create-research-card select,
-.create-research-card textarea{
+.create-research-card textarea,
+.create-research-card select{
 
     width:100%;
 
@@ -116,7 +114,7 @@
 
     border-radius:14px;
 
-    border:1px solid rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.18);
 
     background:rgba(255,255,255,.10);
 
@@ -139,6 +137,15 @@
 }
 
 
+.create-research-card textarea{
+
+    min-height:170px;
+
+    resize:vertical;
+
+}
+
+
 .create-research-card select{
 
     color:white;
@@ -153,33 +160,23 @@
 }
 
 
-.create-research-card textarea{
-
-    min-height:180px;
-
-    resize:vertical;
-
-}
-
-
 /* ===========================
-   FOCUS
+   INPUT FOCUS
 =========================== */
 
 .create-research-card input:focus,
 .create-research-card textarea:focus,
 .create-research-card select:focus{
 
-    border:1px solid #00d4ff;
+    border-color:#00d4ff;
 
-    box-shadow:
-    0 0 18px rgba(0,212,255,.45);
+    box-shadow:0 0 20px rgba(0,212,255,.35);
 
 }
 
 
 /* ===========================
-   FILE
+   FILE UPLOAD
 =========================== */
 
 .upload-label{
@@ -195,13 +192,11 @@
 }
 
 
-.create-research-card input[type=file]{
+.create-research-card input[type="file"]{
+
+    padding:12px;
 
     background:rgba(255,255,255,.08);
-
-    color:white;
-
-    padding:14px;
 
     cursor:pointer;
 
@@ -210,11 +205,9 @@
 
 .file-name{
 
-    color:#00e5ff;
+    color:#00d4ff;
 
     font-size:15px;
-
-    margin-top:-8px;
 
 }
 
@@ -225,15 +218,73 @@
 
 .create-research-card button{
 
-    margin-top:15px;
+    width:100%;
 
-    padding:17px;
+    padding:16px;
 
     border:none;
 
     border-radius:50px;
 
-    background:
-    linear-gradient(
-    90deg,
-   
+    background:linear-gradient(
+        90deg,
+        #00d4ff,
+        #2563eb
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+
+.create-research-card button:hover{
+
+    transform:translateY(-4px);
+
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:900px){
+
+    .create-research-card{
+
+        padding:35px;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .create-research-page{
+
+        padding:40px 15px;
+
+    }
+
+    .create-research-card{
+
+        padding:25px;
+
+    }
+
+    .create-research-card h1{
+
+        font-size:28px;
+
+    }
+
+}
