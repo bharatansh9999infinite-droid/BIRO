@@ -83,7 +83,7 @@ function Founder() {
             Co-Founder
           </span>
 
-          <h2>Ansh Singh Rajput</h2>
+          <h2> Dr.Ansh Singh Rajput</h2>
 
           <h4>Technology & Platform Development</h4>
 
