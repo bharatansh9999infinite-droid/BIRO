@@ -1,20 +1,21 @@
 // src/pages/Videos.jsx
 import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
-
-// 🎯 DIRECT SECURE LOCAL MP4 FILE IMPORT
-// Aapne jo assets mein free_biology_lecture.mp4 dali hai, yeh use securely fetch karega
-import freeLectureMP4 from "../assets/free_biology_lecture.mp4";
 import "./Videos.css";
 
 function Videos() {
-  // 🗂️ CODING CHANNELS LIST: Only you control this array manually from the code
+  // 🗂️ CODING CHANNELS STREAM PLAYLIST: Controlled manually by you from this array block
   const [freeLectures] = useState([
     {
       id: "free-lecture-01",
       title: "🧬 Class 10 & NEET Free Foundation - Biology Endocrine Glands One-Shot",
       description: "Official free classroom stream covering complete hormone coordination systems, diagnostic gland structure drawings, and target unsolved question analysis.",
-      videoSrc: freeLectureMP4, // Embedded directly via secure coding import
+      
+      // 🎯 INTERACTIVE COMPILER BYPASS LINK
+      // Jab aap desktop se file src/assets/free_biology_lecture.mp4 naam se daal denge,
+      // tab aap yahan "/src/assets/free_biology_lecture.mp4" likh kar direct run kar sakte hain.
+      videoSrc: "", 
+      
       duration: "45:12",
       instructor: "Doctor Ansh Upadhyay"
     }
@@ -71,22 +72,32 @@ function Videos() {
           </p>
         </div>
 
-        {/* 🔴 BADA SECURE PLAYER SYSTEM (Plays strictly inside your website layout) */}
-        <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.9)] relative aspect-video w-full max-w-5xl">
-          <video 
-            src={currentVideo.videoSrc} 
-            controls 
-            controlsList="nodownload" // Stops standard browser download popup leaks
-            className="w-full h-full object-contain"
-            poster={logo} // Uses your logo as default video placeholder thumbnail cover
-          />
+        {/* 🔴 BADA SECURE PLAYER SYSTEM */}
+        <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.9)] relative aspect-video w-full max-w-5xl flex items-center justify-center">
+          {currentVideo.videoSrc ? (
+            <video 
+              src={currentVideo.videoSrc} 
+              controls 
+              controlsList="nodownload" 
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            /* Ambient Placeholder screen till media token uploads */
+            <div className="text-center p-6 flex flex-col items-center justify-center">
+              <span className="text-4xl text-red-500 animate-pulse">📼</span>
+              <h4 className="text-sm font-bold text-gray-400 mt-2">Lecture Stream Core Ready</h4>
+              <p className="text-[11px] text-gray-600 mt-1 max-w-xs leading-relaxed">
+                Secure internal media controller path initialized. Add your downloaded MP4 file into assets folder to begin playback.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* ACTIVE MOUNTED VIDEO DESCRIPTION AREA PACKAGE */}
         <div className="active-video-details-box mt-6 p-6 bg-gray-950/60 border border-gray-900 rounded-2xl max-w-5xl shadow-inner">
           <div className="flex items-center gap-3 mb-3">
             <span className="bg-red-600/10 border border-red-900/60 text-red-500 text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
-              ● STREAM ACTIVE
+              ● STREAM MONITOR ACTIVE
             </span>
             <span className="text-xs text-gray-400 font-bold">Uploaded by: <strong className="text-gray-200">{currentVideo.instructor}</strong></span>
           </div>
