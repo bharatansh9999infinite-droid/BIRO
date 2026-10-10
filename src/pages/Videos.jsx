@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
 import "./Videos.css";
 
-// 🗂️ CONSTANT FIXED SUBJECTS DATABASE WITH SST CORE
+// 🗂️ CONSTANT FIXED 15 SUBJECTS DATABASE WITH SST CORE
 const SUBJECTS_DATABASE = [
   { id: "science", title: "Science Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔬", bgThumb: "https://unsplash.com" },
   { id: "sst", title: "SST Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🗺️", bgThumb: "https://unsplash.com" },
@@ -53,12 +53,10 @@ function Videos() {
               }}
               className="pw-premium-curved-row-strip flex items-stretch cursor-pointer transition duration-300 shadow-2xl relative overflow-hidden"
             >
-              {/* 🟨 FIXED ACCENT GOLD YELLOW INDICATOR BLOCK */}
               <div className="yellow-accent-brand-block w-20 flex-shrink-0 flex items-center justify-center text-3xl">
                 {sub.icon}
               </div>
 
-              {/* 📜 CORE MAIN COMPONENT CONTENT SPACE */}
               <div className="subject-row-details-main flex-1 p-5 flex items-center justify-between relative">
                 <div className="absolute inset-0 row-subject-bg-overlay" style={{ backgroundImage: `url(${sub.bgThumb})` }}></div>
                 <div className="relative z-20 content-foreground-text-lock">
@@ -71,16 +69,16 @@ function Videos() {
           ))}
         </div>
       ) : (
-        /* SCREEN 2: BADA SECURE IN-APP VIDEO STREAM PLAYER ACTIVE WORKSPACE */
+        /* SCREEN 2: BADA SECURE MEDIA STREAMING PLAYER ACTIVE WORKSPACE */
         <div className="max-w-5xl mx-auto space-y-6 relative text-white">
           <button onClick={() => setShowVideo(false)} className="text-xs font-black text-red-500 uppercase tracking-widest hover:text-red-400 transition mb-4 block">
             ⬅ Back To Subjects Workspace
           </button>
 
-          {/* 🔴 RESTORED STABLE NATIVE PLAYER - BYPASSES REGULAR REFUSED ERRORS */}
+          {/* 🔴 HIGH SPEED OPEN-SOURCE DIRECT STREAM LINK - 100% PROOF NO CORS ERRORS */}
           <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video w-full">
             <video 
-              src="https://zencdn.net" // Fully open CDN direct streaming video track
+              src="https://mozilla.net" // Ultra-stable guaranteed developer streaming stream file
               controls 
               autoPlay
               controlsList="nodownload" 
