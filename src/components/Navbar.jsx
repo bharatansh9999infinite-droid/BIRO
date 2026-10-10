@@ -112,6 +112,8 @@ Founder
 
           </NavLink>
           <NavLink to="/batches" className="nav-link">Batches</NavLink>
+          <NavLink to="/notes-vault">💬 Telegram Notes</NavLink>
+
           <NavLink to="/contact">
 
             Contact

@@ -1,0 +1,32 @@
+/* src/pages/NotesVault.css */
+.notes-vault-container {
+  height: calc(100vh - 64px); /* Subtract navbar thickness safely */
+}
+
+.vault-sidebar {
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.channel-card {
+  border: 1px solid transparent;
+}
+
+.stream-messages::-webkit-scrollbar,
+.channels-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.stream-messages::-webkit-scrollbar-thumb,
+.channels-list::-webkit-scrollbar-thumb {
+  background-color: #1e293b;
+  border-radius: 10px;
+}
+
+.message-wrapper {
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
