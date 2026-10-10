@@ -52,11 +52,10 @@ function NotesVault() {
         </div>
       </div>
 
-      {/* 🚀 RIGHT COLUMN: TARGET BHARATANSH - TELEGRAPH VIEWPORT */}
+      {/* 🚀 RIGHT COLUMN: TARGET 3D BHARATANSH - TELEGRAPH VIEWPORT */}
       <div className="vault-main flex-1 flex flex-col p-8 overflow-y-auto relative">
         
-        {/* STYLISH ULTRA-DARK FRAMED TOP HEADER CONTAINER */}
-        <div className="stream-header-frame p-5 bg-black/80 border-2 border-red-950/80 rounded-2xl mb-8 z-10 relative shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
+        <div className="stream-header-frame p-5 bg-black/80 border-2 border-red-950/80 rounded-2xl mb-8 z-10 relative">
           <div>
             <h1 className="font-black text-3xl tracking-widest uppercase dynamic-visible-header">
               BHARATANSH - TELEGRAPH
@@ -67,72 +66,69 @@ function NotesVault() {
           </div>
         </div>
 
-        {/* 📜 ORNAMENTED CARDS BLOCK TRAILING ROW */}
+        {/* 📜 DENSE BOUNDED RECTANGULAR ROW STRIP GENERATOR */}
         <div className="notes-row-layout-container space-y-6 z-10 relative">
           {adminRealNotes[activeSubject].map((note) => (
-            <div key={note.id} className="premium-split-note-card flex items-stretch bg-black/90 border border-gray-800 rounded-2xl overflow-hidden hover:border-red-600 transition duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
+            <div key={note.id} className="premium-split-note-card interactive-envelope-row flex items-stretch bg-black/90 border border-gray-800 rounded-2xl overflow-hidden hover:border-red-600 transition duration-300">
               
-              {/* 🔲 LEFT SIDE: DECORATIVE ORNAMENTED ENVELOPE DIBBA (Click opens PDF) */}
+              {/* 🔲 LEFT ELEMENT SIDE: SOLID EXTRA WIDE FULLY LOADED ENVELOPE BLOCK */}
               <a 
                 href={note.pdfFileAsset} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="ornamented-envelope-wrapper w-40 p-4 flex flex-col items-center justify-center gap-2 flex-shrink-0 text-center cursor-pointer transition relative overflow-hidden"
-                title="Click Envelope to view PDF"
+                className="fully-loaded-envelope-container w-48 p-6 flex flex-col items-center justify-center gap-3 flex-shrink-0 text-center cursor-pointer transition relative bg-gradient-to-b from-gray-950 to-black border-r border-gray-800"
+                title="Click Envelope Node to deploy file"
               >
-                {/* Envelope Geometric Flaps & Corners Design Components */}
-                <div className="envelope-corner-top-left"></div>
-                <div className="envelope-corner-bottom-right"></div>
-                
-                <div className="envelope-core-box w-20 h-16 rounded-xl flex flex-col items-center justify-center shadow-inner relative border-t-4 border-red-600 bg-gradient-to-b from-red-950 to-gray-900">
-                  <span className="text-2xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">📂</span>
-                  <div className="envelope-seal-badge"></div>
+                <div className="envelope-3d-heavy-box w-28 h-20 rounded-xl flex flex-col items-center justify-center relative border-t-4 border-red-600 bg-gradient-to-b from-red-950 via-gray-900 to-black shadow-2xl">
+                  <span className="text-3xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">📂</span>
+                  <div className="envelope-heavy-seal"></div>
                 </div>
-                
-                <span className="envelope-subject-label text-[10px] font-black uppercase text-red-400 tracking-widest mt-1 block">
-                  {note.subjectName}
-                </span>
-                <span className="text-[8px] font-bold text-gray-500 uppercase tracking-tighter">Click to View</span>
+                <div className="mt-1">
+                  <span className="text-[11px] font-black uppercase text-red-400 tracking-widest block">{note.subjectName}</span>
+                  <span className="text-[9px] font-bold text-gray-500 uppercase tracking-tight block mt-0.5">Click to Open</span>
+                </div>
               </a>
 
-              {/* 📜 RIGHT SIDE: STYLISH DARK FRAMED CONTENT SYSTEM */}
-              <div className="flex-1 p-6 flex flex-col justify-between custom-dark-content-frame bg-gradient-to-r from-gray-950 to-black/40">
-                <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                  <div className="space-y-2 flex-1">
-                    {/* Dark framed internal component for the sub-topic label */}
-                    <div className="topic-frame-badge bg-black border border-red-950 px-3 py-1 rounded-md text-[10px] font-black text-red-500 tracking-widest w-fit uppercase">
-                      {note.topicTitle}
-                    </div>
-                    
-                    <h3 className="font-black text-base text-gray-100 tracking-wide leading-snug">
-                      {note.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 font-semibold leading-relaxed max-w-2xl">
-                      {note.description}
-                    </p>
-                  </div>
-                  
-                  {/* Highly Ornamented Dynamic Action Download Trigger Link */}
+              {/* 📜 RIGHT ELEMENT SIDE: BOTTOM-ALIGNED DENSE METADATA AREA */}
+              <div className="flex-1 p-6 flex flex-col justify-end relative group custom-dense-bottom-frame bg-gradient-to-r from-gray-950 to-black/40">
+                
+                {/* Upper dynamic top badge for the strict topic classification */}
+                <div className="absolute top-6 left-6 topic-frame-badge bg-black border border-red-950 px-3 py-1 rounded-md text-[10px] font-black text-red-500 tracking-widest uppercase">
+                  {note.topicTitle}
+                </div>
+
+                {/* HIDDEN LINK CONTROLS TRIGGER - REVEALS ON ROW INTERACTION HOVER */}
+                <div className="absolute top-4 right-6 hidden-action-trigger-container opacity-0 transition-opacity duration-200">
                   <a 
                     href={note.pdfFileAsset}
                     download={note.exactFileName}
-                    className="ornamented-download-btn bg-gradient-to-b from-red-600 to-red-800 text-white font-black text-xs px-5 py-3.5 rounded-xl transition shadow-xl text-center flex items-center justify-center whitespace-nowrap tracking-wider active:scale-95 border-t border-red-400"
+                    className="bg-gradient-to-b from-red-600 to-red-800 text-white font-black text-[11px] px-4 py-2.5 rounded-xl border-t border-red-400 shadow-xl transition"
                   >
                     DOWNLOAD PDF
                   </a>
                 </div>
 
-                <div className="mt-6 pt-3 border-t border-gray-900 flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider">
-                  <span>📂 FILE CAPACITY SIZE: <strong className="text-gray-300">{note.fileSize}</strong></span>
-                  <span className="text-red-900/60 font-black">Verified Document Node</span>
+                {/* DENSE STRUCTURE BLOCK: ALL SIGNALS SHIFTED TO THE BOTTOM TERMINAL EDGE */}
+                <div className="dense-bottom-text-package mt-12 space-y-2 border-t border-gray-900/60 pt-4">
+                  <h3 className="font-black text-base text-gray-100 tracking-wide leading-tight">
+                    {note.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 font-semibold leading-relaxed max-w-3xl">
+                    {note.description}
+                  </p>
+                  <div className="flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider pt-1">
+                    <span>📂 FILE CAPACITY SIZE: <strong className="text-gray-300">{note.fileSize}</strong></span>
+                    <span className="text-red-900/60 font-black">Verified Document Node</span>
+                  </div>
                 </div>
+
               </div>
 
             </div>
           ))}
         </div>
 
-        {/* Bounded Square "Notes" indicator preserved at the baseline bottom layout */}
+        {/* Bounded Square "Notes" identifier preserved at the baseline bottom layout */}
         <div className="notes-action-footer-panel p-4 border-t border-gray-900 flex justify-start items-center mt-auto z-10 relative">
           <div className="notes-small-square-indicator bg-gray-900 border border-red-600 text-red-500 font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.15)]">
             Notes
