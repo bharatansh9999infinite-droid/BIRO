@@ -1,32 +1,100 @@
 /* src/pages/NotesVault.css */
+
 .notes-vault-container {
-  height: calc(100vh - 64px); /* Subtract navbar thickness safely */
+  height: calc(100vh - 64px);
+  background: #020205;
 }
 
-.vault-sidebar {
-  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+/* Logo Sizing Control Layer */
+.biro-vault-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
-.channel-card {
-  border: 1px solid transparent;
+.biro-vault-logo-img:hover {
+  transform: scale(1.05) rotate(2deg);
 }
 
-.stream-messages::-webkit-scrollbar,
-.channels-list::-webkit-scrollbar {
-  width: 5px;
+.notes-micro-dense-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem; /* High density structure constraints */
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.stream-messages::-webkit-scrollbar-thumb,
-.channels-list::-webkit-scrollbar-thumb {
-  background-color: #1e293b;
-  border-radius: 10px;
+/* 💎 ADVANCED ISOMETRIC 3D CUBE CARD DESIGN */
+.notes-3d-cube-card {
+  width: 74px; /* Exact 2x2 cm proportional rendering viewports */
+  height: 74px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #020617 100%);
+  border-top: 1px solid #475569;   /* Light source highlighting upper borders */
+  border-left: 1px solid #334155;
+  border-right: 1px solid #0f172a;
+  border-bottom: 2px solid #020617; /* Dark shadow thick baseline edge */
+  border-radius: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  /* Multiple layer shadow mapping for absolute realistic depth */
+  box-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 0.8),
+    inset 1px 1px 0px rgba(255, 255, 255, 0.1),
+    0px 0px 0px 1px rgba(0, 0, 0, 0.4);
+  
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.message-wrapper {
-  animation: slideUp 0.25s ease-out;
+/* Shimmer layer mapping overlay effect */
+.cube-top-shimmer {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
+  pointer-events: none;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+/* 🔥 EXTREME 3D NEON GLOW HOVER MECHANICAL RESPONSE */
+.notes-3d-cube-card:hover {
+  transform: translateY(-6px) scale(1.06) rotateX(4deg) rotateY(-2deg);
+  border-top-color: #ef4444;
+  border-left-color: #dc2626;
+  background: linear-gradient(135deg, #2d0c0c 0%, #0f172a 100%);
+  
+  /* Cyber 3D studio light blast output projection */
+  box-shadow: 
+    0px 15px 25px -5px rgba(220, 38, 38, 0.4),
+    0px 4px 10px rgba(220, 38, 38, 0.2),
+    8px 12px 20px rgba(0, 0, 0, 0.9);
+}
+
+.cube-icon {
+  font-size: 1.35rem;
+  filter: drop-shadow(2px 3px 3px rgba(0,0,0,0.7));
+  margin-bottom: 0.15rem;
+  transition: transform 0.2s ease;
+}
+
+.notes-3d-cube-card:hover .cube-icon {
+  transform: scale(1.1) translateY(-1px);
+}
+
+.cube-code-label {
+  font-size: 9px;
+  font-weight: 900;
+  color: #94a3b8;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+.notes-3d-cube-card:hover .cube-code-label {
+  color: #f87171;
 }
