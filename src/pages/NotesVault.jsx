@@ -1,91 +1,116 @@
-// src/pages/NotesVault.jsx
 import React, { useState } from "react";
-import logo from "../assets/BIRO.png"; // Your authentic website logo path link
+import logo from "../assets/BIRO.png";
 import "./NotesVault.css";
 
 function NotesVault() {
-  const [activeChannel, setActiveChannel] = useState("c1");
-
-  const channelsList = [
-    { id: "c1", title: "🎒 Class 10 Notes Node", subtitle: "245 items live" },
-    { id: "c2", title: "🧬 NEET Bio Resource Vault", subtitle: "120 items live" }
-  ];
-
-  const [notesMatrix] = useState({
-    c1: Array.from({ length: 45 }, (_, i) => ({
-      id: `c1-note-${i}`,
-      code: `CH-${i + 1}`,
-      title: `Class 10 Board Test Paper Part ${i + 1}`,
-      fileName: `SST_Board_Doc_Part_${i + 1}.pdf`,
-      size: "1.1 MB"
-    })),
-    c2: Array.from({ length: 38 }, (_, i) => ({
-      id: `c2-note-${i}`,
-      code: `BIO-${i + 1}`,
-      title: `NEET Biology Practice Set ${i + 1}`,
-      fileName: `NEET_Bio_Target_Set_${i + 1}.pdf`,
-      size: "2.4 MB"
-    }))
+  const [activeSubject, setActiveSubject] = useState("bio");
+  
+  // Clean empty database state loop structure - no notes show until uploaded by admins
+  const [adminRealNotes, setAdminRealNotes] = useState({
+    bio: [], // Empty row arrays to prevent pre-rendering dummy text notes
+    maths: [],
+    physics: []
   });
 
+  const subjectsList = [
+    { 
+      id: "bio", 
+      name: "Biology Core", 
+      thumb: "https://unsplash.com" 
+    },
+    { 
+      id: "maths", 
+      name: "Mathematics", 
+      thumb: "https://unsplash.com" 
+    },
+    { 
+      id: "physics", 
+      name: "Physics Blast", 
+      thumb: "https://unsplash.com" 
+    }
+  ];
+
   return (
-    <section className="notes-vault-container bg-black text-white min-h-screen font-sans flex">
+    <section className="notes-vault-container text-white min-h-screen font-sans flex">
       
-      {/* 🔮 3D STUDIO CYBER SIDEBAR */}
-      <div className="vault-sidebar w-64 bg-gray-950 border-r border-gray-900 flex flex-col">
+      {/* 🔮 LEFT COLUMN: 3D PHOTO-INTEGRATED SIDEBAR */}
+      <div className="vault-sidebar w-72 bg-gray-950 border-r border-gray-900 flex flex-col">
         <div className="sidebar-header p-4 border-b border-gray-900 flex items-center justify-center">
-          {/* Text head permanently replaced with your branding logo */}
           <img 
             src={logo} 
-            alt="BIRO Platform Logo" 
-            className="biro-vault-logo-img filter drop-shadow-[0_0_8px_rgba(220,38,38,0.5)]" 
+            alt="BIRO Platform Branding" 
+            className="biro-vault-logo-img filter drop-shadow-[0_0_8px_rgba(220,38,38,0.4)]" 
           />
         </div>
-        <div className="channels-list flex-1 overflow-y-auto p-3 space-y-2">
-          {channelsList.map((ch) => (
+        
+        {/* Dynamic Column List with Photo Thumbnails & 3D Typography */}
+        <div className="subjects-column-list flex-1 overflow-y-auto p-3 space-y-3">
+          {subjectsList.map((sub) => (
             <div 
-              key={ch.id} 
-              onClick={() => setActiveChannel(ch.id)}
-              className={`channel-card p-3.5 rounded-xl cursor-pointer transition text-xs font-bold uppercase tracking-wider ${
-                activeChannel === ch.id 
-                  ? "bg-gradient-to-r from-red-950/40 to-black border border-red-500 text-white shadow-[0_0_15px_rgba(220,38,38,0.15)]" 
-                  : "hover:bg-gray-900 text-gray-500"
+              key={sub.id} 
+              onClick={() => setActiveSubject(sub.id)}
+              className={`subject-row-node p-3 rounded-xl cursor-pointer flex items-center gap-3 transition-all ${
+                activeSubject === sub.id 
+                  ? "active-3d-node text-white" 
+                  : "hover:bg-gray-900/60 text-gray-500"
               }`}
             >
-              {ch.title}
+              {/* Photo Thumbnail Element */}
+              <img src={sub.thumb} alt={sub.name} className="subject-thumb-img border border-gray-800 rounded-lg object-cover" />
+              
+              {/* 3D Glowing Text Parameter */}
+              <span className="font-black text-xs uppercase tracking-wider subject-3d-text">
+                {sub.name}
+              </span>
             </div>
           ))}
         </div>
       </div>
 
-      {/* 🚀 EXTREME 3D STUDIO GRID STAGE VIEWPORT */}
-      <div className="vault-main flex-1 flex flex-col bg-radial-gradient p-8 overflow-y-auto">
+      {/* 🚀 RIGHT COLUMN: BHARATANSH TELEGRAPH ROW SYSTEM */}
+      <div className="vault-main flex-1 flex flex-col p-8 overflow-y-auto">
         <div className="stream-header pb-4 border-b border-gray-900 mb-8 flex justify-between items-center">
           <div>
-            <h3 className="font-black text-lg tracking-wide bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              HIGH-DENSITY ISOMETRIC GRID MODULE
-            </h3>
-            <p className="text-[11px] text-red-500 font-extrabold uppercase mt-0.5 tracking-widest">
-              ⚡ 3D Studio Engine Synced
+            <h1 className="font-black text-2xl tracking-widest bg-gradient-to-r from-white via-gray-300 to-gray-600 bg-clip-text text-transparent">
+              BHARATANSH TELEGRAPH
+            </h1>
+            <p className="text-[10px] text-red-500 font-extrabold uppercase mt-0.5 tracking-widest">
+              ⚡ PW-Max Notes Repository Stream
             </p>
           </div>
         </div>
 
-        {/* Dense 18-20 Columns Flow Flex Area */}
-        <div className="notes-micro-dense-flex">
-          {notesMatrix[activeChannel].map((note) => (
-            <div 
-              key={note.id} 
-              className="notes-3d-cube-card"
-              title={`${note.title} (${note.size})`}
-              onClick={() => alert(`Active Module Asset: ${note.fileName}\n(Pending global database setup script validation)`)}
-            >
-              <div className="cube-top-shimmer"></div>
-              <div className="cube-icon">📄</div>
-              <div className="cube-code-label">{note.code}</div>
-            </div>
-          ))}
-        </div>
+        {/* Dynamic Display Logic - Shows clean layout canvas if zero elements exist */}
+        {adminRealNotes[activeSubject].length === 0 ? (
+          <div className="empty-studio-stage flex flex-col items-center justify-center flex-1 py-20 border border-dashed border-gray-900/50 rounded-3xl bg-gray-950/20">
+            <div className="telegram-cloud-icon text-5xl opacity-30 animate-pulse">📝</div>
+            <h4 className="text-lg font-bold text-gray-400 mt-4 tracking-tight">Vault Center Unpopulated</h4>
+            <p className="text-xs text-gray-600 mt-1 max-w-sm text-center px-4 leading-relaxed font-semibold">
+              Waiting for direct administrator database push variables. Content will automatically align into premium row structures instantly upon upload.
+            </p>
+          </div>
+        ) : (
+          <div className="notes-row-layout-container space-y-3">
+            {adminRealNotes[activeSubject].map((note) => (
+              <div 
+                key={note.id} 
+                className="premium-note-row-strip bg-gray-900 border border-gray-800 p-4 rounded-xl flex items-center justify-between hover:border-red-500 transition duration-200"
+                onClick={() => alert(`Connecting securely to file payload link...`)}
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-2xl text-red-500">📄</span>
+                  <div>
+                    <h3 className="font-bold text-sm text-gray-200">{note.title}</h3>
+                    <p className="text-xs text-gray-500 mt-0.5">{note.description}</p>
+                  </div>
+                </div>
+                <button className="bg-red-600 hover:bg-red-700 text-white font-black text-xs px-4 py-2 rounded-lg transition">
+                  DOWNLOAD
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>
