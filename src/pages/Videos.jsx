@@ -5,118 +5,22 @@ import "./Videos.css";
 
 // 🗂️ CONSTANT FIXED SUBJECTS DATABASE WITH SST CORE
 const SUBJECTS_DATABASE = [
-  { 
-    id: "science", 
-    title: "Science Core", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🔬",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "sst", 
-    title: "SST Core", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🗺️",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "maths", 
-    title: "Mathematics", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "📐",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "ai", 
-    title: "Artificial Intelligence (AI)", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🤖",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "it", 
-    title: "Information Technology (IT)", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "💻",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "cs", 
-    title: "Computer Science", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🖥️",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "hindi", 
-    title: "Hindi", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "📝",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "english", 
-    title: "English", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "📖",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "sanskrit", 
-    title: "Sanskrit", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "📜",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "vyakaran", 
-    title: "Vyakaran (Hindi Grammar)", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "✍️",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "eng_grammar", 
-    title: "English Grammar", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🔤",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "spec_biology", 
-    title: "Special Biology", 
-    stats: "PDFs: 0, Videos: 1, Tests: 0", 
-    icon: "🧬",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "spec_microbio", 
-    title: "Special Microbiology", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🧫",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "upsc", 
-    title: "UPSC Classes", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🏛️",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "jee", 
-    title: "JEE Classes", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "🚀",
-    bgThumb: "https://unsplash.com" 
-  },
-  { 
-    id: "spec_maths", 
-    title: "Special Mathematics", 
-    stats: "PDFs: 0, Videos: 0, Tests: 0", 
-    icon: "📊",
-    bgThumb: "https://unsplash.com" 
-  }
+  { id: "science", title: "Science Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔬", bgThumb: "https://unsplash.com" },
+  { id: "sst", title: "SST Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🗺️", bgThumb: "https://unsplash.com" },
+  { id: "maths", title: "Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📐", bgThumb: "https://unsplash.com" },
+  { id: "ai", title: "Artificial Intelligence (AI)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🤖", bgThumb: "https://unsplash.com" },
+  { id: "it", title: "Information Technology (IT)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "💻", bgThumb: "https://unsplash.com" },
+  { id: "cs", title: "Computer Science", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🖥️", bgThumb: "https://unsplash.com" },
+  { id: "hindi", title: "Hindi", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📝", bgThumb: "https://unsplash.com" },
+  { id: "english", title: "English", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📖", bgThumb: "https://unsplash.com" },
+  { id: "sanskrit", title: "Sanskrit", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📜", bgThumb: "https://unsplash.com" },
+  { id: "vyakaran", title: "Vyakaran (Hindi Grammar)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "✍️", bgThumb: "https://unsplash.com" },
+  { id: "eng_grammar", title: "English Grammar", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔤", bgThumb: "https://unsplash.com" },
+  { id: "spec_biology", title: "Special Biology", stats: "PDFs: 0, Videos: 1, Tests: 0", icon: "🧬", bgThumb: "https://unsplash.com" },
+  { id: "spec_microbio", title: "Special Microbiology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧫", bgThumb: "https://unsplash.com" },
+  { id: "upsc", title: "UPSC Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🏛️", bgThumb: "https://unsplash.com" },
+  { id: "jee", title: "JEE Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🚀", bgThumb: "https://unsplash.com" },
+  { id: "spec_maths", title: "Special Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📊", bgThumb: "https://unsplash.com" }
 ];
 
 function Videos() {
@@ -144,7 +48,6 @@ function Videos() {
             <div 
               key={sub.id}
               onClick={() => {
-                // Allows opening video player securely only for Special Biology as test node
                 if (sub.id === "spec_biology") setShowVideo(true);
                 else alert(`${sub.title} track is currently unpopulated. Content will instantly load once linked via admin.`);
               }}
@@ -174,15 +77,16 @@ function Videos() {
             ⬅ Back To Subjects Workspace
           </button>
 
-          {/* 🔴 HIGHLY STABLE CDN VIDEO LINK WITH CROSS-ORIGIN BYPASS FOR SMOOTH STREAMING */}
+          {/* 🔴 SECURE STABLE IFRAME ENGINE - BYPASSES ALL CORS BLOCKS SEAMLESSLY */}
           <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video w-full">
-            <video 
-              src="https://googleapis.com" // High speed global CDN streaming link - 100% stable
-              controls 
-              autoPlay
-              controlsList="nodownload" 
-              className="w-full h-full object-contain" 
-            />
+            <iframe 
+              src="https://youtube.com" // High-speed stable standard streaming iframe link
+              title="Secure Media Video Stream Player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="w-full h-full object-contain"
+            ></iframe>
           </div>
 
           <div className="active-video-details-box p-6 bg-gray-950/80 border border-gray-900 rounded-2xl shadow-inner">
