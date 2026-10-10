@@ -21,6 +21,8 @@ import Founder from "./pages/Founder";
 import Calls from "./pages/Calls";
 import Batches from "./pages/Batches";
 import NotesVault from "./pages/NotesVault";
+import Videos from "./pages/Videos";
+
 
 
 function App() {
@@ -97,6 +99,7 @@ function App() {
 />
 <Route path="/batches" element={<Batches />} />
 <Route path="/notes-vault" element={<NotesVault />} />
+<Route path="/videos" element={<Videos />} />
 
 
           <Route

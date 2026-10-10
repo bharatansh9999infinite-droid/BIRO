@@ -1,0 +1,47 @@
+/* src/pages/Videos.css */
+
+.free-videos-page-container {
+  background-color: #010204;
+  /* Premium dark green embedded halo layer aura */
+  background-image: radial-gradient(circle at 60% 30%, #034221 0%, #011c0f 50%, #010204 85%);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+}
+
+.biro-videos-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.videos-sidebar {
+  background-color: #04060a;
+  box-shadow: 15px 0 40px rgba(0, 0, 0, 0.8);
+  z-index: 5;
+}
+
+/* 📼 PLAYLIST BUTTON HIGHLIGHTS MECHANICALS */
+.playlist-video-item {
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.active-video-node {
+  border-color: #dc2626 !important;
+  background: linear-gradient(135deg, #2b0b0b 0%, #020617 100%) !important;
+  box-shadow: 0px 5px 15px -3px rgba(220, 38, 38, 0.3) !important;
+}
+
+/* 📺 SECURE BIG STREAM COMPILER SCREEN BOX RULES */
+.main-video-player-frame {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 
+              inset 0 0 40px rgba(0, 0, 0, 0.8);
+  transition: border-color 0.3s ease;
+}
+
+.main-video-player-frame:hover {
+  border-color: #dc2626; /* Lights up premium red on screen bounding border interaction */
+}
+
+/* Text descriptions layouts packages */
+.active-video-details-box {
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+}
