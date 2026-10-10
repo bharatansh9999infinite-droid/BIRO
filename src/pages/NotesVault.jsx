@@ -2,21 +2,22 @@
 import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
 
-// 🎯 DIRECT LOCAL ASSET PDF IMPORT ENGINE
+// 🎯 DIRECT LOCAL ASSET PDF FILE PIPELINE
 import biologyPDF from "../assets/biology_core_notes.pdf"; 
 import "./NotesVault.css";
 
 function NotesVault() {
   const [activeSubject, setActiveSubject] = useState("main");
 
+  // Premium Bounded Dataset Matrix Layout
   const [adminRealNotes] = useState({
     main: [
       {
         id: "bio-notes-target-01",
         subjectName: "Biology Core",
-        topicTitle: "🧬 HUMAN ENDOCRINE SYSTEM",
-        title: "NEET Biology - Complete Human Endocrine System & Glands Notes",
-        description: "Premium handwritten study modules mapping chemical coordination matrices, hormone feedback dynamics, and detailed step-by-step labeled biological diagrams.",
+        topicTitle: "🧬 HUMAN ENDOCRINE SYSTEM TARGET",
+        title: "NEET Biology - Complete Human Endocrine System & Glands Handwritten Modules",
+        description: "High-density educational document repository sheet mapping chemical coordination parameters, hormone loop mechanisms, and diagnostic gland structural drawings.",
         fileSize: "4.8 MB",
         pdfFileAsset: biologyPDF,
         exactFileName: "biology_core_notes.pdf"
@@ -27,7 +28,7 @@ function NotesVault() {
   return (
     <section className="notes-vault-container text-white min-h-screen font-sans flex">
       
-      {/* 🔮 LEFT COLUMN: THICK PREMIUM SINGLE ROW TRACK */}
+      {/* 🔮 LEFT COLUMN: NAVIGATION CONTROL PANEL DRAWER */}
       <div className="vault-sidebar w-80 bg-gray-950 border-r border-gray-900 flex flex-col">
         <div className="sidebar-header p-4 border-b border-gray-900 flex items-center justify-center">
           <img 
@@ -52,10 +53,11 @@ function NotesVault() {
         </div>
       </div>
 
-      {/* 🚀 RIGHT COLUMN: TARGET 3D BHARATANSH - TELEGRAPH VIEWPORT */}
+      {/* 🚀 RIGHT COLUMN: BHARATANSH - TELEGRAPH VIEWPORT GRID CANVAS */}
       <div className="vault-main flex-1 flex flex-col p-8 overflow-y-auto relative">
         
-        <div className="stream-header-frame p-5 bg-black/80 border-2 border-red-950/80 rounded-2xl mb-8 z-10 relative">
+        {/* Dynamic Static Title Container */}
+        <div className="stream-header pb-4 border-b border-gray-900 mb-8 z-10 relative">
           <div>
             <h1 className="font-black text-3xl tracking-widest uppercase dynamic-visible-header">
               BHARATANSH - TELEGRAPH
@@ -66,62 +68,55 @@ function NotesVault() {
           </div>
         </div>
 
-        {/* 📜 DENSE BOUNDED RECTANGULAR ROW STRIP GENERATOR */}
+        {/* 📜 DISCIPLINED RIGID ENVELOPE BOUNDARY MATRIX ROW */}
         <div className="notes-row-layout-container space-y-6 z-10 relative">
           {adminRealNotes[activeSubject].map((note) => (
-            <div key={note.id} className="premium-split-note-card interactive-envelope-row flex items-stretch bg-black/90 border border-gray-800 rounded-2xl overflow-hidden hover:border-red-600 transition duration-300">
+            <div key={note.id} className="rigid-envelope-frame-patti flex flex-col p-6 rounded-2xl border-2 border-red-950 transition duration-300">
               
-              {/* 🔲 LEFT ELEMENT SIDE: SOLID EXTRA WIDE FULLY LOADED ENVELOPE BLOCK */}
-              <a 
-                href={note.pdfFileAsset} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="fully-loaded-envelope-container w-48 p-6 flex flex-col items-center justify-center gap-3 flex-shrink-0 text-center cursor-pointer transition relative bg-gradient-to-b from-gray-950 to-black border-r border-gray-800"
-                title="Click Envelope Node to deploy file"
-              >
-                <div className="envelope-3d-heavy-box w-28 h-20 rounded-xl flex flex-col items-center justify-center relative border-t-4 border-red-600 bg-gradient-to-b from-red-950 via-gray-900 to-black shadow-2xl">
-                  <span className="text-3xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">📂</span>
-                  <div className="envelope-heavy-seal"></div>
-                </div>
-                <div className="mt-1">
-                  <span className="text-[11px] font-black uppercase text-red-400 tracking-widest block">{note.subjectName}</span>
-                  <span className="text-[9px] font-bold text-gray-500 uppercase tracking-tight block mt-0.5">Click to Open</span>
-                </div>
-              </a>
-
-              {/* 📜 RIGHT ELEMENT SIDE: BOTTOM-ALIGNED DENSE METADATA AREA */}
-              <div className="flex-1 p-6 flex flex-col justify-end relative group custom-dense-bottom-frame bg-gradient-to-r from-gray-950 to-black/40">
+              {/* LINE 1 FLOW: TOP LEVEL INTERACTION BLOCK */}
+              <div className="flex items-center gap-4 border-b border-gray-900/60 pb-3">
                 
-                {/* Upper dynamic top badge for the strict topic classification */}
-                <div className="absolute top-6 left-6 topic-frame-badge bg-black border border-red-950 px-3 py-1 rounded-md text-[10px] font-black text-red-500 tracking-widest uppercase">
+                {/* Clickable Square Subject Label Node */}
+                <a 
+                  href={note.pdfFileAsset}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="thick-square-subject-badge bg-gradient-to-br from-red-950 to-black border border-red-900 px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider text-red-400 hover:border-red-500 transition whitespace-nowrap"
+                >
+                  {note.subjectName} (Click to View)
+                </a>
+
+                {/* 🔗 DIRECT COMPACT COMPONENT DOWNLOAD LINK SYMBOL (Replaced rectangular button) */}
+                <a 
+                  href={note.pdfFileAsset}
+                  download={note.exactFileName}
+                  className="thick-blue-anchor-link font-black text-sm tracking-wide uppercase hover:text-blue-400 transition flex items-center gap-1.5"
+                  title="Execute file download token stream"
+                >
+                  <span>🔗</span> DOWNLOAD LINK PDF
+                </a>
+
+                {/* Internal specific topic classification layout tracking */}
+                <div className="topic-badge-coordinate ml-auto bg-black/60 border border-gray-800 px-3 py-1.5 rounded-lg text-[10px] font-black text-gray-400 tracking-widest uppercase hidden md:block">
                   {note.topicTitle}
                 </div>
 
-                {/* HIDDEN LINK CONTROLS TRIGGER - REVEALS ON ROW INTERACTION HOVER */}
-                <div className="absolute top-4 right-6 hidden-action-trigger-container opacity-0 transition-opacity duration-200">
-                  <a 
-                    href={note.pdfFileAsset}
-                    download={note.exactFileName}
-                    className="bg-gradient-to-b from-red-600 to-red-800 text-white font-black text-[11px] px-4 py-2.5 rounded-xl border-t border-red-400 shadow-xl transition"
-                  >
-                    DOWNLOAD PDF
-                  </a>
-                </div>
+              </div>
 
-                {/* DENSE STRUCTURE BLOCK: ALL SIGNALS SHIFTED TO THE BOTTOM TERMINAL EDGE */}
-                <div className="dense-bottom-text-package mt-12 space-y-2 border-t border-gray-900/60 pt-4">
-                  <h3 className="font-black text-base text-gray-100 tracking-wide leading-tight">
-                    {note.title}
-                  </h3>
-                  <p className="text-xs text-gray-400 font-semibold leading-relaxed max-w-3xl">
-                    {note.description}
-                  </p>
-                  <div className="flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider pt-1">
-                    <span>📂 FILE CAPACITY SIZE: <strong className="text-gray-300">{note.fileSize}</strong></span>
-                    <span className="text-red-900/60 font-black">Verified Document Node</span>
-                  </div>
-                </div>
+              {/* LINE 2 FLOW: HIGH DENSITY DENSE BOTTOM ALIGNED CONTENT TEXT PACKAGES */}
+              <div className="dense-bottom-text-package mt-4 space-y-2">
+                <h3 className="font-black text-base text-gray-100 tracking-wide leading-tight dynamic-bone-white-text">
+                  {note.title}
+                </h3>
+                
+                <p className="text-xs text-gray-400 font-semibold leading-relaxed max-w-4xl tracking-wide">
+                  {note.description}
+                </p>
 
+                <div className="pt-2 flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                  <span>💾 CAPACITY STORAGE SIZE: <strong className="text-gray-300 font-black">{note.fileSize}</strong></span>
+                  <span className="text-red-900/50 font-black">Verified Security Node Data</span>
+                </div>
               </div>
 
             </div>
