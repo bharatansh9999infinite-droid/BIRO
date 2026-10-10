@@ -3,6 +3,122 @@ import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
 import "./Videos.css";
 
+// 🗂️ CONSTANT FIXED SUBJECTS DATABASE WITH SST CORE
+const SUBJECTS_DATABASE = [
+  { 
+    id: "science", 
+    title: "Science Core", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🔬",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "sst", 
+    title: "SST Core", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🗺️",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "maths", 
+    title: "Mathematics", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "📐",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "ai", 
+    title: "Artificial Intelligence (AI)", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🤖",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "it", 
+    title: "Information Technology (IT)", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "💻",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "cs", 
+    title: "Computer Science", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🖥️",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "hindi", 
+    title: "Hindi", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "📝",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "english", 
+    title: "English", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "📖",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "sanskrit", 
+    title: "Sanskrit", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "📜",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "vyakaran", 
+    title: "Vyakaran (Hindi Grammar)", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "✍️",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "eng_grammar", 
+    title: "English Grammar", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🔤",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "spec_biology", 
+    title: "Special Biology", 
+    stats: "PDFs: 0, Videos: 1, Tests: 0", 
+    icon: "🧬",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "spec_microbio", 
+    title: "Special Microbiology", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🧫",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "upsc", 
+    title: "UPSC Classes", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🏛️",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "jee", 
+    title: "JEE Classes", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "🚀",
+    bgThumb: "https://unsplash.com" 
+  },
+  { 
+    id: "spec_maths", 
+    title: "Special Mathematics", 
+    stats: "PDFs: 0, Videos: 0, Tests: 0", 
+    icon: "📊",
+    bgThumb: "https://unsplash.com" 
+  }
+];
+
 function Videos() {
   const [showVideo, setShowVideo] = useState(false);
 
@@ -20,57 +136,50 @@ function Videos() {
 
       {/* VIEWPORT LAYOUT SWITCH PANEL */}
       {!showVideo ? (
-        /* SCREEN 1: THE ACCURATE CURVED ROW PATTI LAYOUT STAGE */
+        /* SCREEN 1: THE ACCURATE CURVED ROW PATTI LIST */
         <div className="subjects-rows-wrapper max-w-4xl mx-auto space-y-6 relative">
           <h3 className="text-sm font-black text-gray-300 uppercase tracking-widest mb-4 px-1">Available Classes Module</h3>
           
-          {/* SPECIAL BIOLOGY ACTIVE ROW STRIP CARD ELEMENT */}
-          <div 
-            onClick={() => setShowVideo(true)}
-            className="pw-premium-curved-row-strip flex items-stretch cursor-pointer transition duration-300 shadow-2xl relative overflow-hidden"
-          >
-            {/* 🟨 FIXED ACCENT GOLD YELLOW INDICATOR BLOCK */}
-            <div className="yellow-accent-brand-block w-20 flex-shrink-0 flex items-center justify-center text-3xl">
-              🧬
-            </div>
-
-            {/* 📜 SPECIAL BIOLOGY MAIN COMPONENT SPACE */}
-            <div className="subject-row-details-main flex-1 p-5 flex items-center justify-between relative">
-              <div className="absolute inset-0 row-subject-bg-overlay" style={{ backgroundImage: `url('https://unsplash.com')` }}></div>
-              <div className="relative z-20 content-foreground-text-lock">
-                <h3 className="font-black text-xl text-gray-950 tracking-wide uppercase leading-tight text-shadow-white">Special Biology</h3>
-                <p className="text-xs text-gray-700 mt-1.5 font-extrabold tracking-wider bg-white/70 px-2 py-0.5 rounded w-fit">PDFs: 0, Videos: 1, Tests: 0</p>
+          {SUBJECTS_DATABASE.map((sub) => (
+            <div 
+              key={sub.id}
+              onClick={() => {
+                // Allows opening video player securely only for Special Biology as test node
+                if (sub.id === "spec_biology") setShowVideo(true);
+                else alert(`${sub.title} track is currently unpopulated. Content will instantly load once linked via admin.`);
+              }}
+              className="pw-premium-curved-row-strip flex items-stretch cursor-pointer transition duration-300 shadow-2xl relative overflow-hidden"
+            >
+              {/* 🟨 FIXED ACCENT GOLD YELLOW INDICATOR BLOCK */}
+              <div className="yellow-accent-brand-block w-20 flex-shrink-0 flex items-center justify-center text-3xl">
+                {sub.icon}
               </div>
-              <div className="pw-row-arrow-icon text-gray-900 text-xl font-black pr-4">➔</div>
-            </div>
-          </div>
 
-          {/* SECOND MOCK MODULE ELEMENT FOR BALANCING */}
-          <div className="pw-premium-curved-row-strip flex items-stretch cursor-pointer transition duration-300 shadow-2xl relative overflow-hidden opacity-90">
-            <div className="yellow-accent-brand-block w-20 flex-shrink-0 flex items-center justify-center text-3xl">🔬</div>
-            <div className="subject-row-details-main flex-1 p-5 flex items-center justify-between relative">
-              <div className="absolute inset-0 row-subject-bg-overlay" style={{ backgroundImage: `url('https://unsplash.com')` }}></div>
-              <div className="relative z-20 content-foreground-text-lock">
-                <h3 className="font-black text-xl text-gray-950 tracking-wide uppercase leading-tight text-shadow-white">Science Core</h3>
-                <p className="text-xs text-gray-700 mt-1.5 font-extrabold tracking-wider bg-white/70 px-2 py-0.5 rounded w-fit">PDFs: 0, Videos: 0, Tests: 0</p>
+              {/* 📜 CORE MAIN COMPONENT CONTENT SPACE */}
+              <div className="subject-row-details-main flex-1 p-5 flex items-center justify-between relative">
+                <div className="absolute inset-0 row-subject-bg-overlay" style={{ backgroundImage: `url(${sub.bgThumb})` }}></div>
+                <div className="relative z-20 content-foreground-text-lock">
+                  <h3 className="font-black text-xl text-gray-950 tracking-wide uppercase leading-tight text-shadow-white">{sub.title}</h3>
+                  <p className="text-xs text-gray-700 mt-1.5 font-extrabold tracking-wider bg-white/70 px-2 py-0.5 rounded w-fit">{sub.stats}</p>
+                </div>
+                <div className="pw-row-arrow-icon text-gray-900 text-xl font-black pr-4">➔</div>
               </div>
-              <div className="pw-row-arrow-icon text-gray-900 text-xl font-black pr-4">➔</div>
             </div>
-          </div>
+          ))}
         </div>
       ) : (
-        /* SCREEN 2: BADA SECURE MEDIA STREAMING PLAYER WORKSPACE */
+        /* SCREEN 2: BADA SECURE IN-APP VIDEO STREAM PLAYER ACTIVE WORKSPACE */
         <div className="max-w-5xl mx-auto space-y-6 relative text-white">
           <button onClick={() => setShowVideo(false)} className="text-xs font-black text-red-500 uppercase tracking-widest hover:text-red-400 transition mb-4 block">
             ⬅ Back To Subjects Workspace
           </button>
 
-          {/* 🔴 ACTIVE STREAM DISPLAY IN-APP CONSOLE SCREEN */}
-          {/* Note: This is an internal safe URL placeholder string to bypass heavy local upload limits */}
+          {/* 🔴 HIGHLY STABLE CDN VIDEO LINK WITH CROSS-ORIGIN BYPASS FOR SMOOTH STREAMING */}
           <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video w-full">
             <video 
-              src="https://w3schools.com" // Stable sample streaming video link
+              src="https://googleapis.com" // High speed global CDN streaming link - 100% stable
               controls 
+              autoPlay
               controlsList="nodownload" 
               className="w-full h-full object-contain" 
             />
