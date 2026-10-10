@@ -9,16 +9,14 @@ import "./NotesVault.css";
 function NotesVault() {
   const [activeSubject, setActiveSubject] = useState("main");
 
-  // Premium Custom Data Matrix Layer
   const [adminRealNotes] = useState({
     main: [
       {
         id: "bio-notes-target-01",
-        subjectName: "Biology",
-        // Yahan aap future mein assets se directly subject ki thumbnail PNG map kar sakte hain
-        customThumbnail: "🧬", 
-        title: "🧬 NEET Biology - Complete Human Endocrine System & Glands",
-        description: "Premium handwritten study notes tracking chemical coordination matrices, hormone feedback dynamics, and detailed step-by-step labeled biological system diagrams.",
+        subjectName: "Biology Core",
+        topicTitle: "🧬 HUMAN ENDOCRINE SYSTEM",
+        title: "NEET Biology - Complete Human Endocrine System & Glands Notes",
+        description: "Premium handwritten study modules mapping chemical coordination matrices, hormone feedback dynamics, and detailed step-by-step labeled biological diagrams.",
         fileSize: "4.8 MB",
         pdfFileAsset: biologyPDF,
         exactFileName: "biology_core_notes.pdf"
@@ -39,7 +37,7 @@ function NotesVault() {
           />
         </div>
         
-        <div className="subjects-column-list flex-1 overflow-y-auto p-4 space-y-4">
+        <div className="subjects-column-list flex-1 overflow-y-auto p-4">
           <div 
             onClick={() => setActiveSubject("main")}
             className="subject-row-node active-3d-node p-5 rounded-2xl cursor-pointer flex items-center gap-4 transition-all"
@@ -54,61 +52,79 @@ function NotesVault() {
         </div>
       </div>
 
-      {/* 🚀 RIGHT COLUMN: TARGET 3D BHARATANSH - TELEGRAPH VIEWPORT HUB */}
+      {/* 🚀 RIGHT COLUMN: TARGET BHARATANSH - TELEGRAPH VIEWPORT */}
       <div className="vault-main flex-1 flex flex-col p-8 overflow-y-auto relative">
         
-        <div className="stream-header pb-4 border-b border-gray-900 mb-8 z-10 relative">
+        {/* STYLISH ULTRA-DARK FRAMED TOP HEADER CONTAINER */}
+        <div className="stream-header-frame p-5 bg-black/80 border-2 border-red-950/80 rounded-2xl mb-8 z-10 relative shadow-[0_4px_30px_rgba(0,0,0,0.8)]">
           <div>
             <h1 className="font-black text-3xl tracking-widest uppercase dynamic-visible-header">
               BHARATANSH - TELEGRAPH
             </h1>
             <p className="text-[10px] text-red-500 font-extrabold uppercase mt-1 tracking-widest">
-              ⚡ Premium Linear Repository Nodes
+              ⚡ PW-Max Premium Repository Core
             </p>
           </div>
         </div>
 
-        {/* 📜 DENSE BOUNDED HORIZONTAL ROWS GENERATOR */}
-        <div className="notes-row-layout-container space-y-4 z-10 relative">
+        {/* 📜 ORNAMENTED CARDS BLOCK TRAILING ROW */}
+        <div className="notes-row-layout-container space-y-6 z-10 relative">
           {adminRealNotes[activeSubject].map((note) => (
-            <div key={note.id} className="premium-split-note-card flex items-stretch bg-gray-900/40 border border-gray-800 rounded-2xl overflow-hidden hover:border-red-500 transition duration-200">
+            <div key={note.id} className="premium-split-note-card flex items-stretch bg-black/90 border border-gray-800 rounded-2xl overflow-hidden hover:border-red-600 transition duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
               
-              {/* 🔲 LEFT ELEMENT SIDE: PERFECT SQUARE DIBBA FOR THUMBNAIL (Click opens PDF) */}
+              {/* 🔲 LEFT SIDE: DECORATIVE ORNAMENTED ENVELOPE DIBBA (Click opens PDF) */}
               <a 
                 href={note.pdfFileAsset} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="square-subject-wrapper w-36 bg-gray-950 border-r border-gray-800 p-4 flex flex-col items-center justify-center gap-2 flex-shrink-0 text-center cursor-pointer hover:bg-gray-900/60 transition"
-                title="Click square to view full PDF document"
+                className="ornamented-envelope-wrapper w-40 p-4 flex flex-col items-center justify-center gap-2 flex-shrink-0 text-center cursor-pointer transition relative overflow-hidden"
+                title="Click Envelope to view PDF"
               >
-                <div className="square-custom-thumb text-3xl w-16 h-16 bg-gradient-to-br from-red-600 to-red-950 border border-red-500 rounded-xl flex items-center justify-center shadow-lg transform hover:scale-105 transition duration-200">
-                  {note.customThumbnail}
+                {/* Envelope Geometric Flaps & Corners Design Components */}
+                <div className="envelope-corner-top-left"></div>
+                <div className="envelope-corner-bottom-right"></div>
+                
+                <div className="envelope-core-box w-20 h-16 rounded-xl flex flex-col items-center justify-center shadow-inner relative border-t-4 border-red-600 bg-gradient-to-b from-red-950 to-gray-900">
+                  <span className="text-2xl filter drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">📂</span>
+                  <div className="envelope-seal-badge"></div>
                 </div>
-                <span className="text-[11px] font-black uppercase text-red-400 tracking-wider">
-                  {note.subjectName} (OPEN)
+                
+                <span className="envelope-subject-label text-[10px] font-black uppercase text-red-400 tracking-widest mt-1 block">
+                  {note.subjectName}
                 </span>
+                <span className="text-[8px] font-bold text-gray-500 uppercase tracking-tighter">Click to View</span>
               </a>
 
-              {/* 📜 RIGHT ELEMENT SIDE: ROW DETAILS CONTAINING TITLES */}
-              <div className="flex-1 p-5 flex flex-col justify-between">
-                <div className="flex justify-between items-start gap-4">
-                  <div>
-                    <h3 className="font-black text-base text-gray-100 tracking-wide line-clamp-1">{note.title}</h3>
-                    <p className="text-xs text-gray-400 mt-1.5 leading-relaxed line-clamp-2">{note.description}</p>
+              {/* 📜 RIGHT SIDE: STYLISH DARK FRAMED CONTENT SYSTEM */}
+              <div className="flex-1 p-6 flex flex-col justify-between custom-dark-content-frame bg-gradient-to-r from-gray-950 to-black/40">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+                  <div className="space-y-2 flex-1">
+                    {/* Dark framed internal component for the sub-topic label */}
+                    <div className="topic-frame-badge bg-black border border-red-950 px-3 py-1 rounded-md text-[10px] font-black text-red-500 tracking-widest w-fit uppercase">
+                      {note.topicTitle}
+                    </div>
+                    
+                    <h3 className="font-black text-base text-gray-100 tracking-wide leading-snug">
+                      {note.title}
+                    </h3>
+                    <p className="text-xs text-gray-400 font-semibold leading-relaxed max-w-2xl">
+                      {note.description}
+                    </p>
                   </div>
                   
-                  {/* Dedicated Action Button to instantly download file payload */}
+                  {/* Highly Ornamented Dynamic Action Download Trigger Link */}
                   <a 
                     href={note.pdfFileAsset}
                     download={note.exactFileName}
-                    className="bg-red-600 hover:bg-red-700 text-white font-black text-xs px-5 py-3 rounded-xl transition shadow-lg text-center flex items-center justify-center whitespace-nowrap"
+                    className="ornamented-download-btn bg-gradient-to-b from-red-600 to-red-800 text-white font-black text-xs px-5 py-3.5 rounded-xl transition shadow-xl text-center flex items-center justify-center whitespace-nowrap tracking-wider active:scale-95 border-t border-red-400"
                   >
                     DOWNLOAD PDF
                   </a>
                 </div>
 
-                <div className="mt-4 pt-2 border-t border-gray-800/40 flex items-center text-[10px] text-gray-500 font-bold uppercase tracking-wider">
-                  <span>💾 CAPACITY SIZE: {note.fileSize}</span>
+                <div className="mt-6 pt-3 border-t border-gray-900 flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                  <span>📂 FILE CAPACITY SIZE: <strong className="text-gray-300">{note.fileSize}</strong></span>
+                  <span className="text-red-900/60 font-black">Verified Document Node</span>
                 </div>
               </div>
 
@@ -116,7 +132,7 @@ function NotesVault() {
           ))}
         </div>
 
-        {/* Bounded Square "Notes" identifier preserved at the baseline bottom layout */}
+        {/* Bounded Square "Notes" indicator preserved at the baseline bottom layout */}
         <div className="notes-action-footer-panel p-4 border-t border-gray-900 flex justify-start items-center mt-auto z-10 relative">
           <div className="notes-small-square-indicator bg-gray-900 border border-red-600 text-red-500 font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.15)]">
             Notes
