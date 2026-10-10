@@ -113,6 +113,7 @@ Founder
           </NavLink>
           <NavLink to="/batches" className="nav-link">Batches</NavLink>
           <NavLink to="/notes-vault">BIRO-NOTES</NavLink>
+<NavLink to="/videos" className="nav-link">Videos</NavLink>
 
           <NavLink to="/contact">
 
