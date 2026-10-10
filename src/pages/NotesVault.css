@@ -3,8 +3,7 @@
 .notes-vault-container {
   height: calc(100vh - 64px);
   background-color: #010204;
-  /* Deep signature dark green studio ambient radial glow */
-  background-image: radial-gradient(circle at 50% 30%, #021a0f 0%, #010204 75%);
+  background-image: radial-gradient(circle at 50% 30%, #011d0f 0%, #010204 75%);
 }
 
 .biro-vault-logo-img {
@@ -18,48 +17,62 @@
   box-shadow: 15px 0 40px rgba(0, 0, 0, 0.8);
 }
 
-/* 🧬 3D INTERACTIVE SUBJECT BLOCK LAYOUT */
+/* 🧬 THICK ROWS STRUCTURAL PARAMETERS */
 .subject-row-node {
   border: 1px solid #1e293b;
   background: linear-gradient(145deg, #0f172a, #020617);
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.6);
+  min-height: 70px; /* Thicker profile */
 }
 
-.subject-thumb-img {
-  width: 36px;
-  height: 36px;
+.subject-png-placeholder {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
 }
 
-/* 💎 ADVANCED 3D GLOWING EMBOSS STYLES FOR TEXT */
 .subject-3d-text {
   color: #94a3b8;
-  text-shadow: 1px 1px 0px #000, 2px 2px 0px rgba(0,0,0,0.8);
-  transition: all 0.2s ease;
+  text-shadow: 1px 1px 0px #000;
 }
 
-/* Active Highlight Layer Switch Engine Rules */
 .active-3d-node {
   border-color: #dc2626 !important;
   background: linear-gradient(135deg, #2b0b0b 0%, #020617 100%) !important;
-  box-shadow: 0px 5px 15px -3px rgba(220, 38, 38, 0.3) !important;
+  box-shadow: 0px 8px 20px -3px rgba(220, 38, 38, 0.35) !important;
   transform: translateY(-2px);
 }
 
 .active-3d-node .subject-3d-text {
   color: #ffffff !important;
-  text-shadow: 0px 0px 8px rgba(239, 68, 68, 0.6), 1px 1px 0px #000;
+  text-shadow: 0px 0px 10px rgba(239, 68, 68, 0.7), 1px 1px 0px #000;
 }
 
-/* 📜 PREMIUM ROW STRIP INTERACTIVE COMPONENT GRAPHICS */
-.premium-note-row-strip {
-  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.4);
-  transform: translateZ(0);
+/* ⚡ LAYER ORDER TO PREVENT TEXT CLIPPING */
+.dynamic-visible-header {
+  color: #ffffff;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.9), 0px 0px 20px rgba(255, 255, 255, 0.1);
+  font-weight: 900;
+  position: relative;
+  z-index: 20; /* Brings text ahead of background halo glow */
 }
 
-/* Empty State Backdrop Frame */
+/* 🔲 MINI SQUARE NOTES INDICATOR COMPONENT */
+.notes-action-footer-panel {
+  background-color: transparent;
+}
+
+.notes-small-square-indicator {
+  width: 75px;
+  height: 75px;
+  user-select: none;
+  text-align: center;
+}
+
 .empty-studio-stage {
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(5px);
+  z-index: 5;
 }
 
 .telegram-cloud-icon {
