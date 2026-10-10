@@ -112,7 +112,7 @@ Founder
 
           </NavLink>
           <NavLink to="/batches" className="nav-link">Batches</NavLink>
-          <NavLink to="/notes-vault">BHARATANSH - TELEGRAPH</NavLink>
+          <NavLink to="/notes-vault">BIRO-NOTES</NavLink>
 
           <NavLink to="/contact">
 
