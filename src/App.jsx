@@ -19,6 +19,9 @@ import MeetingRoom from "./pages/MeetingRoom";
 import CreateMeeting from "./pages/CreateMeeting";
 import Founder from "./pages/Founder";
 import Calls from "./pages/Calls";
+import Batches from "./pages/Batches";
+
+
 function App() {
 
   return (
@@ -89,7 +92,9 @@ function App() {
 <Route
   path="/calls"
   element={<Calls />}
+
 />
+<Route path="/batches" element={<Batches />} />
 
           <Route
             path="/login"
