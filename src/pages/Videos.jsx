@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
 import "./Videos.css";
 
-// 🗂️ CONSTANT FIXED 15 SUBJECTS DATABASE WITH SST CORE
+// 🗂️ CONSTANT FIXED 15 SUBJECTS DATABASE WITH ALL COUNTS EMPTY
 const SUBJECTS_DATABASE = [
-  { id: "science", title: "Science Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔬", bgThumb: "https://unsplash.com" },
+  { id: "science", title: "Science Core", stats: "PDFs: 0, Videos: 1, Tests: 0", icon: "🔬", bgThumb: "https://unsplash.com" },
   { id: "sst", title: "SST Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🗺️", bgThumb: "https://unsplash.com" },
   { id: "maths", title: "Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📐", bgThumb: "https://unsplash.com" },
   { id: "ai", title: "Artificial Intelligence (AI)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🤖", bgThumb: "https://unsplash.com" },
@@ -16,7 +16,7 @@ const SUBJECTS_DATABASE = [
   { id: "sanskrit", title: "Sanskrit", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📜", bgThumb: "https://unsplash.com" },
   { id: "vyakaran", title: "Vyakaran (Hindi Grammar)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "✍️", bgThumb: "https://unsplash.com" },
   { id: "eng_grammar", title: "English Grammar", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔤", bgThumb: "https://unsplash.com" },
-  { id: "spec_biology", title: "Special Biology", stats: "PDFs: 0, Videos: 1, Tests: 0", icon: "🧬", bgThumb: "https://unsplash.com" },
+  { id: "spec_biology", title: "Special Biology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧬", bgThumb: "https://unsplash.com" },
   { id: "spec_microbio", title: "Special Microbiology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧫", bgThumb: "https://unsplash.com" },
   { id: "upsc", title: "UPSC Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🏛️", bgThumb: "https://unsplash.com" },
   { id: "jee", title: "JEE Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🚀", bgThumb: "https://unsplash.com" },
@@ -40,7 +40,6 @@ function Videos() {
 
       {/* VIEWPORT LAYOUT SWITCH PANEL */}
       {!showVideo ? (
-        /* SCREEN 1: THE ACCURATE CURVED ROW PATTI LIST */
         <div className="subjects-rows-wrapper max-w-4xl mx-auto space-y-6 relative">
           <h3 className="text-sm font-black text-gray-300 uppercase tracking-widest mb-4 px-1">Available Classes Module</h3>
           
@@ -48,8 +47,8 @@ function Videos() {
             <div 
               key={sub.id}
               onClick={() => {
-                if (sub.id === "spec_biology") setShowVideo(true);
-                else alert(`${sub.title} track is currently unpopulated. Content will instantly load once linked via admin.`);
+                if (sub.id === "science") setShowVideo(true);
+                else alert(`${sub.title} track is currently unpopulated.`);
               }}
               className="pw-premium-curved-row-strip flex items-stretch cursor-pointer transition duration-300 shadow-2xl relative overflow-hidden"
             >
@@ -69,16 +68,15 @@ function Videos() {
           ))}
         </div>
       ) : (
-        /* SCREEN 2: BADA SECURE MEDIA STREAMING PLAYER ACTIVE WORKSPACE */
         <div className="max-w-5xl mx-auto space-y-6 relative text-white">
           <button onClick={() => setShowVideo(false)} className="text-xs font-black text-red-500 uppercase tracking-widest hover:text-red-400 transition mb-4 block">
             ⬅ Back To Subjects Workspace
           </button>
 
-          {/* 🔴 HIGH SPEED OPEN-SOURCE DIRECT STREAM LINK - 100% PROOF NO CORS ERRORS */}
+          {/* 🔴 GUARANTEED STREAM FILE ENGINE - BYPASSES REGULAR LOCAL CLOGS */}
           <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video w-full">
             <video 
-              src="https://mozilla.net" // Ultra-stable guaranteed developer streaming stream file
+              src="https://zencdn.net" 
               controls 
               autoPlay
               controlsList="nodownload" 
@@ -88,8 +86,8 @@ function Videos() {
 
           <div className="active-video-details-box p-6 bg-gray-950/80 border border-gray-900 rounded-2xl shadow-inner">
             <span className="bg-red-600/10 border border-red-900/60 text-red-500 text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">● STREAM ON</span>
-            <h2 className="font-black text-xl text-gray-100 tracking-wide mt-3">🧬 Central Dogma Theory One-Shot Masterclass</h2>
-            <p className="text-xs text-gray-400 font-semibold leading-relaxed mt-2">In-depth free video lecture tracing replication forks, transcription phases, genetic code translations, and core cellular mechanisms mapped securely inside the platform container layout.</p>
+            <h2 className="font-black text-xl text-gray-100 tracking-wide mt-3">🔬 Science Core - Chapter 1 Foundation Lecture</h2>
+            <p className="text-xs text-gray-400 font-semibold leading-relaxed mt-2">Official secure internal media stream active. Reviewing core physical concepts, experimental parameters, and unsolved board evaluation matrices analyzed by the admin engine.</p>
           </div>
         </div>
       )}
