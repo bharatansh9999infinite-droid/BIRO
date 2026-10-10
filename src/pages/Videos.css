@@ -2,9 +2,9 @@
 
 .free-videos-page-container {
   background-color: #020306;
-  /* 🔋 Beautiful Vivid Light Green Cyber Radial Aura Glow Background */
+  /* 🔋 Restored High-Density Vivid Cyber Light Green Radial Aura Glow Background */
   background-image: 
-    radial-gradient(circle at 50% 35%, #054f27 0%, #022412 45%, #010408 85%);
+    radial-gradient(circle at 50% 35%, #064e26 0%, #022111 45%, #010408 85%);
   box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.98);
   position: relative;
   overflow: hidden;
@@ -16,38 +16,42 @@
   object-fit: contain;
 }
 
-/* 🧬 PW-STYLE EXTENSIVE ROW STRIP DESIGN */
-.pw-subject-row-strip {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+/* ⬜ SLEEK SOLID WHITE PATTI ROW DESIGN OVER GREEN BACKGROUND */
+.pw-white-subject-row-strip {
+  background-color: #ffffff !important; /* Forces solid white body framework rows */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.8);
+  border: 1px solid #e2e8f0 !important;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.pw-subject-row-strip:hover {
-  border-color: #dc2626; /* Lights up premium red on row hover interaction */
-  transform: translateX(4px);
-  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.1), 0 8px 25px rgba(0,0,0,0.8);
+.pw-white-subject-row-strip:hover {
+  border-color: #dc2626 !important; /* Bounding edge shifts to brilliant red on touch */
+  transform: translateX(6px) translateY(-1px);
+  box-shadow: 0 15px 35px rgba(220, 38, 38, 0.15), 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.subject-square-avatar {
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+.pw-white-subject-row-strip:hover .pw-row-arrow-icon {
+  transform: translateX(4px);
+  color: #dc2626;
 }
 
 .pw-row-arrow-icon {
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.pw-subject-row-strip:hover .pw-row-arrow-icon {
-  transform: translateX(3px);
-  color: #dc2626;
+/* Square Unique Avatar block sizing constraints */
+.subject-square-avatar {
+  background-color: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* 📺 SECURE MEDIA ENGINE STRUCTURES */
+/* Internal video system elements styles preserved safely below */
 .main-video-player-frame {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
 }
 
 .active-video-node {
-  border-color: #dc2626 !important;
   background: linear-gradient(135deg, #2b0b0b 0%, #020617 100%) !important;
   color: white !important;
 }
@@ -55,5 +59,4 @@
 .empty-studio-stage {
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.4);
 }
