@@ -77,16 +77,15 @@ function Videos() {
             ⬅ Back To Subjects Workspace
           </button>
 
-          {/* 🔴 SECURE STABLE IFRAME ENGINE - BYPASSES ALL CORS BLOCKS SEAMLESSLY */}
+          {/* 🔴 RESTORED STABLE NATIVE PLAYER - BYPASSES REGULAR REFUSED ERRORS */}
           <div className="main-video-player-frame bg-black border-2 border-gray-900 rounded-2xl overflow-hidden shadow-2xl relative aspect-video w-full">
-            <iframe 
-              src="https://youtube.com" // High-speed stable standard streaming iframe link
-              title="Secure Media Video Stream Player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              className="w-full h-full object-contain"
-            ></iframe>
+            <video 
+              src="https://zencdn.net" // Fully open CDN direct streaming video track
+              controls 
+              autoPlay
+              controlsList="nodownload" 
+              className="w-full h-full object-contain" 
+            />
           </div>
 
           <div className="active-video-details-box p-6 bg-gray-950/80 border border-gray-900 rounded-2xl shadow-inner">
