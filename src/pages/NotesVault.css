@@ -2,10 +2,13 @@
 
 .notes-vault-container {
   height: calc(100vh - 64px);
-  background-color: #010204;
-  /* Vivid dense green radial glow aura setup */
-  background-image: radial-gradient(circle at 50% 35%, #054020 0%, #011d0e 45%, #010204 80%);
+  background-color: #020306;
+  /* 🔋 Restored High-Density Vivid Cyber Light Green Radial Aura Background Glow */
+  background-image: 
+    radial-gradient(circle at 50% 35%, #064e26 0%, #021f10 45%, #010408 85%);
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+  position: relative;
+  overflow: hidden;
 }
 
 .biro-vault-logo-img {
@@ -17,8 +20,10 @@
 .vault-sidebar {
   background-color: #04060a;
   box-shadow: 15px 0 40px rgba(0, 0, 0, 0.9);
+  z-index: 10;
 }
 
+/* 🧬 LEFT SIDE THICK ROW SEGMENT */
 .subject-row-node {
   border: 1px solid #1e293b;
   background: linear-gradient(145deg, #0f172a, #020617);
@@ -33,6 +38,12 @@
   transform: translateY(-2px);
 }
 
+.active-3d-node .subject-3d-text {
+  color: #ffffff !important;
+  text-shadow: 0px 0px 10px rgba(239, 68, 68, 0.7), 1px 1px 0px #000;
+}
+
+/* ⚡ HIGH-CONTRAST BOLD HEADER SHIMMER ELEMENTS */
 .dynamic-visible-header {
   color: #ffffff;
   text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.95), 0px 0px 25px rgba(255, 255, 255, 0.15);
@@ -41,30 +52,26 @@
   z-index: 20;
 }
 
-/* 🧬 3D PREMIUM SPLIT NOTE STRIP GRID MODULES */
+/* 🔲 RED GLOWING SPLIT NOTE CARDS CODES RULES */
 .premium-split-note-card {
-  box-shadow: 5px 6px 15px rgba(0, 0, 0, 0.45),
+  box-shadow: 5px 6px 15px rgba(0, 0, 0, 0.65),
               inset 1px 1px 2px rgba(255, 255, 255, 0.05);
   transform: translateZ(0);
 }
 
-/* Perfect Square Left Boundary Block styling constraints */
 .square-subject-wrapper {
   background: linear-gradient(145deg, #070b12 0%, #020407 100%);
-  box-shadow: inset -3px 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: inset -3px 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.square-note-thumbnail {
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.square-custom-thumb {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
 }
 
-.premium-split-note-card:hover .square-note-thumbnail {
-  transform: scale(1.08) rotate(2deg);
-}
-
-/* 🔲 BASELINE SMALL SQUARE NOTES CONTAINER */
+/* 🔳 BOTTOM SMALL SQUARE NOTES PANEL */
 .notes-action-footer-panel {
   background-color: transparent;
+  z-index: 10;
 }
 
 .notes-small-square-indicator {
