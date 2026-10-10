@@ -2,99 +2,66 @@
 
 .notes-vault-container {
   height: calc(100vh - 64px);
-  background: #020205;
+  background-color: #010204;
+  /* Deep signature dark green studio ambient radial glow */
+  background-image: radial-gradient(circle at 50% 30%, #021a0f 0%, #010204 75%);
 }
 
-/* Logo Sizing Control Layer */
 .biro-vault-logo-img {
-  height: 48px;
+  height: 44px;
   width: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
 }
 
-.biro-vault-logo-img:hover {
-  transform: scale(1.05) rotate(2deg);
+.vault-sidebar {
+  background-color: #04060a;
+  box-shadow: 15px 0 40px rgba(0, 0, 0, 0.8);
 }
 
-.notes-micro-dense-flex {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem; /* High density structure constraints */
-  justify-content: flex-start;
-  align-items: center;
+/* 🧬 3D INTERACTIVE SUBJECT BLOCK LAYOUT */
+.subject-row-node {
+  border: 1px solid #1e293b;
+  background: linear-gradient(145deg, #0f172a, #020617);
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* 💎 ADVANCED ISOMETRIC 3D CUBE CARD DESIGN */
-.notes-3d-cube-card {
-  width: 74px; /* Exact 2x2 cm proportional rendering viewports */
-  height: 74px;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #020617 100%);
-  border-top: 1px solid #475569;   /* Light source highlighting upper borders */
-  border-left: 1px solid #334155;
-  border-right: 1px solid #0f172a;
-  border-bottom: 2px solid #020617; /* Dark shadow thick baseline edge */
-  border-radius: 0.65rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  
-  /* Multiple layer shadow mapping for absolute realistic depth */
-  box-shadow: 
-    4px 4px 8px rgba(0, 0, 0, 0.8),
-    inset 1px 1px 0px rgba(255, 255, 255, 0.1),
-    0px 0px 0px 1px rgba(0, 0, 0, 0.4);
-  
-  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.subject-thumb-img {
+  width: 36px;
+  height: 36px;
 }
 
-/* Shimmer layer mapping overlay effect */
-.cube-top-shimmer {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 35%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.08), transparent);
-  pointer-events: none;
-}
-
-/* 🔥 EXTREME 3D NEON GLOW HOVER MECHANICAL RESPONSE */
-.notes-3d-cube-card:hover {
-  transform: translateY(-6px) scale(1.06) rotateX(4deg) rotateY(-2deg);
-  border-top-color: #ef4444;
-  border-left-color: #dc2626;
-  background: linear-gradient(135deg, #2d0c0c 0%, #0f172a 100%);
-  
-  /* Cyber 3D studio light blast output projection */
-  box-shadow: 
-    0px 15px 25px -5px rgba(220, 38, 38, 0.4),
-    0px 4px 10px rgba(220, 38, 38, 0.2),
-    8px 12px 20px rgba(0, 0, 0, 0.9);
-}
-
-.cube-icon {
-  font-size: 1.35rem;
-  filter: drop-shadow(2px 3px 3px rgba(0,0,0,0.7));
-  margin-bottom: 0.15rem;
-  transition: transform 0.2s ease;
-}
-
-.notes-3d-cube-card:hover .cube-icon {
-  transform: scale(1.1) translateY(-1px);
-}
-
-.cube-code-label {
-  font-size: 9px;
-  font-weight: 900;
+/* 💎 ADVANCED 3D GLOWING EMBOSS STYLES FOR TEXT */
+.subject-3d-text {
   color: #94a3b8;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  text-shadow: 1px 1px 0px #000, 2px 2px 0px rgba(0,0,0,0.8);
+  transition: all 0.2s ease;
 }
 
-.notes-3d-cube-card:hover .cube-code-label {
-  color: #f87171;
+/* Active Highlight Layer Switch Engine Rules */
+.active-3d-node {
+  border-color: #dc2626 !important;
+  background: linear-gradient(135deg, #2b0b0b 0%, #020617 100%) !important;
+  box-shadow: 0px 5px 15px -3px rgba(220, 38, 38, 0.3) !important;
+  transform: translateY(-2px);
+}
+
+.active-3d-node .subject-3d-text {
+  color: #ffffff !important;
+  text-shadow: 0px 0px 8px rgba(239, 68, 68, 0.6), 1px 1px 0px #000;
+}
+
+/* 📜 PREMIUM ROW STRIP INTERACTIVE COMPONENT GRAPHICS */
+.premium-note-row-strip {
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.4);
+  transform: translateZ(0);
+}
+
+/* Empty State Backdrop Frame */
+.empty-studio-stage {
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(5px);
+}
+
+.telegram-cloud-icon {
+  filter: drop-shadow(0 0 15px rgba(239, 68, 68, 0.25));
 }
