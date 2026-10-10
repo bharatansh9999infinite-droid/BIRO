@@ -52,7 +52,7 @@ function NotesVault() {
               BHARATANSH - TELEGRAPH
             </h1>
             <p className="text-[10px] text-red-500 font-extrabold uppercase mt-1 tracking-widest">
-              ⚡ PW-Max Premium Repository Core
+              ⚡ BHARATANSH-Max Premium Repository Core
             </p>
           </div>
         </div>
