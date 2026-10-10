@@ -111,11 +111,7 @@ Founder
             📞 Calls
 
           </NavLink>
-
-
-
-
-
+          <NavLink to="/batches" className="nav-link">Batches</NavLink>
           <NavLink to="/contact">
 
             Contact
