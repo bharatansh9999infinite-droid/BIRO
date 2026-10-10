@@ -2,15 +2,15 @@
 
 .free-videos-page-container {
   background-color: #020306;
-  /* 🔋 Beautiful Bounded High-Density Green Ambient Halo Aura Glow Background */
+  /* 🔋 High-Density Vivid Green Ambient Halo Aura Glow Background */
   background-image: 
     radial-gradient(circle at 50% 35%, #054f27 0%, #022412 45%, #010408 85%);
   box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.98);
   position: relative;
   overflow: hidden;
   /* Adds clear corner spaces so background remains visible all around the edges */
-  padding-left: 2rem !important;
-  padding-right: 2rem !important;
+  padding-left: 2.5rem !important;
+  padding-right: 2.5rem !important;
 }
 
 .biro-videos-logo {
@@ -19,32 +19,65 @@
   object-fit: contain;
 }
 
-/* 🧬 SEPARATION WRAPPER ENGINE */
+/* 🧬 LIST SEPARATION GRID SYSTEM CONTAINER */
 .subjects-list-spacing-container {
   display: flex;
   flex-direction: column;
-  /* ↕️ EXACT SPECIFIED VERTICAL MARGIN SPACE - PREVENTS STICKING */
-  gap: 1.5rem !important; 
+  gap: 1.75rem !important; /* Clear vertical spacing tracks allowing green aura to show between cards */
 }
 
-/* ⬜ BRIGHT DENSE WHITE SUBJECT ROW PATTI WITH COMPLETE ISOLATION CORNER MARGINS */
-.pw-white-subject-row-strip {
-  background-color: #ffffff !important; /* Solid bright white container elements background */
+/* ⬜ PREMIUM MULTI-LAYERED CURVED SURFACE PATTI DESIGN (CHARO CORNERS ROUNDED-2XL) */
+.pw-premium-curved-row-strip {
+  background-color: #ffffff !important;
+  border-radius: 1.5rem !important; /* Perfect extreme curve radius constraints matching diagram */
   border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  margin-left: 0.5rem;
-  margin-right: 0.5rem; /* Forces background aura to be visible around rows corners */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 
-/* Advanced 3D Hover Mechanism Response */
-.pw-white-subject-row-strip:hover {
-  border-color: #dc2626 !important; /* Bounding outline edge lights up bold red on hover */
-  transform: scale(1.015) translateX(4px);
-  box-shadow: 0 15px 35px rgba(220, 38, 38, 0.18), 0 12px 30px rgba(0, 0, 0, 0.45);
+/* Advanced 3D Hover Transition Engine Rules */
+.pw-premium-curved-row-strip:hover {
+  border-color: #dc2626 !important; /* Outer outline boundary lights up bold red on touch */
+  transform: translateY(-3px) scale(1.015);
+  box-shadow: 0 18px 40px rgba(220, 38, 38, 0.22), 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
-.pw-white-subject-row-strip:hover .pw-row-arrow-icon {
+/* 🟨 HIGHLIGHTED BRAND YELLOW ACCENT BAR CORE BLOCK (Left Column Indicator Element) */
+.yellow-accent-brand-block {
+  background-color: #facc15 !important; /* Solid bright gold yellow color layer */
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: inset -4px 0 10px rgba(0, 0, 0, 0.1), inset 2px 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+/* 🖼️ HIGH-RESOLUTION CLARITY TEXTURED BACKGROUND THUMBNAIL BACKDROP */
+.subject-row-details-main {
+  background-color: #f8fafc;
+}
+
+.row-subject-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18; /* Micro low-opacity trace prevents flat whites without blocking typography */
+  filter: blur(1px) contrast(1.1);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.25s ease;
+}
+
+.pw-premium-curved-row-strip:hover .row-subject-bg-overlay {
+  opacity: 0.28; /* Intensifies visibility beautifully on card row interactions */
+}
+
+/* Shadow parameters forcing absolute foreground legibility over graphics overlays */
+.text-shadow-white {
+  text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.pw-premium-curved-row-strip:hover .pw-row-arrow-icon {
   transform: translateX(4px);
   color: #dc2626;
 }
@@ -53,12 +86,7 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.subject-square-avatar {
-  background-color: #f8fafc !important;
-  border: 1px solid #e2e8f0 !important;
-}
-
-/* Inner secure play vault viewport styles */
+/* Internal active view elements styles preserved securely below */
 .main-video-player-frame {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
 }
