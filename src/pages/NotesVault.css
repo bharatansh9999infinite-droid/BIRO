@@ -3,10 +3,10 @@
 .notes-vault-container {
   height: calc(100vh - 64px);
   background-color: #020306;
-  /* 🔋 Restored High-Density Vivid Cyber Light Green Radial Aura Background Glow */
+  /* Vivid High-Density Green Ambient Radial Glow Aura */
   background-image: 
-    radial-gradient(circle at 50% 35%, #064e26 0%, #021f10 45%, #010408 85%);
-  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+    radial-gradient(circle at 50% 35%, #054e26 0%, #022412 45%, #010408 85%);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.98);
   position: relative;
   overflow: hidden;
 }
@@ -23,7 +23,6 @@
   z-index: 10;
 }
 
-/* 🧬 LEFT SIDE THICK ROW SEGMENT */
 .subject-row-node {
   border: 1px solid #1e293b;
   background: linear-gradient(145deg, #0f172a, #020617);
@@ -38,37 +37,90 @@
   transform: translateY(-2px);
 }
 
-.active-3d-node .subject-3d-text {
-  color: #ffffff !important;
-  text-shadow: 0px 0px 10px rgba(239, 68, 68, 0.7), 1px 1px 0px #000;
+/* ⚡ ULTRA-DARK PREMIUM FRAME TOP CONTAINER HEADER */
+.stream-header-frame {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
 }
 
-/* ⚡ HIGH-CONTRAST BOLD HEADER SHIMMER ELEMENTS */
 .dynamic-visible-header {
-  color: #ffffff;
-  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.95), 0px 0px 25px rgba(255, 255, 255, 0.15);
+  color: #ffffff !important;
+  text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.95), 0px 0px 25px rgba(255, 255, 255, 0.2);
   font-weight: 950;
+  letter-spacing: 0.05em;
+}
+
+/* ✉️ RICH DECORATED ORNAMENTED ENVELOPE STRUCTURAL STYLE SHEET */
+.ornamented-envelope-wrapper {
+  background: linear-gradient(145deg, #090e16 0%, #030508 100%);
+  border-right: 1px solid #1a2436;
   position: relative;
-  z-index: 20;
+  box-shadow: inset -5px 0 15px rgba(0,0,0,0.6);
 }
 
-/* 🔲 RED GLOWING SPLIT NOTE CARDS CODES RULES */
-.premium-split-note-card {
-  box-shadow: 5px 6px 15px rgba(0, 0, 0, 0.65),
-              inset 1px 1px 2px rgba(255, 255, 255, 0.05);
-  transform: translateZ(0);
+/* Envelope Ornamental Borders */
+.envelope-corner-top-left {
+  position: absolute;
+  top: 6px; left: 6px;
+  width: 12px; height: 12px;
+  border-top: 2px solid #ef4444;
+  border-left: 2px solid #ef4444;
+  opacity: 0.6;
 }
 
-.square-subject-wrapper {
-  background: linear-gradient(145deg, #070b12 0%, #020407 100%);
-  box-shadow: inset -3px 0 10px rgba(0, 0, 0, 0.5);
+.envelope-corner-bottom-right {
+  position: absolute;
+  bottom: 6px; right: 6px;
+  width: 12px; height: 12px;
+  border-bottom: 2px solid #ef4444;
+  border-right: 2px solid #ef4444;
+  opacity: 0.6;
 }
 
-.square-custom-thumb {
-  box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
+.envelope-core-box {
+  border: 1px solid #3f0c0c;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.1);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 🔳 BOTTOM SMALL SQUARE NOTES PANEL */
+.envelope-seal-badge {
+  position: absolute;
+  bottom: -4px;
+  width: 10px; height: 10px;
+  background-color: #dc2626;
+  border-radius: 50%;
+  border: 1px solid #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+}
+
+/* Envelope Interactive Hover Animation Response */
+.ornamented-envelope-wrapper:hover .envelope-core-box {
+  transform: scale(1.06) translateY(-2px);
+  border-color: #ef4444;
+  box-shadow: 0 10px 20px rgba(239, 68, 68, 0.25), 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.envelope-subject-label {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+
+/* 🔲 TOPIC FRAMED BADGE */
+.topic-frame-badge {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8) !important;
+}
+
+/* 🚀 PREMIUM DOWNLOAD BUTTON DESIGN */
+.ornamented-download-btn {
+  box-shadow: 0 6px 15px rgba(220, 38, 38, 0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+  border: 1px solid #991b1b;
+}
+
+.ornamented-download-btn:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+  box-shadow: 0 10px 25px rgba(239, 68, 68, 0.45);
+}
+
+/* 🔳 BASELINE CONTAINER BLOCK */
 .notes-action-footer-panel {
   background-color: transparent;
   z-index: 10;
