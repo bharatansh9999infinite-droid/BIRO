@@ -2,13 +2,12 @@
 
 .free-videos-page-container {
   background-color: #020306;
-  /* 🔋 High-Density Vivid Green Ambient Halo Aura Glow Background */
+  /* 🔋 Beautiful Vivid Light Green Cyber Radial Aura Glow Background */
   background-image: 
-    radial-gradient(circle at 50% 35%, #054f27 0%, #022412 45%, #010408 85%);
+    radial-gradient(circle at 50% 35%, #064e26 0%, #022412 45%, #010408 85%);
   box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.98);
   position: relative;
   overflow: hidden;
-  /* Adds clear corner spaces so background remains visible all around the edges */
   padding-left: 2.5rem !important;
   padding-right: 2.5rem !important;
 }
@@ -19,62 +18,62 @@
   object-fit: contain;
 }
 
-/* 🧬 LIST SEPARATION GRID SYSTEM CONTAINER */
 .subjects-list-spacing-container {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem !important; /* Clear vertical spacing tracks allowing green aura to show between cards */
+  gap: 1.85rem !important; /* Spacing between rows */
 }
 
-/* ⬜ PREMIUM MULTI-LAYERED CURVED SURFACE PATTI DESIGN (CHARO CORNERS ROUNDED-2XL) */
+/* 🟥 FIXED RIGID EXTREME CURVE CARD WRAPPER */
 .pw-premium-curved-row-strip {
   background-color: #ffffff !important;
-  border-radius: 1.5rem !important; /* Perfect extreme curve radius constraints matching diagram */
-  border: 1px solid #e2e8f0 !important;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-radius: 2rem !important; /* Thick absolute curves on all four outer corners */
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
   transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
 
-/* Advanced 3D Hover Transition Engine Rules */
 .pw-premium-curved-row-strip:hover {
-  border-color: #dc2626 !important; /* Outer outline boundary lights up bold red on touch */
-  transform: translateY(-3px) scale(1.015);
-  box-shadow: 0 18px 40px rgba(220, 38, 38, 0.22), 0 12px 30px rgba(0, 0, 0, 0.5);
+  border-color: #dc2626 !important;
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 18px 40px rgba(220, 38, 38, 0.25), 0 12px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* 🟨 HIGHLIGHTED BRAND YELLOW ACCENT BAR CORE BLOCK (Left Column Indicator Element) */
+/* 🟨 FIXED YELLOW ACCENT EDGE BAR CONTROLLER */
 .yellow-accent-brand-block {
-  background-color: #facc15 !important; /* Solid bright gold yellow color layer */
-  border-right: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: inset -4px 0 10px rgba(0, 0, 0, 0.1), inset 2px 2px 4px rgba(255, 255, 255, 0.3);
+  background-color: #facc15 !important; /* Solid bright yellow background */
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
 }
 
-/* 🖼️ HIGH-RESOLUTION CLARITY TEXTURED BACKGROUND THUMBNAIL BACKDROP */
 .subject-row-details-main {
-  background-color: #f8fafc;
+  background-color: #ffffff !important;
+  position: relative;
 }
 
+/* 🖼️ HIGH-DENSITY VISUAL TEXTURED BACKDROP OVERLAY LAYER */
 .row-subject-bg-overlay {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.18; /* Micro low-opacity trace prevents flat whites without blocking typography */
-  filter: blur(1px) contrast(1.1);
+  opacity: 0.22 !important; /* Background textures visible clearly */
+  filter: contrast(1.1) brightness(0.95);
   pointer-events: none;
   z-index: 1;
   transition: opacity 0.25s ease;
 }
 
 .pw-premium-curved-row-strip:hover .row-subject-bg-overlay {
-  opacity: 0.28; /* Intensifies visibility beautifully on card row interactions */
+  opacity: 0.35 !important;
 }
 
 /* Shadow parameters forcing absolute foreground legibility over graphics overlays */
 .text-shadow-white {
-  text-shadow: 1px 1px 2px #ffffff, -1px -1px 2px #ffffff, 0 0 10px rgba(255, 255, 255, 0.8);
+  text-shadow: 2px 2px 4px #ffffff, -2px -2px 4px #ffffff;
+  color: #000000 !important;
+  z-index: 20;
 }
 
 .pw-premium-curved-row-strip:hover .pw-row-arrow-icon {
@@ -86,7 +85,6 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-/* Internal active view elements styles preserved securely below */
 .main-video-player-frame {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
 }
@@ -99,6 +97,4 @@
 .empty-studio-stage {
   box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.5);
-  border-color: #1e293b !important;
 }
