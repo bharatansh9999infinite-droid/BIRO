@@ -1,30 +1,27 @@
 // src/pages/NotesVault.jsx
 import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
-import noteImage from "../assets/image_QPwbwS.png"; // Aapka notepad asset image link trace
+import noteImage from "../assets/image_QPwbwS.png"; 
+
+// 🎯 DIRECT LOCAL ASSET PDF IMPORT STATEMENT
+// Jab aap assets mein file daal denge, toh yeh path automatic map ho jayega
+import biologyPDF from "../assets/biology_core_notes.pdf"; 
 import "./NotesVault.css";
 
 function NotesVault() {
   const [activeSubject, setActiveSubject] = useState("main");
 
-  // Dynamic Content Matrix Layer initialized directly with your required structural items
+  // Content configuration array completely mapped with local imported asset components
   const [adminRealNotes] = useState({
     main: [
       {
         id: "bio-notes-target-01",
         subjectName: "Biology",
-        imageAsset: noteImage, // Left square area container mapping image
+        imageAsset: noteImage, 
         title: "🧬 NEET Biology - Complete Human Endocrine System",
         description: "Premium study modules mapping chemical coordination matrices, hormone feedback dynamics, and detailed organ diagrams.",
-        fileSize: "4.8 MB"
-      },
-      {
-        id: "chem-notes-target-02",
-        subjectName: "Chemistry",
-        imageAsset: noteImage,
-        title: "🧪 Organic Chemistry - Radical Reaction Mechanisms",
-        description: "Detailed reaction tracking sheet covering electrophilic additions, substitution states, and clear chemical structure properties.",
-        fileSize: "3.5 MB"
+        fileSize: "4.8 MB",
+        pdfFileAsset: biologyPDF // Binds directly to your assets PDF file location
       }
     ]
   });
@@ -74,17 +71,23 @@ function NotesVault() {
           {adminRealNotes[activeSubject].map((note) => (
             <div key={note.id} className="premium-split-note-card flex items-stretch bg-gray-900/40 border border-gray-800 rounded-2xl overflow-hidden hover:border-red-500 transition duration-200">
               
-              {/* 🔲 LEFT ELEMENT SIDE: PERFECT SQUARE CONTAINER FOR PHOTO & SUBJECT */}
-              <div className="square-subject-wrapper w-36 bg-gray-950 border-r border-gray-800 p-4 flex flex-col items-center justify-center gap-2 flex-shrink-0 text-center">
+              {/* 🔲 LEFT ELEMENT SIDE: CLICKABLE SQUARE SQUARE FOR OPENING ASSET PDF */}
+              <a 
+                href={note.pdfFileAsset} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="square-subject-wrapper w-36 bg-gray-950 border-r border-gray-800 p-4 flex flex-col items-center justify-center gap-2 flex-shrink-0 text-center cursor-pointer hover:bg-gray-900/60 transition"
+                title="Click to view full notes document file"
+              >
                 <img 
                   src={note.imageAsset} 
                   alt={note.subjectName} 
                   className="square-note-thumbnail w-14 h-14 object-contain filter drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]" 
                 />
-                <span className="text-[11px] font-black uppercase text-red-400 tracking-wider text-shadow">
-                  {note.subjectName}
+                <span className="text-[11px] font-black uppercase text-red-400 tracking-wider">
+                  {note.subjectName} (OPEN)
                 </span>
-              </div>
+              </a>
 
               {/* 📜 RIGHT ELEMENT SIDE: CHOUDA PATH ROW CONTAINING TITLES */}
               <div className="flex-1 p-5 flex flex-col justify-between">
@@ -93,12 +96,15 @@ function NotesVault() {
                     <h3 className="font-black text-base text-gray-100 tracking-wide line-clamp-1">{note.title}</h3>
                     <p className="text-xs text-gray-400 mt-1.5 leading-relaxed line-clamp-2">{note.description}</p>
                   </div>
-                  <button 
-                    onClick={() => alert(`Pulling metadata file asset string tracking index: ${note.id}`)}
-                    className="bg-red-600 hover:bg-red-700 text-white font-black text-xs px-4 py-2.5 rounded-xl transition shadow-lg active:scale-95 whitespace-nowrap"
+                  
+                  {/* Action Link Button for immediate download routes */}
+                  <a 
+                    href={note.pdfFileAsset}
+                    download={note.title}
+                    className="bg-red-600 hover:bg-red-700 text-white font-black text-xs px-5 py-3 rounded-xl transition shadow-lg text-center flex items-center justify-center whitespace-nowrap"
                   >
-                    DOWNLOAD
-                  </button>
+                    DOWNLOAD PDF
+                  </a>
                 </div>
 
                 <div className="mt-4 pt-2 border-t border-gray-800/40 flex items-center text-[10px] text-gray-500 font-bold uppercase tracking-wider">
