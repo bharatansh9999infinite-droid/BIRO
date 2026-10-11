@@ -1,296 +1,664 @@
+
 import React, { useState } from "react";
+import logo from "../assets/BIRO.png";
+
+// Complete subjects database
+const SUBJECTS_DATABASE = [
+  {
+    id: "science",
+    title: "Science Core",
+    stats: "PDFs: 0, Videos: 2, Tests: 0",
+    icon: "🔬",
+    videosList: [
+      {
+        id: "v1",
+        title: "Science - Chapter 1: Foundation Lecture",
+        desc: "Review of core physical science concepts.",
+        src: "",
+      },
+      {
+        id: "v2",
+        title: "Science - Chapter 2: Chemical Reactions",
+        desc: "Understanding chemical equations and reactions.",
+        src: "",
+      },
+    ],
+  },
+  {
+    id: "sst",
+    title: "SST Core",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🗺️",
+    videosList: [],
+  },
+  {
+    id: "maths",
+    title: "Mathematics",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📐",
+    videosList: [],
+  },
+  {
+    id: "ai",
+    title: "Artificial Intelligence (AI)",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🤖",
+    videosList: [],
+  },
+  {
+    id: "it",
+    title: "Information Technology (IT)",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "💻",
+    videosList: [],
+  },
+  {
+    id: "cs",
+    title: "Computer Science",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🖥️",
+    videosList: [],
+  },
+  {
+    id: "hindi",
+    title: "Hindi",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📝",
+    videosList: [],
+  },
+  {
+    id: "english",
+    title: "English",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📖",
+    videosList: [],
+  },
+  {
+    id: "sanskrit",
+    title: "Sanskrit",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📜",
+    videosList: [],
+  },
+  {
+    id: "vyakaran",
+    title: "Vyakaran (Hindi Grammar)",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "✍️",
+    videosList: [],
+  },
+  {
+    id: "eng_grammar",
+    title: "English Grammar",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🔤",
+    videosList: [],
+  },
+  {
+    id: "spec_biology",
+    title: "Special Biology",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🧬",
+    videosList: [],
+  },
+  {
+    id: "spec_microbio",
+    title: "Special Microbiology",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🧫",
+    videosList: [],
+  },
+  {
+    id: "upsc",
+    title: "UPSC Classes",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🏛️",
+    videosList: [],
+  },
+  {
+    id: "jee",
+    title: "JEE Classes",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🚀",
+    videosList: [],
+  },
+  {
+    id: "spec_maths",
+    title: "Special Mathematics",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📊",
+    videosList: [],
+  },
+];
 
 function Videos() {
-  // वीडियो प्लेयर मॉडल को ओपन/क्लोज और वीडियो ID ट्रैक करने के लिए स्टेट्स
-  const [activeVideo, setActiveVideo] = useState(null);
+  const [currentView, setCurrentView] = useState("subjects");
+  const [selectedSubject, setSelectedSubject] = useState(null);
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  // पट्टियों पर क्लिक करने पर जो वीडियो चलानी है, उनके डेटा का ऑब्जेक्ट
-  const subjectsData = [
-    {
-      id: "science",
-      title: "Science Core",
-      meta: "PDFs: 0, Videos: 1, Tests: 0",
-      // ⚠️ यहाँ अपनी YouTube वीडियो की ID डालें (जैसे: https://youtube.com की ID 'dQw4w9WgXcQ' है)
-      youtubeId: "dQw4w9WgXcQ", 
-    },
-    {
-      id: "sst",
-      title: "SST Core",
-      meta: "PDFs: 0, Videos: 0, Tests: 0",
-      youtubeId: "", 
-    },
-    {
-      id: "maths",
-      title: "Mathematics",
-      meta: "PDFs: 0, Videos: 0, Tests: 0",
-      youtubeId: "",
-    },
-    {
-      id: "ai",
-      title: "Artificial Intelligence (AI)",
-      meta: "PDFs: 0, Videos: 0, Tests: 0",
-      youtubeId: "",
-    },
-    {
-      id: "it",
-      title: "Information Technology (IT)",
-      meta: "PDFs: 0, Videos: 0, Tests: 0",
-      youtubeId: "",
-    }
-  ];
-
-  const handleCardClick = (subject) => {
-    if (subject.youtubeId) {
-      setActiveVideo(subject.youtubeId);
+  const handleSubjectClick = (subject) => {
+    if (subject.videosList.length > 0) {
+      setSelectedSubject(subject);
+      setCurrentView("lectures");
     } else {
-      alert("भाई, इस सब्जेक्ट के अंदर अभी कोई वीडियो उपलब्ध नहीं है!");
+      window.alert(
+        `${subject.title} का ट्रैक अभी खाली है। जल्द ही लेक्चर जोड़े जाएंगे।`
+      );
     }
   };
 
+  const handleVideoClick = (video) => {
+    setSelectedVideo(video);
+    setCurrentView("player");
+  };
+
+  const goBackToSubjects = () => {
+    setCurrentView("subjects");
+    setSelectedSubject(null);
+    setSelectedVideo(null);
+  };
+
+  const goBackToLectures = () => {
+    setCurrentView("lectures");
+    setSelectedVideo(null);
+  };
+
   return (
-    <section className="videos-page">
-      {/* 3D स्टाइल, पट्टियों के बीच गैप और वीडियो प्लेयर मॉडल के लिए CSS */}
+    <section className="free-videos-page-container">
       <style>{`
-        .videos-page {
+        .free-videos-page-container {
+          box-sizing: border-box;
           min-height: 100vh;
-          padding: 120px 8% 80px 8%;
+          padding: 100px 8% 80px;
           position: relative;
-          overflow-y: auto;
           overflow-x: hidden;
-          font-family: 'Inter', system-ui, -apple-system, sans-serif;
-          perspective: 1500px; 
+          font-family: Inter, system-ui, -apple-system, sans-serif;
+          background: radial-gradient(
+            circle at top,
+            #064e3b 0%,
+            #022c22 100%
+          );
+          perspective: 1500px;
         }
 
-        .videos-header {
-          margin-bottom: 50px;
-          text-align: left;
+        .free-videos-page-container *,
+        .free-videos-page-container *::before,
+        .free-videos-page-container *::after {
+          box-sizing: border-box;
         }
 
-        .videos-header h1 {
-          font-size: 3.5rem;
-          font-weight: 800;
-          color: #ffffff;
-          margin: 0 0 10px 0;
-          letter-spacing: -1px;
-          text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-        }
-
-        .videos-header p {
-          font-size: 1.2rem;
-          color: #a7f3d0; 
-          margin: 0;
-          font-weight: 500;
-          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        .videos-container {
+        .videos-header-banner {
           display: flex;
-          flex-direction: column;
-          gap: 35px; /* दो पट्टियों के बीच का गैप */
-          width: 100%;
-        }
-
-        /* 3D प्रीमियम डार्क ब्लू ग्लास पट्टियाँ */
-        .subject-strip-card {
-          display: flex;
-          align-items: center;
           justify-content: space-between;
-          width: 100%;
+          align-items: center;
+          gap: 20px;
           padding: 25px 40px;
-          background: rgba(15, 23, 42, 0.75); 
+          background: rgba(15, 23, 42, 0.85);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          
-          border-top: 4px solid #f59e0b; 
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 20px;
+          margin-bottom: 50px;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .videos-brand {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          min-width: 0;
+        }
+
+        .biro-videos-logo {
+          height: 60px;
+          max-width: 140px;
+          object-fit: contain;
+        }
+
+        .videos-header-banner h1 {
+          font-size: clamp(1.3rem, 3vw, 2.2rem);
+          font-weight: 900;
+          color: #fff;
+          margin: 0;
+          letter-spacing: 1px;
+          overflow-wrap: anywhere;
+        }
+
+        .videos-header-banner p {
+          font-size: 0.8rem;
+          color: #ef4444;
+          font-weight: 800;
+          letter-spacing: 2px;
+          margin: 8px 0 0;
+        }
+
+        .section-title-text {
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: #e2e8f0;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          margin: 0 0 25px;
+          text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .subjects-rows-wrapper,
+        .lectures-list-wrapper {
+          display: flex;
+          flex-direction: column;
+          gap: 35px;
+          width: 100%;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .pw-premium-curved-row-strip {
+          display: flex;
+          align-items: stretch;
+          width: 100%;
+          min-width: 0;
+          padding: 0;
+          text-align: left;
+          color: inherit;
+          font: inherit;
+          background: rgba(15, 23, 42, 0.78);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border-top: 4px solid #f59e0b;
           border-bottom: 4px solid #d97706;
           border-left: 1px solid rgba(255, 255, 255, 0.1);
           border-right: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 16px;
-          box-shadow: 
-            0 15px 30px -10px rgba(0, 0, 0, 0.5),
+          box-shadow:
+            0 15px 35px -10px rgba(0, 0, 0, 0.5),
             inset 0 1px 1px rgba(255, 255, 255, 0.15);
-
+          transform: rotateX(2deg);
           transform-style: preserve-3d;
-          transform: rotateX(2deg) translateZ(0px);
-          transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+          transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            background 0.3s ease;
+          overflow: hidden;
           cursor: pointer;
         }
 
-        .subject-strip-card:hover {
-          transform: rotateX(0deg) translateZ(40px) translateY(-5px);
-          background: rgba(15, 23, 42, 0.85); 
-          box-shadow: 
-            0 25px 45px -10px rgba(0, 0, 0, 0.6),
+        .pw-premium-curved-row-strip:hover {
+          transform: rotateX(0deg) translateY(-5px);
+          background: rgba(15, 23, 42, 0.92);
+          box-shadow:
+            0 25px 50px -10px rgba(0, 0, 0, 0.6),
             inset 0 1px 1px rgba(255, 255, 255, 0.25);
         }
 
-        .subject-info {
+        .pw-premium-curved-row-strip:focus-visible,
+        .back-workspace-btn:focus-visible {
+          outline: 3px solid #fbbf24;
+          outline-offset: 4px;
+        }
+
+        .yellow-accent-brand-block {
+          flex: 0 0 80px;
+          min-height: 100px;
+          background: linear-gradient(135deg, #f59e0b, #d97706);
           display: flex;
-          flex-direction: column;
-          gap: 6px;
-          transform: translateZ(20px);
+          align-items: center;
+          justify-content: center;
+          font-size: 2.2rem;
+          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
         }
 
-        .subject-info h2 {
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: #ffffff;
+        .subject-row-details-main {
+          flex: 1;
+          min-width: 0;
+          padding: 25px 35px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 18px;
+        }
+
+        .content-foreground-text-lock {
+          min-width: 0;
+        }
+
+        .content-foreground-text-lock h3 {
+          font-size: 1.35rem;
+          font-weight: 900;
+          color: #fff;
           margin: 0;
+          letter-spacing: 0.3px;
+          overflow-wrap: anywhere;
         }
 
-        .subject-meta {
-          font-size: 1rem;
-          color: #94a3b8;
-          margin: 0;
+        .content-foreground-text-lock p {
+          font-size: 0.8rem;
+          color: #0f172a;
+          margin: 8px 0 0;
+          font-weight: 800;
+          letter-spacing: 0.3px;
+          background: rgba(255, 255, 255, 0.88);
+          padding: 5px 10px;
+          border-radius: 6px;
+          width: fit-content;
+          max-width: 100%;
         }
 
-        .action-arrow {
+        .lecture-description {
+          font-size: 0.9rem;
+          color: #cbd5e1;
+          margin: 10px 0 0;
+          line-height: 1.6;
+          overflow-wrap: anywhere;
+        }
+
+        .pw-row-arrow-icon {
+          flex-shrink: 0;
           font-size: 1.5rem;
           color: #f59e0b;
-          transform: translateZ(25px);
           transition: transform 0.3s ease;
         }
 
-        .subject-strip-card:hover .action-arrow {
-          transform: translateZ(25px) translateX(5px);
+        .pw-premium-curved-row-strip:hover .pw-row-arrow-icon {
+          transform: translateX(6px) scale(1.1);
         }
 
-        /* 🎬 प्रीमियम 3D वीडियो प्लेयर मॉडल (Popup Overlay) */
-        .video-modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 9999;
-          animation: fadeIn 0.3s ease;
-        }
-
-        /* 3D ग्लास प्लेयर बॉक्स */
-        .video-modal-box {
-          width: 90%;
-          max-width: 850px;
-          background: rgba(30, 41, 59, 0.9);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          border-radius: 24px;
-          padding: 20px;
-          position: relative;
-          box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
-          transform: translateZ(50px);
-          animation: scaleUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* क्लोज बटन */
-        .modal-close-btn {
-          position: absolute;
-          top: -15px;
-          right: -15px;
-          width: 40px;
-          height: 40px;
-          background: #f59e0b;
-          color: #0f172a;
-          border: none;
-          border-radius: 50%;
-          font-size: 1.2rem;
+        .back-workspace-btn {
+          background: rgba(239, 68, 68, 0.15);
+          color: #fecaca;
+          border: 1px solid rgba(239, 68, 68, 0.4);
+          padding: 12px 24px;
+          border-radius: 8px;
+          font-size: 0.9rem;
           font-weight: 800;
+          letter-spacing: 0.5px;
           cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-          transition: transform 0.2s ease;
+          transition: all 0.3s ease;
+          margin-bottom: 30px;
         }
 
-        .modal-close-btn:hover {
-          transform: scale(1.1) rotate(90deg);
+        .back-workspace-btn:hover {
+          background: #ef4444;
+          color: #fff;
         }
 
-        /* रिस्पॉन्सिव वीडियो रैपर */
-        .iframe-wrapper {
-          position: relative;
-          padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-          height: 0;
+        .video-player-workspace {
+          width: 100%;
+          max-width: 950px;
+          margin: 0 auto;
+        }
+
+        .main-video-player-frame {
+          background: #000;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+          border-radius: 20px;
           overflow: hidden;
-          border-radius: 16px;
-          box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+          margin-bottom: 30px;
+          aspect-ratio: 16 / 9;
         }
 
-        .iframe-wrapper iframe {
-          position: absolute;
-          top: 0;
-          left: 0;
+        .main-video-player-frame video {
+          display: block;
           width: 100%;
           height: 100%;
-          border: none;
+          object-fit: contain;
+          background: #000;
         }
 
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+        .video-placeholder {
+          min-height: 220px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          padding: 24px;
+          color: #cbd5e1;
+          text-align: center;
         }
 
-        @keyframes scaleUp {
-          from { transform: scale(0.9) translateY(20px); }
-          to { transform: scale(1) translateY(0); }
+        .video-placeholder strong {
+          color: #fff;
+          font-size: 1.15rem;
+        }
+
+        .active-video-details-box {
+          padding: 30px;
+          background: rgba(15, 23, 42, 0.85);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 20px;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .stream-on-badge {
+          background: rgba(34, 197, 94, 0.1);
+          border: 1px solid rgba(34, 197, 94, 0.4);
+          color: #86efac;
+          font-size: 0.7rem;
+          font-weight: 900;
+          padding: 6px 12px;
+          border-radius: 6px;
+          letter-spacing: 1px;
+          display: inline-block;
+        }
+
+        .active-video-details-box h2 {
+          font-size: clamp(1.2rem, 3vw, 1.8rem);
+          font-weight: 800;
+          color: #fff;
+          margin: 15px 0 10px;
+          overflow-wrap: anywhere;
+        }
+
+        .active-video-details-box p {
+          font-size: 1rem;
+          color: #cbd5e1;
+          line-height: 1.7;
+          margin: 0;
         }
 
         @media (max-width: 768px) {
-          .subject-strip-card {
-            padding: 20px;
-            transform: none !important;
+          .free-videos-page-container {
+            padding: 90px 5% 50px;
           }
-          .videos-header h1 {
-            font-size: 2.5rem;
+
+          .videos-header-banner {
+            flex-direction: column;
+            text-align: center;
+            padding: 22px;
+            margin-bottom: 35px;
+          }
+
+          .videos-brand {
+            flex-direction: column;
+            gap: 12px;
+          }
+
+          .subjects-rows-wrapper,
+          .lectures-list-wrapper {
+            gap: 22px;
+          }
+
+          .pw-premium-curved-row-strip {
+            transform: none;
+          }
+
+          .subject-row-details-main {
+            padding: 18px 16px;
+            gap: 12px;
+          }
+
+          .yellow-accent-brand-block {
+            flex-basis: 60px;
+            min-height: 90px;
+            font-size: 1.7rem;
+          }
+
+          .content-foreground-text-lock h3 {
+            font-size: 1.05rem;
+          }
+
+          .content-foreground-text-lock p {
+            font-size: 0.7rem;
+            white-space: normal;
+          }
+
+          .active-video-details-box {
+            padding: 22px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .pw-premium-curved-row-strip,
+          .pw-row-arrow-icon,
+          .back-workspace-btn {
+            transition: none;
           }
         }
       `}</style>
 
-      <div className="founder-content-wrapper">
-        <div className="videos-header">
-          <h1>BIRO Central Videos</h1>
-          <p>सब्जेक्ट पट्टी पर टैप करके प्रीमियम 3D प्लेयर में फुल स्क्रीन वीडियो का आनंद लें।</p>
-        </div>
+      {/* Brand header */}
+      <header className="videos-header-banner">
+        <div className="videos-brand">
+          <img
+            src={logo}
+            alt="BIRO Central logo"
+            className="biro-videos-logo"
+          />
 
-        {/* पट्टियों की लिस्ट */}
-        <div className="videos-container">
-          {subjectsData.map((subject) => (
-            <div 
-              key={subject.id}
-              className="subject-strip-card"
-              onClick={() => handleCardClick(subject)}
-            >
-              <div className="subject-info">
-                <h2>{subject.title}</h2>
-                <p className="subject-meta">{subject.meta}</p>
-              </div>
-              <div className="action-arrow">➔</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 🎬 सक्रिय वीडियो होने पर पॉपअप 3D प्लेयर लोड होगा */}
-      {activeVideo && (
-        <div className="video-modal-overlay" onClick={() => setActiveVideo(null)}>
-          <div className="video-modal-box" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close-btn" onClick={() => setActiveVideo(null)}>✕</button>
-            <div className="iframe-wrapper">
-              <iframe
-                // youtube/embed/ URL पॉलिसी के नियमों का पूरी तरह पालन करता है जिससे वीडियो कभी ब्लॉक नहीं होगी
-                src={`https://youtube.com{activeVideo}?autoplay=1&rel=0`}
-                title="BIRO Lecture Video Player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen /* 👈 इससे यूजर वीडियो पर क्लिक करके फुल स्क्रीन मोड एक्टिव कर सकेगा */
-              ></iframe>
-            </div>
+          <div>
+            <h1>BIRO CENTRAL VIDEOS</h1>
+            <p>⚡ FREE LECTURE PORTAL</p>
           </div>
         </div>
+      </header>
+
+      {/* View 1: Subjects */}
+      {currentView === "subjects" && (
+        <section>
+          <h2 className="section-title-text">
+            Available Classes Module
+          </h2>
+
+          <div className="subjects-rows-wrapper">
+            {SUBJECTS_DATABASE.map((subject) => (
+              <button
+                key={subject.id}
+                type="button"
+                onClick={() => handleSubjectClick(subject)}
+                className="pw-premium-curved-row-strip"
+                aria-label={`Open ${subject.title}`}
+              >
+                <span className="yellow-accent-brand-block">
+                  {subject.icon}
+                </span>
+
+                <span className="subject-row-details-main">
+                  <span className="content-foreground-text-lock">
+                    <h3>{subject.title}</h3>
+                    <p>{subject.stats}</p>
+                  </span>
+
+                  <span className="pw-row-arrow-icon" aria-hidden="true">
+                    ➔
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* View 2: Lectures */}
+      {currentView === "lectures" && selectedSubject && (
+        <section>
+          <button
+            type="button"
+            onClick={goBackToSubjects}
+            className="back-workspace-btn"
+          >
+            ⬅ Back To Subjects
+          </button>
+
+          <h2 className="section-title-text">
+            {selectedSubject.title} - Available Lectures
+          </h2>
+
+          <div className="lectures-list-wrapper">
+            {selectedSubject.videosList.map((video) => (
+              <button
+                key={video.id}
+                type="button"
+                onClick={() => handleVideoClick(video)}
+                className="pw-premium-curved-row-strip"
+                aria-label={`Play ${video.title}`}
+              >
+                <span className="yellow-accent-brand-block">
+                  ▶
+                </span>
+
+                <span className="subject-row-details-main">
+                  <span className="content-foreground-text-lock">
+                    <h3>{video.title}</h3>
+                    <span className="lecture-description">
+                      {video.desc}
+                    </span>
+                  </span>
+
+                  <span className="pw-row-arrow-icon" aria-hidden="true">
+                    ➔
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* View 3: Video player */}
+      {currentView === "player" && selectedVideo && (
+        <section className="video-player-workspace">
+          <button
+            type="button"
+            onClick={goBackToLectures}
+            className="back-workspace-btn"
+          >
+            ⬅ Back To Lectures List
+          </button>
+
+          <div className="main-video-player-frame">
+            {selectedVideo.src ? (
+              <video
+                key={selectedVideo.src}
+                controls
+                playsInline
+                preload="metadata"
+              >
+                <source src={selectedVideo.src} type="video/mp4" />
+                Your browser does not support HTML video.
+              </video>
+            ) : (
+              <div className="video-placeholder">
+                <span style={{ fontSize: "2.5rem" }}>▶</span>
+                <strong>Lecture video is not uploaded yet</strong>
+                <span>
+                  Add a valid video URL to this lecture's src field
+                  in SUBJECTS_DATABASE.
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="active-video-details-box">
+            <span className="stream-on-badge">
+              ● LECTURE PLAYER
+            </span>
+
+            <h2>{selectedVideo.title}</h2>
+            <p>{selectedVideo.desc}</p>
+          </div>
+        </section>
       )}
     </section>
   );
