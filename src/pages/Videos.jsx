@@ -1,8 +1,8 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/BIRO.png";
+import scienceVideo from "../assets/Science.mp4";
 
-// Complete subjects database
 const SUBJECTS_DATABASE = [
   {
     id: "science",
@@ -11,130 +11,46 @@ const SUBJECTS_DATABASE = [
     icon: "🔬",
     videosList: [
       {
-        id: "v1",
+        id: "science-chapter-1",
         title: "Science - Chapter 1: Foundation Lecture",
-        desc: "Review of core physical science concepts.",
-        src: "",
+        desc: "Science Chapter 1 - Foundation Lecture.",
+        src: scienceVideo,
       },
       {
-        id: "v2",
+        id: "science-chapter-2",
         title: "Science - Chapter 2: Chemical Reactions",
-        desc: "Understanding chemical equations and reactions.",
+        desc: "In-depth analysis of chemical equations and experimental parameters.",
         src: "",
       },
     ],
   },
-  {
-    id: "sst",
-    title: "SST Core",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🗺️",
-    videosList: [],
-  },
-  {
-    id: "maths",
-    title: "Mathematics",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "📐",
-    videosList: [],
-  },
-  {
-    id: "ai",
-    title: "Artificial Intelligence (AI)",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🤖",
-    videosList: [],
-  },
-  {
-    id: "it",
-    title: "Information Technology (IT)",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "💻",
-    videosList: [],
-  },
-  {
-    id: "cs",
-    title: "Computer Science",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🖥️",
-    videosList: [],
-  },
-  {
-    id: "hindi",
-    title: "Hindi",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "📝",
-    videosList: [],
-  },
-  {
-    id: "english",
-    title: "English",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "📖",
-    videosList: [],
-  },
-  {
-    id: "sanskrit",
-    title: "Sanskrit",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "📜",
-    videosList: [],
-  },
-  {
-    id: "vyakaran",
-    title: "Vyakaran (Hindi Grammar)",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "✍️",
-    videosList: [],
-  },
-  {
-    id: "eng_grammar",
-    title: "English Grammar",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🔤",
-    videosList: [],
-  },
-  {
-    id: "spec_biology",
-    title: "Special Biology",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🧬",
-    videosList: [],
-  },
-  {
-    id: "spec_microbio",
-    title: "Special Microbiology",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🧫",
-    videosList: [],
-  },
-  {
-    id: "upsc",
-    title: "UPSC Classes",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🏛️",
-    videosList: [],
-  },
-  {
-    id: "jee",
-    title: "JEE Classes",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "🚀",
-    videosList: [],
-  },
-  {
-    id: "spec_maths",
-    title: "Special Mathematics",
-    stats: "PDFs: 0, Videos: 0, Tests: 0",
-    icon: "📊",
-    videosList: [],
-  },
+  { id: "sst", title: "SST Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🗺️", videosList: [] },
+  { id: "maths", title: "Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📐", videosList: [] },
+  { id: "ai", title: "Artificial Intelligence (AI)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🤖", videosList: [] },
+  { id: "it", title: "Information Technology (IT)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "💻", videosList: [] },
+  { id: "cs", title: "Computer Science", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🖥️", videosList: [] },
+  { id: "hindi", title: "Hindi", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📝", videosList: [] },
+  { id: "english", title: "English", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📖", videosList: [] },
+  { id: "sanskrit", title: "Sanskrit", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📜", videosList: [] },
+  { id: "vyakaran", title: "Vyakaran (Hindi Grammar)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "✍️", videosList: [] },
+  { id: "eng_grammar", title: "English Grammar", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔤", videosList: [] },
+  { id: "spec_biology", title: "Special Biology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧬", videosList: [] },
+  { id: "spec_microbio", title: "Special Microbiology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧫", videosList: [] },
+  { id: "upsc", title: "UPSC Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🏛️", videosList: [] },
+  { id: "jee", title: "JEE Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🚀", videosList: [] },
+  { id: "spec_maths", title: "Special Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📊", videosList: [] },
 ];
 
-function Videos() {
+export default function Videos() {
   const [currentView, setCurrentView] = useState("subjects");
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [playerError, setPlayerError] = useState("");
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    setPlayerError("");
+  }, [selectedVideo]);
 
   const handleSubjectClick = (subject) => {
     if (subject.videosList.length > 0) {
@@ -148,37 +64,59 @@ function Videos() {
   };
 
   const handleVideoClick = (video) => {
+    setPlayerError("");
     setSelectedVideo(video);
     setCurrentView("player");
   };
 
   const goBackToSubjects = () => {
+    videoRef.current?.pause();
     setCurrentView("subjects");
     setSelectedSubject(null);
     setSelectedVideo(null);
   };
 
   const goBackToLectures = () => {
+    videoRef.current?.pause();
     setCurrentView("lectures");
     setSelectedVideo(null);
+  };
+
+  const handleVideoError = () => {
+    const errorCode = videoRef.current?.error?.code;
+
+    if (!selectedVideo?.src) {
+      setPlayerError("इस लेक्चर की वीडियो फ़ाइल अभी जोड़ी नहीं गई है।");
+    } else if (errorCode === 2) {
+      setPlayerError(
+        "वीडियो लोड नहीं हो सकी। फ़ाइल का path और वेबसाइट पर उसकी उपलब्धता जाँचें।"
+      );
+    } else if (errorCode === 3) {
+      setPlayerError(
+        "वीडियो डिकोड नहीं हो सकी। MP4 फ़ाइल या उसके codec में समस्या हो सकती है।"
+      );
+    } else if (errorCode === 4) {
+      setPlayerError(
+        "यह वीडियो फ़ॉर्मैट समर्थित नहीं है या फ़ाइल उपलब्ध नहीं है। H.264 वीडियो और AAC ऑडियो वाले MP4 से जाँचें।"
+      );
+    } else {
+      setPlayerError(
+        "वीडियो चलाने में समस्या हुई। फ़ाइल सही और पूरी है या नहीं, जाँचें।"
+      );
+    }
   };
 
   return (
     <section className="free-videos-page-container">
       <style>{`
         .free-videos-page-container {
-          box-sizing: border-box;
           min-height: 100vh;
           padding: 100px 8% 80px;
-          position: relative;
           overflow-x: hidden;
           font-family: Inter, system-ui, -apple-system, sans-serif;
-          background: radial-gradient(
-            circle at top,
-            #064e3b 0%,
-            #022c22 100%
-          );
-          perspective: 1500px;
+          background: radial-gradient(circle at top, #064e3b, #022c22);
+          color: #fff;
+          box-sizing: border-box;
         }
 
         .free-videos-page-container *,
@@ -191,14 +129,13 @@ function Videos() {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          padding: 25px 35px;
           gap: 20px;
-          padding: 25px 40px;
-          background: rgba(15, 23, 42, 0.85);
+          background: rgba(15, 23, 42, 0.88);
           backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 20px;
-          margin-bottom: 50px;
+          margin-bottom: 45px;
           box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
@@ -206,7 +143,6 @@ function Videos() {
           display: flex;
           align-items: center;
           gap: 20px;
-          min-width: 0;
         }
 
         .biro-videos-logo {
@@ -221,12 +157,11 @@ function Videos() {
           color: #fff;
           margin: 0;
           letter-spacing: 1px;
-          overflow-wrap: anywhere;
         }
 
         .videos-header-banner p {
+          color: #f87171;
           font-size: 0.8rem;
-          color: #ef4444;
           font-weight: 800;
           letter-spacing: 2px;
           margin: 8px 0 0;
@@ -237,16 +172,15 @@ function Videos() {
           font-weight: 800;
           color: #e2e8f0;
           text-transform: uppercase;
-          letter-spacing: 2px;
+          letter-spacing: 1.5px;
           margin: 0 0 25px;
-          text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .subjects-rows-wrapper,
         .lectures-list-wrapper {
           display: flex;
           flex-direction: column;
-          gap: 35px;
+          gap: 28px;
           width: 100%;
           max-width: 1000px;
           margin: 0 auto;
@@ -258,36 +192,25 @@ function Videos() {
           width: 100%;
           min-width: 0;
           padding: 0;
-          text-align: left;
-          color: inherit;
-          font: inherit;
-          background: rgba(15, 23, 42, 0.78);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-top: 4px solid #f59e0b;
           border-bottom: 4px solid #d97706;
-          border-left: 1px solid rgba(255, 255, 255, 0.1);
-          border-right: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 16px;
+          overflow: hidden;
+          text-align: left;
+          font: inherit;
+          color: inherit;
+          background: rgba(15, 23, 42, 0.82);
           box-shadow:
             0 15px 35px -10px rgba(0, 0, 0, 0.5),
             inset 0 1px 1px rgba(255, 255, 255, 0.15);
-          transform: rotateX(2deg);
-          transform-style: preserve-3d;
-          transition:
-            transform 0.3s ease,
-            box-shadow 0.3s ease,
-            background 0.3s ease;
-          overflow: hidden;
           cursor: pointer;
+          transition: transform 0.25s ease, background 0.25s ease;
         }
 
         .pw-premium-curved-row-strip:hover {
-          transform: rotateX(0deg) translateY(-5px);
-          background: rgba(15, 23, 42, 0.92);
-          box-shadow:
-            0 25px 50px -10px rgba(0, 0, 0, 0.6),
-            inset 0 1px 1px rgba(255, 255, 255, 0.25);
+          transform: translateY(-4px);
+          background: rgba(15, 23, 42, 0.98);
         }
 
         .pw-premium-curved-row-strip:focus-visible,
@@ -299,22 +222,21 @@ function Videos() {
         .yellow-accent-brand-block {
           flex: 0 0 80px;
           min-height: 100px;
-          background: linear-gradient(135deg, #f59e0b, #d97706);
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: 2.2rem;
-          box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+          font-size: 2.1rem;
+          background: linear-gradient(135deg, #f59e0b, #d97706);
         }
 
         .subject-row-details-main {
           flex: 1;
           min-width: 0;
-          padding: 25px 35px;
           display: flex;
-          align-items: center;
           justify-content: space-between;
+          align-items: center;
           gap: 18px;
+          padding: 24px 30px;
         }
 
         .content-foreground-text-lock {
@@ -322,63 +244,61 @@ function Videos() {
         }
 
         .content-foreground-text-lock h3 {
-          font-size: 1.35rem;
-          font-weight: 900;
-          color: #fff;
           margin: 0;
-          letter-spacing: 0.3px;
+          color: #fff;
+          font-size: 1.3rem;
+          font-weight: 900;
           overflow-wrap: anywhere;
         }
 
         .content-foreground-text-lock p {
-          font-size: 0.8rem;
-          color: #0f172a;
-          margin: 8px 0 0;
-          font-weight: 800;
-          letter-spacing: 0.3px;
-          background: rgba(255, 255, 255, 0.88);
+          display: inline-block;
+          max-width: 100%;
+          margin: 9px 0 0;
           padding: 5px 10px;
           border-radius: 6px;
-          width: fit-content;
-          max-width: 100%;
+          background: rgba(255, 255, 255, 0.9);
+          color: #0f172a;
+          font-size: 0.8rem;
+          font-weight: 800;
         }
 
         .lecture-description {
-          font-size: 0.9rem;
+          display: block;
+          margin-top: 10px;
           color: #cbd5e1;
-          margin: 10px 0 0;
+          font-size: 0.9rem;
           line-height: 1.6;
-          overflow-wrap: anywhere;
         }
 
         .pw-row-arrow-icon {
           flex-shrink: 0;
-          font-size: 1.5rem;
           color: #f59e0b;
-          transition: transform 0.3s ease;
+          font-size: 1.5rem;
+          transition: transform 0.25s ease;
         }
 
         .pw-premium-curved-row-strip:hover .pw-row-arrow-icon {
-          transform: translateX(6px) scale(1.1);
+          transform: translateX(5px);
         }
 
         .back-workspace-btn {
+          display: inline-block;
+          margin-bottom: 30px;
+          padding: 12px 22px;
+          border: 1px solid rgba(239, 68, 68, 0.4);
+          border-radius: 8px;
           background: rgba(239, 68, 68, 0.15);
           color: #fecaca;
-          border: 1px solid rgba(239, 68, 68, 0.4);
-          padding: 12px 24px;
-          border-radius: 8px;
           font-size: 0.9rem;
           font-weight: 800;
-          letter-spacing: 0.5px;
           cursor: pointer;
-          transition: all 0.3s ease;
-          margin-bottom: 30px;
+          transition: background 0.2s ease;
         }
 
         .back-workspace-btn:hover {
           background: #ef4444;
-          color: #fff;
+          color: white;
         }
 
         .video-player-workspace {
@@ -388,13 +308,14 @@ function Videos() {
         }
 
         .main-video-player-frame {
-          background: #000;
-          border: 2px solid rgba(255, 255, 255, 0.1);
-          border-radius: 20px;
-          overflow: hidden;
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-          margin-bottom: 30px;
+          width: 100%;
           aspect-ratio: 16 / 9;
+          margin-bottom: 28px;
+          overflow: hidden;
+          border: 2px solid rgba(255, 255, 255, 0.12);
+          border-radius: 20px;
+          background: #000;
+          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
         }
 
         .main-video-player-frame video {
@@ -406,13 +327,14 @@ function Videos() {
         }
 
         .video-placeholder {
-          min-height: 220px;
-          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 12px;
+          gap: 14px;
+          width: 100%;
+          height: 100%;
+          min-height: 220px;
           padding: 24px;
           color: #cbd5e1;
           text-align: center;
@@ -420,42 +342,58 @@ function Videos() {
 
         .video-placeholder strong {
           color: #fff;
-          font-size: 1.15rem;
+          font-size: 1.1rem;
+        }
+
+        .player-error {
+          margin: 0 0 24px;
+          padding: 14px 16px;
+          border: 1px solid rgba(248, 113, 113, 0.5);
+          border-radius: 10px;
+          background: rgba(127, 29, 29, 0.25);
+          color: #fecaca;
+          line-height: 1.6;
+          overflow-wrap: anywhere;
         }
 
         .active-video-details-box {
           padding: 30px;
-          background: rgba(15, 23, 42, 0.85);
           border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 20px;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+          background: rgba(15, 23, 42, 0.88);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
         }
 
         .stream-on-badge {
-          background: rgba(34, 197, 94, 0.1);
-          border: 1px solid rgba(34, 197, 94, 0.4);
-          color: #86efac;
-          font-size: 0.7rem;
-          font-weight: 900;
-          padding: 6px 12px;
-          border-radius: 6px;
-          letter-spacing: 1px;
           display: inline-block;
+          padding: 6px 12px;
+          border: 1px solid rgba(34, 197, 94, 0.4);
+          border-radius: 6px;
+          background: rgba(34, 197, 94, 0.1);
+          color: #86efac;
+          font-size: 0.75rem;
+          font-weight: 900;
+          letter-spacing: 1px;
         }
 
         .active-video-details-box h2 {
-          font-size: clamp(1.2rem, 3vw, 1.8rem);
-          font-weight: 800;
-          color: #fff;
           margin: 15px 0 10px;
+          color: #fff;
+          font-size: clamp(1.2rem, 3vw, 1.8rem);
           overflow-wrap: anywhere;
         }
 
         .active-video-details-box p {
-          font-size: 1rem;
-          color: #cbd5e1;
-          line-height: 1.7;
           margin: 0;
+          color: #cbd5e1;
+          font-size: 1rem;
+          line-height: 1.7;
+        }
+
+        .player-help {
+          margin-top: 14px !important;
+          font-size: 0.88rem !important;
+          color: #a7f3d0 !important;
         }
 
         @media (max-width: 768px) {
@@ -464,10 +402,9 @@ function Videos() {
           }
 
           .videos-header-banner {
-            flex-direction: column;
-            text-align: center;
+            justify-content: center;
             padding: 22px;
-            margin-bottom: 35px;
+            text-align: center;
           }
 
           .videos-brand {
@@ -477,31 +414,26 @@ function Videos() {
 
           .subjects-rows-wrapper,
           .lectures-list-wrapper {
-            gap: 22px;
-          }
-
-          .pw-premium-curved-row-strip {
-            transform: none;
-          }
-
-          .subject-row-details-main {
-            padding: 18px 16px;
-            gap: 12px;
+            gap: 20px;
           }
 
           .yellow-accent-brand-block {
             flex-basis: 60px;
             min-height: 90px;
-            font-size: 1.7rem;
+            font-size: 1.6rem;
+          }
+
+          .subject-row-details-main {
+            padding: 18px 14px;
+            gap: 10px;
           }
 
           .content-foreground-text-lock h3 {
-            font-size: 1.05rem;
+            font-size: 1rem;
           }
 
           .content-foreground-text-lock p {
             font-size: 0.7rem;
-            white-space: normal;
           }
 
           .active-video-details-box {
@@ -518,12 +450,11 @@ function Videos() {
         }
       `}</style>
 
-      {/* Brand header */}
       <header className="videos-header-banner">
         <div className="videos-brand">
           <img
             src={logo}
-            alt="BIRO Central logo"
+            alt="BIRO Logo"
             className="biro-videos-logo"
           />
 
@@ -534,7 +465,7 @@ function Videos() {
         </div>
       </header>
 
-      {/* View 1: Subjects */}
+      {/* VIEW 1: SUBJECTS */}
       {currentView === "subjects" && (
         <section>
           <h2 className="section-title-text">
@@ -546,9 +477,8 @@ function Videos() {
               <button
                 key={subject.id}
                 type="button"
-                onClick={() => handleSubjectClick(subject)}
                 className="pw-premium-curved-row-strip"
-                aria-label={`Open ${subject.title}`}
+                onClick={() => handleSubjectClick(subject)}
               >
                 <span className="yellow-accent-brand-block">
                   {subject.icon}
@@ -570,13 +500,13 @@ function Videos() {
         </section>
       )}
 
-      {/* View 2: Lectures */}
+      {/* VIEW 2: LECTURES */}
       {currentView === "lectures" && selectedSubject && (
         <section>
           <button
             type="button"
-            onClick={goBackToSubjects}
             className="back-workspace-btn"
+            onClick={goBackToSubjects}
           >
             ⬅ Back To Subjects
           </button>
@@ -590,9 +520,8 @@ function Videos() {
               <button
                 key={video.id}
                 type="button"
-                onClick={() => handleVideoClick(video)}
                 className="pw-premium-curved-row-strip"
-                aria-label={`Play ${video.title}`}
+                onClick={() => handleVideoClick(video)}
               >
                 <span className="yellow-accent-brand-block">
                   ▶
@@ -616,13 +545,13 @@ function Videos() {
         </section>
       )}
 
-      {/* View 3: Video player */}
+      {/* VIEW 3: VIDEO PLAYER */}
       {currentView === "player" && selectedVideo && (
         <section className="video-player-workspace">
           <button
             type="button"
-            onClick={goBackToLectures}
             className="back-workspace-btn"
+            onClick={goBackToLectures}
           >
             ⬅ Back To Lectures List
           </button>
@@ -630,25 +559,35 @@ function Videos() {
           <div className="main-video-player-frame">
             {selectedVideo.src ? (
               <video
-                key={selectedVideo.src}
+                ref={videoRef}
+                key={selectedVideo.id}
                 controls
                 playsInline
                 preload="metadata"
+                onError={handleVideoError}
               >
-                <source src={selectedVideo.src} type="video/mp4" />
-                Your browser does not support HTML video.
+                <source
+                  src={selectedVideo.src}
+                  type="video/mp4"
+                />
+                आपका ब्राउज़र वीडियो सपोर्ट नहीं करता।
               </video>
             ) : (
               <div className="video-placeholder">
                 <span style={{ fontSize: "2.5rem" }}>▶</span>
-                <strong>Lecture video is not uploaded yet</strong>
+                <strong>यह वीडियो अभी उपलब्ध नहीं है</strong>
                 <span>
-                  Add a valid video URL to this lecture's src field
-                  in SUBJECTS_DATABASE.
+                  इस लेक्चर की वीडियो फ़ाइल अभी जोड़ी नहीं गई है।
                 </span>
               </div>
             )}
           </div>
+
+          {playerError && (
+            <p className="player-error" role="alert">
+              {playerError}
+            </p>
+          )}
 
           <div className="active-video-details-box">
             <span className="stream-on-badge">
@@ -657,11 +596,14 @@ function Videos() {
 
             <h2>{selectedVideo.title}</h2>
             <p>{selectedVideo.desc}</p>
+
+            <p className="player-help">
+              आवाज़ के लिए प्लेयर का स्पीकर म्यूट न रखें और डिवाइस का
+              वॉल्यूम भी जाँचें।
+            </p>
           </div>
         </section>
       )}
     </section>
   );
 }
-
-export default Videos;
