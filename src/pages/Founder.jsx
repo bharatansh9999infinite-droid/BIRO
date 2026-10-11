@@ -3,95 +3,102 @@ import React from "react";
 function Founder() {
   return (
     <section className="founder-page">
-      {/* Complete Official Full-Scale Layout Styles */}
+      {/* 3D Parallax & Path-Safe CSS Injection Layer */}
       <style>{`
-        /* Core Container Wrapper */
+        /* Core Section Canvas */
         .founder-page {
           min-height: 100vh;
-          padding: 120px 8% 80px 8%;
+          padding: 100px 8% 80px 8%;
           position: relative;
           overflow-y: auto;
           overflow-x: hidden;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
-          background-color: #0b132b; /* Deep luxury dark blue foundation fallback */
+          background-color: #0b132b; /* Fallback safe dark tone */
+          perspective: 1500px; /* High perspective depth for 3D layout pop */
         }
 
         /* 
-           Official Fixed Canvas Engine 
-           Expands completely over the page, removes all square container limits,
-           and keeps the image locked solid while ONLY the text elements scroll over it!
+           Official Fixed Background Engine 
+           Locks founder.png completely across the whole screen frame.
+           Only the cards and headers will scroll over it smoothly!
         */
         .founder-page::before {
           content: "";
-          position: fixed; /* Locks the background layer during scrolling */
+          position: fixed; /* Locks the background layer solid during scroll */
           top: 0;
           left: 0;
           width: 100vw;
           height: 100vh;
           
           /* 
-             Professional Dark Blue & Midnight Overlay:
-             Blends your office background image seamlessly into a high-end corporate color palette.
+             Soft, elegant tint matrix overlay:
+             Allows your custom founder.png image to be clearly visible while 
+             adding enough contrast so your cards look like they stand out on top.
           */
           background: 
             linear-gradient(
-              rgba(11, 19, 43, 0.85), 
-              rgba(28, 37, 65, 0.80)
+              rgba(15, 23, 42, 0.45), 
+              rgba(15, 23, 42, 0.40)
             ),
-            /* Fallback safe relative path. Ensure founder.png is inside your project's public directory or asset folder */
-            url("/assets/founder.png"), 
-            url("founder.png"); /* Alternative directory backup resolver */
+            /* Dual path resolution check for bundlers & Vercel production servers */
+            url("../assets/founder.png"),
+            url("/assets/founder.png"),
+            url("founder.png");
             
-          background-size: cover;        /* Stretches the asset completely across the browser window */
-          background-position: center;    /* Anchors office coordinates beautifully */
+          background-size: cover;        /* Stretches the image completely to match all screen borders */
+          background-position: center;    /* Keeps the office coordinates perfectly balanced */
           background-repeat: no-repeat;
-          z-index: 1;                    /* Keeps background securely below text layers */
-          pointer-events: none;          /* Ignores user touch/click interference */
+          z-index: 1;                    /* Safely stacks behind your content blocks */
+          pointer-events: none;          /* Prevents interaction interference */
         }
 
-        /* Interactive Text Layer positioning above the static background canvas */
+        /* Content frame layer floating directly over the fixed office backdrop */
         .founder-content-wrapper {
           position: relative;
-          z-index: 2; /* Forces contents to sit over fixed canvas */
+          z-index: 2; 
           width: 100%;
           max-width: 1100px;
           margin: 0 auto;
         }
 
-        /* Authoritative Enterprise Header Formatting */
+        /* Premium Executive Header Block */
         .founder-header {
           margin-bottom: 60px;
           text-align: left;
         }
 
         .founder-header h1 {
-          font-size: 3.6rem;
+          font-size: 3.8rem;
           font-weight: 800;
-          /* Intense, sharp white-blue neon tint to cut through deep blue backdrops */
-          color: #ffffff; 
+          color: #ffffff; /* Brilliant white title */
           margin: 0 0 16px 0;
           letter-spacing: -1px;
-          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          /* Strong text drop shadow to visually lift it off the background */
+          text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
         }
 
         .founder-header p {
-          font-size: 1.25rem;
-          color: #e2e8f0; /* Ultra-clear high contrast off-white reading row */
-          max-width: 800px;
+          font-size: 1.3rem;
+          color: #f1f5f9; /* Clean high contrast off-white text */
+          max-width: 850px;
           line-height: 1.65;
           margin: 0;
-          font-weight: 400;
+          font-weight: 500;
+          text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         /* Sequential Vertical Stack growing downwards toward page bottom */
         .founder-container {
           display: flex;
           flex-direction: column;
-          gap: 40px;
+          gap: 45px;
           width: 100%;
         }
 
-        /* Premium Executive 3D Panels */
+        /* 
+           Premium 3D Executive Cards 
+           Designed to look exactly like they are standing out/floating over the BG image!
+        */
         .founder-card {
           display: flex;
           align-items: center;
@@ -99,120 +106,123 @@ function Founder() {
           width: 100%;
           padding: 40px;
           
-          /* Semi-translucent deep slate blue velvet card background */
-          background: rgba(28, 37, 65, 0.75);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 20px;
+          /* Semi-translucent glassmorphism so the background image subtly shows through */
+          background: rgba(255, 255, 255, 0.92); 
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.8);
+          border-radius: 24px;
 
-          /* Layered premium shadow system presenting authentic structural elevation */
+          /* Ultra-premium dynamic shadow levels giving a realistic 3D standing look */
           box-shadow: 
-            0 10px 30px -10px rgba(0, 0, 0, 0.5),
-            inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            0 15px 35px -5px rgba(0, 0, 0, 0.25),
+            0 30px 60px -15px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 1);
 
-          /* Activates internal coordinate systems for real 3D perspective shifts */
+          /* Preps internal details layers for layered Z-axis space elevation */
           transform-style: preserve-3d;
-          transform: rotateX(2.5deg) rotateY(-1.5deg) translateZ(0px);
-          transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+          transform: rotateX(3deg) rotateY(-2deg) translateZ(0px);
+          transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease, background 0.3s ease;
         }
 
-        /* Smooth 3D Glissade Hover Action */
+        /* Interactive 3D Lift Action on Card Hover */
         .founder-card:hover {
-          transform: rotateX(0deg) rotateY(0deg) translateZ(25px) translateY(-6px);
-          background: rgba(28, 37, 65, 0.85);
-          border-color: rgba(255, 255, 255, 0.15);
+          /* Noticeable push forward off the background image plane */
+          transform: rotateX(0deg) rotateY(0deg) translateZ(50px) translateY(-10px);
+          background: rgba(255, 255, 255, 0.98);
           box-shadow: 
-            0 20px 40px -5px rgba(0, 0, 0, 0.6),
-            inset 0 1px 1px rgba(255, 255, 255, 0.2);
+            0 30px 50px -10px rgba(0, 0, 0, 0.35),
+            0 60px 90px -20px rgba(0, 0, 0, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
-        /* Modernized Profile Photo Frame */
+        /* 3D Photo Border Framing Box */
         .founder-card img {
           width: 150px;
           height: 150px;
           border-radius: 16px;
           object-fit: cover;
-          border: 3px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-          background-color: #1c2541;
+          border: 4px solid #ffffff;
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+          background-color: #f8fafc;
           
-          /* Elevates portraits into the frontal 3D layout channel */
+          /* Pushes the portrait layer furthest forward in the 3D space matrix */
           transform: translateZ(40px);
         }
 
-        /* Inner Text Container Layer */
+        /* Core Meta Content Layer holding clear dark typography strings */
         .founder-info-block {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          transform: translateZ(20px); /* Keeps content strings floats crisp */
+          transform: translateZ(25px); /* Separates text arrays from card backing floor */
         }
 
-        /* Luxury Corporate Status Tags */
+        /* Official Corporate Status Badges */
         .badge {
           display: inline-block;
-          padding: 6px 14px;
-          font-size: 0.75rem;
+          padding: 6px 16px;
+          font-size: 0.78rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 1.2px;
-          border-radius: 6px;
-          margin-bottom: 14px;
+          border-radius: 8px;
+          margin-bottom: 16px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .badge.founder {
-          background-color: #3a86ff; /* Rich Electric Blue Accent Badge */
+          background-color: #1e3a8a; /* Deep Institutional Blue */
           color: #ffffff;
         }
 
         .badge.cofounder {
-          background-color: #48cae4; /* Ice Cyan Contrast Badge */
-          color: #0b132b;
+          background-color: #0f172a; /* Executive Dark Slate */
+          color: #ffffff;
         }
 
-        /* High-Contrast Crisp Dark Blue / Midnight Typography */
+        /* Crisp Dark Blue / Midnight Typography standing over the glass card layer */
         .founder-card h2 {
-          font-size: 1.9rem;
+          font-size: 2rem;
           font-weight: 800;
-          color: #ffffff; /* Radiant Header White */
-          margin: 0 0 4px 0;
+          color: #0f172a; /* Solid rich midnight charcoal black */
+          margin: 0 0 6px 0;
           letter-spacing: -0.5px;
         }
 
         .founder-card h4 {
-          font-size: 1.1rem;
+          font-size: 1.15rem;
           font-weight: 600;
-          color: #00b4d8; /* Deep vivid dark blue/cyan contrast text */
-          margin: 0 0 14px 0;
+          color: #2563eb; /* High contrast sharp official blue label */
+          margin: 0 0 16px 0;
         }
 
         .founder-card p {
-          font-size: 1.05rem;
-          line-height: 1.6;
-          color: #cbd5e1; /* Smooth corporate reading gray layer */
+          font-size: 1.1rem;
+          line-height: 1.65;
+          color: #334155; /* highly legible dark reading gray description */
           margin: 0;
         }
 
-        /* Smart Screen Responsive Collapse Formatting */
+        /* Fluid Mobile Optimization Grid Override Rules */
         @media (max-width: 850px) {
           .founder-card {
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 30px 20px;
-            transform: none !important;
+            padding: 35px 25px;
+            transform: none !important; /* Safety flatten for mobile viewports */
           }
           .founder-info-block {
             align-items: center;
           }
           .founder-header h1 {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
           }
         }
       `}</style>
 
-      {/* Main Structural Wrapper */}
+      {/* Primary Floating Layer */}
       <div className="founder-content-wrapper">
         <div className="founder-header">
           <h1>Founder & Co-Founders</h1>
@@ -223,10 +233,10 @@ function Founder() {
           </p>
         </div>
 
-        {/* Content list tracks downward smoothly while background is locked */}
+        {/* Content list stacks downwards while the background image remains frozen */}
         <div className="founder-container">
           
-          {/* Card 1: Founder */}
+          {/* Card Component 1: Founder */}
           <div className="founder-card">
             <img
               src="https://placeholder.com"
@@ -244,7 +254,7 @@ function Founder() {
             </div>
           </div>
 
-          {/* Card 2: Co-Founder 1 */}
+          {/* Card Component 2: Co-Founder 1 */}
           <div className="founder-card">
             <img
               src="https://placeholder.com"
@@ -262,7 +272,7 @@ function Founder() {
             </div>
           </div>
 
-          {/* Card 3: Co-Founder 2 */}
+          {/* Card Component 3: Co-Founder 2 */}
           <div className="founder-card">
             <img
               src="https://placeholder.com"
@@ -273,13 +283,12 @@ function Founder() {
               <h2>Dr. Ansh Singh Rajput</h2>
               <h4>Technology & Platform Development</h4>
               <p>
-                Focused on technology, digital transformation,
-                and platform development to build a modern ecosystem
-                for researchers and innovators around the world.
+                Focused on technology, digital transformation, and platform
+                development to build a modern ecosystem for researchers and
+                innovators around the world.
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
