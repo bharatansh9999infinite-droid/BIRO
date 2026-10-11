@@ -1,19 +1,155 @@
-.founder-page{
-    min-height:100vh;
-    padding:80px 8%;
-
+/* Core Page Wrapper - Fully Expanded Background */
+.founder-page {
+    min-height: 100vh;
+    padding: 80px 8%;
+    
+    /* Changed to a clean, bright white glass overlay so dark text pops perfectly */
     background:
         linear-gradient(
-            rgba(0,0,0,0.20),
-            rgba(0,0,0,0.20)
+            rgba(255, 255, 255, 0.45),
+            rgba(255, 255, 255, 0.35)
         ),
         url("../assets/founder.png");
 
-    background-size:80%;
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-    background-color:#111;
+    /* Stretches the office picture completely over the page window */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #ffffff; /* Smooth fallback for light text contrast */
 
-    position:relative;
+    position: relative;
+    overflow-x: hidden;
+    
+    /* Activates 3D space calculation for everything inside this section */
+    perspective: 1000px; 
+}
+
+/* Header Sections */
+.founder-page h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #0b0f19; /* High-contrast dark midnight tone */
+    margin-bottom: 15px;
+    /* 3D text pop effect using multi-layered text shadows */
+    text-shadow: 1px 1px 0px #cbd5e1, 2px 2px 0px #94a3b8, 3px 3px 5px rgba(0,0,0,0.2);
+}
+
+.founder-page .subtitle {
+    font-size: 1.25rem;
+    color: #1e293b; /* Dark body slate */
+    max-width: 800px;
+    margin-bottom: 60px;
+    font-weight: 500;
+}
+
+/* Vertical Stack container expanding towards the bottom */
+.founder-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+}
+
+/* 3D Isometric Profile Cards */
+.founder-card-3d {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    max-width: 950px;
+    padding: 30px;
+    
+    /* Matte-white glassmorphism backing so dark text remains incredibly readable */
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+
+    /* Deep 3D drop shadow mimicking realistic desk elevation */
+    box-shadow: 
+        0px 5px 10px rgba(0, 0, 0, 0.05),
+        0px 15px 25px rgba(0, 0, 0, 0.1),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.8);
+
+    /* Prep for 3D hover actions */
+    transform-style: preserve-3d;
+    transform: rotateX(5deg) rotateY(-4deg) translateZ(0px);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+/* 3D Hover Pop Trigger */
+.founder-card-3d:hover {
+    /* Liftoff animation */
+    transform: rotateX(0deg) rotateY(0deg) translateZ(20px) translateY(-5px);
+    box-shadow: 
+        0px 10px 20px rgba(0, 0, 0, 0.08),
+        0px 30px 45px rgba(0, 0, 0, 0.15),
+        inset 0px 1px 0px rgba(255, 255, 255, 0.9);
+}
+
+/* 3D Photo Border Framing Box */
+.avatar-box-3d {
+    width: 130px;
+    height: 130px;
+    min-width: 130px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #e2e8f0;
+    
+    /* Pushes the avatar out further on the Z-axis for a multi-layered 3D depth */
+    transform: translateZ(30px);
+    border: 3px solid #ffffff;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.12);
+}
+
+.avatar-box-3d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Dark Text Content Panels */
+.details-panel-3d {
+    display: flex;
+    flex-direction: column;
+    /* Pushes the text layer slightly outward in 3D space */
+    transform: translateZ(15px);
+}
+
+.details-panel-3d h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0f172a; /* Deep charcoal black */
+    margin: 0 0 4px 0;
+}
+
+.details-panel-3d h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1d4ed8; /* Strong high-contrast accent color */
+    margin: 0 0 14px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.details-panel-3d p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #334155; /* Crisp, readable dark gray body copy */
+    margin: 0;
+}
+
+/* Screen width optimization for mobile profiles */
+@media (max-width: 768px) {
+    .founder-card-3d {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transform: none !important; /* Disables angle shifts on touch screens */
+    }
+    .founder-page h1 {
+        font-size: 2.5rem;
+    }
 }
