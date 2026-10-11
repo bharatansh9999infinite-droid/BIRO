@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/BIRO.png";
-import scienceVideo from "../assets/Science.mp4";
+import biologyVideo from "../assets/Biology.mp4";
 
 const SUBJECTS_DATABASE = [
   {
@@ -11,10 +11,10 @@ const SUBJECTS_DATABASE = [
     icon: "🔬",
     videosList: [
       {
-        id: "science-chapter-1",
-        title: "Science - Chapter 1: Foundation Lecture",
-        desc: "Science Chapter 1 - Foundation Lecture.",
-        src: scienceVideo,
+        id: "biology-chapter-1",
+        title: "Biology - Chapter 1: Foundation Lecture",
+        desc: "Biology Chapter 1 - Foundation Lecture.",
+        src: biologyVideo,
       },
       {
         id: "science-chapter-2",
@@ -24,21 +24,111 @@ const SUBJECTS_DATABASE = [
       },
     ],
   },
-  { id: "sst", title: "SST Core", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🗺️", videosList: [] },
-  { id: "maths", title: "Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📐", videosList: [] },
-  { id: "ai", title: "Artificial Intelligence (AI)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🤖", videosList: [] },
-  { id: "it", title: "Information Technology (IT)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "💻", videosList: [] },
-  { id: "cs", title: "Computer Science", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🖥️", videosList: [] },
-  { id: "hindi", title: "Hindi", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📝", videosList: [] },
-  { id: "english", title: "English", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📖", videosList: [] },
-  { id: "sanskrit", title: "Sanskrit", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📜", videosList: [] },
-  { id: "vyakaran", title: "Vyakaran (Hindi Grammar)", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "✍️", videosList: [] },
-  { id: "eng_grammar", title: "English Grammar", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🔤", videosList: [] },
-  { id: "spec_biology", title: "Special Biology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧬", videosList: [] },
-  { id: "spec_microbio", title: "Special Microbiology", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🧫", videosList: [] },
-  { id: "upsc", title: "UPSC Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🏛️", videosList: [] },
-  { id: "jee", title: "JEE Classes", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "🚀", videosList: [] },
-  { id: "spec_maths", title: "Special Mathematics", stats: "PDFs: 0, Videos: 0, Tests: 0", icon: "📊", videosList: [] },
+  {
+    id: "sst",
+    title: "SST Core",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🗺️",
+    videosList: [],
+  },
+  {
+    id: "maths",
+    title: "Mathematics",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📐",
+    videosList: [],
+  },
+  {
+    id: "ai",
+    title: "Artificial Intelligence (AI)",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🤖",
+    videosList: [],
+  },
+  {
+    id: "it",
+    title: "Information Technology (IT)",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "💻",
+    videosList: [],
+  },
+  {
+    id: "cs",
+    title: "Computer Science",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🖥️",
+    videosList: [],
+  },
+  {
+    id: "hindi",
+    title: "Hindi",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📝",
+    videosList: [],
+  },
+  {
+    id: "english",
+    title: "English",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📖",
+    videosList: [],
+  },
+  {
+    id: "sanskrit",
+    title: "Sanskrit",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📜",
+    videosList: [],
+  },
+  {
+    id: "vyakaran",
+    title: "Vyakaran (Hindi Grammar)",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "✍️",
+    videosList: [],
+  },
+  {
+    id: "eng_grammar",
+    title: "English Grammar",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🔤",
+    videosList: [],
+  },
+  {
+    id: "spec_biology",
+    title: "Special Biology",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🧬",
+    videosList: [],
+  },
+  {
+    id: "spec_microbio",
+    title: "Special Microbiology",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🧫",
+    videosList: [],
+  },
+  {
+    id: "upsc",
+    title: "UPSC Classes",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🏛️",
+    videosList: [],
+  },
+  {
+    id: "jee",
+    title: "JEE Classes",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "🚀",
+    videosList: [],
+  },
+  {
+    id: "spec_maths",
+    title: "Special Mathematics",
+    stats: "PDFs: 0, Videos: 0, Tests: 0",
+    icon: "📊",
+    videosList: [],
+  },
 ];
 
 export default function Videos() {
@@ -58,7 +148,7 @@ export default function Videos() {
       setCurrentView("lectures");
     } else {
       window.alert(
-        `${subject.title} का ट्रैक अभी खाली है। जल्द ही लेक्चर जोड़े जाएंगे।`
+        `${subject.title} has no lectures available yet. Please check back later.`
       );
     }
   };
@@ -74,34 +164,49 @@ export default function Videos() {
     setCurrentView("subjects");
     setSelectedSubject(null);
     setSelectedVideo(null);
+    setPlayerError("");
   };
 
   const goBackToLectures = () => {
     videoRef.current?.pause();
     setCurrentView("lectures");
     setSelectedVideo(null);
+    setPlayerError("");
   };
 
   const handleVideoError = () => {
-    const errorCode = videoRef.current?.error?.code;
+    const mediaError = videoRef.current?.error;
+    const errorCode = mediaError?.code;
+
+    console.error("Video playback error:", {
+      code: errorCode,
+      message: mediaError?.message,
+      source: videoRef.current?.currentSrc,
+    });
 
     if (!selectedVideo?.src) {
-      setPlayerError("इस लेक्चर की वीडियो फ़ाइल अभी जोड़ी नहीं गई है।");
+      setPlayerError("This lecture video has not been added yet.");
+    } else if (errorCode === 1) {
+      setPlayerError(
+        "Video playback was interrupted. Please try playing the video again."
+      );
     } else if (errorCode === 2) {
       setPlayerError(
-        "वीडियो लोड नहीं हो सकी। फ़ाइल का path और वेबसाइट पर उसकी उपलब्धता जाँचें।"
+        "The video could not be loaded. Check the file path and network connection."
       );
     } else if (errorCode === 3) {
       setPlayerError(
-        "वीडियो डिकोड नहीं हो सकी। MP4 फ़ाइल या उसके codec में समस्या हो सकती है।"
+        "The video could not be decoded. The file may use an unsupported codec or may be damaged."
       );
     } else if (errorCode === 4) {
       setPlayerError(
-        "यह वीडियो फ़ॉर्मैट समर्थित नहीं है या फ़ाइल उपलब्ध नहीं है। H.264 वीडियो और AAC ऑडियो वाले MP4 से जाँचें।"
+        "This video format is not supported or the video file is unavailable. Try an MP4 encoded with H.264 video and AAC audio."
       );
     } else {
       setPlayerError(
-        "वीडियो चलाने में समस्या हुई। फ़ाइल सही और पूरी है या नहीं, जाँचें।"
+        `Video playback failed. Error code: ${errorCode ?? "unknown"}. ${
+          mediaError?.message || "Check whether the video file is valid and complete."
+        }`
       );
     }
   };
@@ -116,7 +221,6 @@ export default function Videos() {
           font-family: Inter, system-ui, -apple-system, sans-serif;
           background: radial-gradient(circle at top, #064e3b, #022c22);
           color: #fff;
-          box-sizing: border-box;
         }
 
         .free-videos-page-container *,
@@ -490,7 +594,10 @@ export default function Videos() {
                     <p>{subject.stats}</p>
                   </span>
 
-                  <span className="pw-row-arrow-icon" aria-hidden="true">
+                  <span
+                    className="pw-row-arrow-icon"
+                    aria-hidden="true"
+                  >
                     ➔
                   </span>
                 </span>
@@ -535,7 +642,10 @@ export default function Videos() {
                     </span>
                   </span>
 
-                  <span className="pw-row-arrow-icon" aria-hidden="true">
+                  <span
+                    className="pw-row-arrow-icon"
+                    aria-hidden="true"
+                  >
                     ➔
                   </span>
                 </span>
@@ -570,14 +680,14 @@ export default function Videos() {
                   src={selectedVideo.src}
                   type="video/mp4"
                 />
-                आपका ब्राउज़र वीडियो सपोर्ट नहीं करता।
+                Your browser does not support HTML video.
               </video>
             ) : (
               <div className="video-placeholder">
                 <span style={{ fontSize: "2.5rem" }}>▶</span>
-                <strong>यह वीडियो अभी उपलब्ध नहीं है</strong>
+                <strong>This video is not available yet.</strong>
                 <span>
-                  इस लेक्चर की वीडियो फ़ाइल अभी जोड़ी नहीं गई है।
+                  The video file for this lecture has not been added.
                 </span>
               </div>
             )}
@@ -598,8 +708,8 @@ export default function Videos() {
             <p>{selectedVideo.desc}</p>
 
             <p className="player-help">
-              आवाज़ के लिए प्लेयर का स्पीकर म्यूट न रखें और डिवाइस का
-              वॉल्यूम भी जाँचें।
+              Make sure the player is not muted and your device volume
+              is turned up.
             </p>
           </div>
         </section>
