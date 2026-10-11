@@ -1,12 +1,18 @@
+import React from "react";
+// 1. बैकग्राउंड इमेज का इम्पोर्ट
+import founderBg from "../assets/founder.png"; 
 
-              import React from "react";
+// 2. फाउंडर्स की असली तस्वीरों का इम्पोर्ट (आपके बताए नामों के अनुसार)
+import anshPhoto from "../assets/Ansh.png";
+import pranjalPhoto from "../assets/Pranjal.png";
+import singhPhoto from "../assets/Singh.png";
 
 function Founder() {
   return (
     <section className="founder-page">
-      {/* 3D Parallax & Dark Blue Glass CSS Injections */}
+      {/* 3D पैरालैक्स और ऑफिशियल डार्क ब्लू थीम CSS */}
       <style>{`
-        /* मुख्य पेज कंटेनर */
+        /* मुख्य कंटेनर */
         .founder-page {
           min-height: 100vh;
           padding: 120px 8% 80px 8%;
@@ -14,45 +20,35 @@ function Founder() {
           overflow-y: auto;
           overflow-x: hidden;
           font-family: 'Inter', system-ui, -apple-system, sans-serif;
-          background-color: #0b132b; /* इमेज लोड न होने पर फॉलबैक डार्क ब्लू कलर */
-          perspective: 1500px; /* कार्ड्स को बेहतरीन 3D पॉप देने के लिए */
+          background-color: #0b132b; 
+          perspective: 1500px; /* 3D गहराई का इफ़ेक्ट देने के लिए */
         }
 
         /* 
            फ़िक्स बैकग्राउंड इंजन 
-           यह आपकी 'founder.png' इमेज को पूरे स्क्रीन पर फैला देगा।
-           जब आप स्क्रोल करेंगे, तो केवल टेक्स्ट और कार्ड्स ऊपर जाएंगे, इमेज वहीं लॉक रहेगी!
+           यह आपकी 'founder.png' इमेज को पूरे स्क्रीन पर फैला देगा और लॉक रखेगा।
         */
         .founder-page::before {
           content: "";
-          position: fixed; /* इमेज को स्क्रोलिंग के दौरान एक जगह लॉक रखता है */
+          position: fixed; 
           top: 0;
           left: 0;
           width: 100vw;
           height: 100vh;
-          
-          /* 
-             हल्का डार्क ओवरले: 
-             यह आपकी बैकग्राउंड फोटो को साफ दिखाएगा और ऊपर के ब्लू कार्ड्स को उभरने में मदद करेगा।
-          */
           background: 
             linear-gradient(
               rgba(11, 19, 43, 0.40), 
               rgba(28, 37, 65, 0.35)
             ),
-            /* आपके एसेट्स फोल्डर से इमेज का सही पाथ */
-            url("../assets/founder.png"),
-            url("/assets/founder.png"),
-            url("founder.png");
-            
-          background-size: cover;        /* इमेज को बिना काटे पूरी स्क्रीन पर फैलाता है */
-          background-position: center;    /* ऑफिस बैकग्राउंड को बिल्कुल बीच में रखता है */
+            url(${founderBg});
+          background-size: cover;        
+          background-position: center;    
           background-repeat: no-repeat;
-          z-index: 1;                    /* इसे टेक्स्ट और कार्ड्स के पीछे रखता है */
-          pointer-events: none;          /* माउस क्लिक को डिस्टर्ब नहीं करता */
+          z-index: 1;                    
+          pointer-events: none;          
         }
 
-        /* टेक्स्ट और कार्ड्स की लेयर जो बैकग्राउंड के ऊपर तैरती (Float) हुई दिखेगी */
+        /* कंटेंट रैपर जो बैकग्राउंड के ऊपर तैरता हुआ स्क्रोल करेगा */
         .founder-content-wrapper {
           position: relative;
           z-index: 2; 
@@ -61,7 +57,7 @@ function Founder() {
           margin: 0 auto;
         }
 
-        /* मुख्य हेडर (Title Block) */
+        /* हेडर सेक्शन */
         .founder-header {
           margin-bottom: 60px;
           text-align: left;
@@ -70,15 +66,15 @@ function Founder() {
         .founder-header h1 {
           font-size: 3.8rem;
           font-weight: 800;
-          color: #ffffff; /* चमकदार सफेद रंग का टाइटल */
+          color: #ffffff; 
           margin: 0 0 16px 0;
           letter-spacing: -1px;
-          text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* 3D लिफ्ट देने के लिए शैडो */
+          text-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); 
         }
 
         .founder-header p {
           font-size: 1.3rem;
-          color: #f1f5f9; /* साफ़ दिखने वाला ऑफ-व्हाइट सबटाइटल */
+          color: #f1f5f9; 
           max-width: 850px;
           line-height: 1.65;
           margin: 0;
@@ -86,7 +82,6 @@ function Founder() {
           text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
-        /* कार्ड्स को एक के नीचे एक वर्टिकल स्टैक में रखने के लिए */
         .founder-container {
           display: flex;
           flex-direction: column;
@@ -94,40 +89,31 @@ function Founder() {
           width: 100%;
         }
 
-        /* 
-           प्रीमियम डार्क ब्लू ग्लास कार्ड्स 
-           ये ठीक वैसे ही डार्क ब्लू शेड में हैं जैसे पहले थे, जो बैकग्राउंड फोटो के ऊपर उठते हुए दिखेंगे!
-        */
+        /* डार्क ब्लू ग्लास 3D कार्ड्स */
         .founder-card {
           display: flex;
           align-items: center;
           gap: 40px;
           width: 100%;
           padding: 40px;
-          
-          /* रॉयल डार्क ब्लू ट्रांसलूसेंट (Frosted Glass) बैकग्राउंड */
-          background: rgba(28, 37, 65, 0.82); 
+          background: rgba(28, 37, 65, 0.85); 
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.12); /* पतला प्रीमियम बॉर्डर */
+          border: 1px solid rgba(255, 255, 255, 0.12); 
           border-radius: 24px;
-
-          /* भारी 3D ड्रॉप शैडो जो कार्ड्स को बैकग्राउंड से पूरी तरह अलग (Stand out) करती है */
           box-shadow: 
             0 20px 40px -10px rgba(0, 0, 0, 0.5),
             0 40px 70px -20px rgba(0, 0, 0, 0.6),
             inset 0 1px 1px rgba(255, 255, 255, 0.15);
-
-          /* 3D रोटेशन एंगल्स */
           transform-style: preserve-3d;
           transform: rotateX(3deg) rotateY(-2deg) translateZ(0px);
           transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease, background 0.3s ease;
         }
 
-        /* माउस हवर करने पर कार्ड्स का और ऊपर हवा में उठना (3D Liftoff) */
+        /* 3D माउस होवर इफ़ेक्ट */
         .founder-card:hover {
           transform: rotateX(0deg) rotateY(0deg) translateZ(60px) translateY(-10px);
-          background: rgba(28, 37, 65, 0.92); /* हवर होने पर और गहरा ब्लू होगा */
+          background: rgba(28, 37, 65, 0.92); 
           border-color: rgba(255, 255, 255, 0.25);
           box-shadow: 
             0 30px 60px -10px rgba(0, 0, 0, 0.6),
@@ -135,7 +121,7 @@ function Founder() {
             inset 0 1px 1px rgba(255, 255, 255, 0.25);
         }
 
-        /* प्रोफाइल फोटो फ्रेम - यह कार्ड से और भी बाहर 3D में निकलेगा */
+        /* प्रोफाइल फोटो बॉक्स जो कार्ड से बाहर निकलता हुआ (Z-axis) दिखाई देगा */
         .founder-card img {
           width: 150px;
           height: 150px;
@@ -144,20 +130,18 @@ function Founder() {
           border: 3px solid rgba(255, 255, 255, 0.15);
           box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
           background-color: #1c2541;
-          
-          /* फोटो को Z-axis पर सबसे ऊपर लाने के लिए */
           transform: translateZ(50px);
         }
 
-        /* टेक्स्ट कंटेंट ब्लॉक */
+        /* टेक्स्ट इनफार्मेशन ब्लॉक */
         .founder-info-block {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          transform: translateZ(30px); /* टेक्स्ट को कार्ड के बेस से ऊपर हवा में उठाता है */
+          transform: translateZ(30px); 
         }
 
-        /* ऑफिशियल बैच (Status Tags) */
+        /* बैज स्टाइल्स */
         .badge {
           display: inline-block;
           padding: 6px 14px;
@@ -170,20 +154,20 @@ function Founder() {
         }
 
         .badge.founder {
-          background-color: #3a86ff; /* ब्राइट इलेक्ट्रिक ब्लू */
+          background-color: #3a86ff; 
           color: #ffffff;
         }
 
         .badge.cofounder {
-          background-color: #00b4d8; /* स्काई ब्लू टोन */
+          background-color: #00b4d8; 
           color: #ffffff;
         }
 
-        /* कार्ड के अंदर के टेक्स्ट कलर्स जो डार्क ब्लू कार्ड पर परफेक्ट चमकेंगे */
+        /* टेक्स्ट कलर्स */
         .founder-card h2 {
           font-size: 2rem;
           font-weight: 800;
-          color: #ffffff; /* मुख्य नाम बिल्कुल वाइट */
+          color: #ffffff; 
           margin: 0 0 4px 0;
           letter-spacing: -0.5px;
         }
@@ -191,25 +175,25 @@ function Founder() {
         .founder-card h4 {
           font-size: 1.15rem;
           font-weight: 600;
-          color: #90e0ef; /* हल्का सायन-ब्लू कलर जो पोस्ट को चमकाएगा */
+          color: #90e0ef; 
           margin: 0 0 16px 0;
         }
 
         .founder-card p {
           font-size: 1.05rem;
           line-height: 1.65;
-          color: #cbd5e1; /* पढ़ने में आसान सॉफ्ट ग्रे-वाइट बॉडी टेक्स्ट */
+          color: #cbd5e1; 
           margin: 0;
         }
 
-        /* मोबाइल स्क्रीन्स के लिए रिस्पॉन्सिव सेटिंग्स */
+        /* मोबाइल के लिए सेटिंग */
         @media (max-width: 850px) {
           .founder-card {
             flex-direction: column;
             align-items: center;
             text-align: center;
             padding: 35px 25px;
-            transform: none !important; /* मोबाइल टच पर टिल्ट बंद ताकि लेआउट न बिगड़े */
+            transform: none !important; 
           }
           .founder-info-block {
             align-items: center;
@@ -220,7 +204,6 @@ function Founder() {
         }
       `}</style>
 
-      {/* मुख्य स्क्रॉलिंग लेयर */}
       <div className="founder-content-wrapper">
         <div className="founder-header">
           <h1>Founder & Co-Founders</h1>
@@ -231,14 +214,13 @@ function Founder() {
           </p>
         </div>
 
-        {/* सारे ब्लू कार्ड्स इस कंटेनर में नीचे की तरफ बढ़ते जाएंगे */}
         <div className="founder-container">
           
-          {/* कार्ड 1: Founder */}
+          {/* कार्ड 1: Dr. Ansh Upadhyay (Ansh.png) */}
           <div className="founder-card">
             <img
-              src="https://placeholder.com"
-              alt="Founder"
+              src={anshPhoto}
+              alt="Dr. Ansh Upadhyay"
             />
             <div className="founder-info-block">
               <span className="badge founder">Founder & CEO</span>
@@ -252,11 +234,11 @@ function Founder() {
             </div>
           </div>
 
-          {/* कार्ड 2: Co-Founder 1 */}
+          {/* कार्ड 2: Dr. Pranjal Tiwari (Pranjal.png) */}
           <div className="founder-card">
             <img
-              src="https://placeholder.com"
-              alt="Co-Founder"
+              src={pranjalPhoto}
+              alt="Dr. Pranjal Tiwari"
             />
             <div className="founder-info-block">
               <span className="badge cofounder">Co-Founder</span>
@@ -270,11 +252,11 @@ function Founder() {
             </div>
           </div>
 
-          {/* कार्ड 3: Co-Founder 2 */}
+          {/* कार्ड 3: Dr. Ansh Singh Rajput (Singh.png) */}
           <div className="founder-card">
             <img
-              src="https://placeholder.com"
-              alt="Co-Founder"
+              src={singhPhoto}
+              alt="Dr. Ansh Singh Rajput"
             />
             <div className="founder-info-block">
               <span className="badge cofounder">Co-Founder</span>
@@ -285,9 +267,9 @@ function Founder() {
                 and platform development to build a modern ecosystem
                 for researchers and innovators around the world.
               </p>
-
             </div>
           </div>
+
         </div>
       </div>
     </section>
