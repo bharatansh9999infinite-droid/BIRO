@@ -1,0 +1,497 @@
+/* ==========================
+   BIRO GLASS CONTACT PAGE
+========================== */
+
+.contact-page,
+.contact-page * {
+  box-sizing: border-box;
+}
+
+.contact-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 55px 22px 45px;
+
+  color: #f4f8ff;
+  font-family: Inter, Arial, sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(36, 113, 255, 0.23),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(0, 212, 255, 0.15),
+      transparent 30%
+    ),
+    linear-gradient(135deg, #061126, #0a1933 52%, #06101f);
+}
+
+.contact-glow {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(5px);
+}
+
+.contact-glow-one {
+  top: 140px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  background: rgba(35, 113, 255, 0.12);
+}
+
+.contact-glow-two {
+  right: -100px;
+  bottom: 100px;
+  width: 350px;
+  height: 350px;
+  background: rgba(0, 212, 255, 0.09);
+}
+
+/* Main container */
+
+.contact-container {
+  position: relative;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Header */
+
+.contact-header {
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.contact-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+
+  color: #70d5ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+}
+
+.contact-header h1 {
+  margin: 0;
+  color: #ffffff;
+
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.contact-header > p {
+  margin: 12px auto 0;
+  color: #c3d4ec;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.contact-header .contact-intro {
+  max-width: 600px;
+  margin-top: 8px;
+  color: #92a9c9;
+  font-size: 13px;
+}
+
+/* Cards grid */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* Glass cards */
+
+.contact-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 25px 23px;
+
+  border: 1px solid rgba(198, 221, 255, 0.19);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.105),
+    rgba(255, 255, 255, 0.035)
+  );
+
+  box-shadow:
+    0 15px 38px rgba(0, 0, 0, 0.19),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(0, 212, 255, 0.45);
+
+  box-shadow:
+    0 22px 42px rgba(0, 0, 0, 0.25),
+    0 0 22px rgba(0, 180, 255, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+/* Icons */
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 15px;
+
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.email-icon,
+.message-icon,
+.phone-icon {
+  color: #7cdaff;
+}
+
+.facebook-icon {
+  background: rgba(24, 119, 242, 0.16);
+  color: #64a8ff;
+}
+
+.instagram-icon {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 196, 75, 0.18),
+    rgba(226, 48, 109, 0.19),
+    rgba(130, 65, 210, 0.18)
+  );
+  color: #ff9acb;
+}
+
+.whatsapp-icon {
+  background: rgba(37, 211, 102, 0.13);
+  color: #5df19a;
+}
+
+/* Card content */
+
+.contact-card h2 {
+  margin: 0 0 10px;
+  color: #f5f9ff;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.contact-card > p {
+  margin: 0 0 19px;
+  color: #aebfda;
+  font-size: 13px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.contact-detail {
+  display: block;
+  width: 100%;
+  margin-top: 13px;
+
+  color: #8ba9ce;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* 3D buttons */
+
+.contact-button {
+  width: 100%;
+  min-height: 43px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: auto;
+  padding: 11px 14px;
+
+  border: 1px solid rgba(107, 204, 255, 0.42);
+  border-radius: 11px;
+
+  background: linear-gradient(135deg, #218cf1, #355fe0);
+
+  box-shadow:
+    0 5px 0 #164697,
+    0 10px 18px rgba(24, 104, 237, 0.16);
+
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.4;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+
+  box-shadow:
+    0 8px 0 #164697,
+    0 15px 23px rgba(24, 104, 237, 0.22);
+}
+
+.contact-button:active {
+  transform: translateY(2px);
+
+  box-shadow:
+    0 2px 0 #164697,
+    0 5px 10px rgba(24, 104, 237, 0.14);
+}
+
+.contact-button:focus-visible {
+  outline: 2px solid #79d9ff;
+  outline-offset: 4px;
+}
+
+/* Facebook */
+
+.facebook-button {
+  border-color: rgba(93, 164, 255, 0.45);
+  background: linear-gradient(135deg, #267be9, #1856ba);
+  box-shadow:
+    0 5px 0 #103d83,
+    0 10px 18px rgba(24, 119, 242, 0.16);
+}
+
+.facebook-button:hover {
+  box-shadow:
+    0 8px 0 #103d83,
+    0 15px 23px rgba(24, 119, 242, 0.23);
+}
+
+.facebook-button:active {
+  box-shadow: 0 2px 0 #103d83;
+}
+
+/* Instagram */
+
+.instagram-button {
+  border-color: rgba(255, 157, 197, 0.4);
+  background: linear-gradient(120deg, #e5a12e, #df3c79 52%, #8145d4);
+  box-shadow:
+    0 5px 0 #77345e,
+    0 10px 18px rgba(221, 61, 130, 0.15);
+}
+
+.instagram-button:hover {
+  box-shadow:
+    0 8px 0 #77345e,
+    0 15px 23px rgba(221, 61, 130, 0.22);
+}
+
+.instagram-button:active {
+  box-shadow: 0 2px 0 #77345e;
+}
+
+/* WhatsApp */
+
+.whatsapp-button {
+  border-color: rgba(97, 240, 151, 0.38);
+  background: linear-gradient(135deg, #20c96a, #118d50);
+  box-shadow:
+    0 5px 0 #0b6638,
+    0 10px 18px rgba(37, 211, 102, 0.13);
+}
+
+.whatsapp-button:hover {
+  box-shadow:
+    0 8px 0 #0b6638,
+    0 15px 23px rgba(37, 211, 102, 0.2);
+}
+
+.whatsapp-button:active {
+  box-shadow: 0 2px 0 #0b6638;
+}
+
+/* Form card */
+
+.contact-form-card {
+  grid-column: span 2;
+}
+
+.contact-form {
+  width: 100%;
+  display: grid;
+  gap: 10px;
+}
+
+.contact-form label {
+  margin-top: 5px;
+  color: #d5e5fb;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 13px 14px;
+
+  border: 1px solid rgba(175, 207, 249, 0.2);
+  border-radius: 11px;
+
+  background: rgba(4, 14, 32, 0.42);
+  color: #f4f8ff;
+
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.5;
+
+  outline: none;
+  resize: vertical;
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #778eae;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #43c5ff;
+  background: rgba(4, 14, 32, 0.62);
+  box-shadow: 0 0 0 3px rgba(52, 163, 255, 0.12);
+}
+
+.contact-submit {
+  margin-top: 10px;
+}
+
+.contact-status {
+  margin: 8px 0 0;
+  color: #9ce8ff;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Footer */
+
+.contact-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  color: #7189aa;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.07em;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+  }
+
+  .contact-form-card {
+    grid-column: span 2;
+  }
+
+  .contact-page {
+    padding: 42px 18px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 560px) {
+  .contact-page {
+    padding: 32px 14px;
+  }
+
+  .contact-header {
+    margin-bottom: 25px;
+  }
+
+  .contact-header > p {
+    font-size: 13px;
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .contact-form-card {
+    grid-column: auto;
+  }
+
+  .contact-card {
+    padding: 22px 19px;
+    border-radius: 17px;
+  }
+
+  .contact-card h2 {
+    font-size: 17px;
+  }
+}
+
+/* Motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card,
+  .contact-button {
+    transition: none;
+  }
+}

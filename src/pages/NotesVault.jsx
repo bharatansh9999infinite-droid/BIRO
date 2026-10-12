@@ -1,136 +1,238 @@
-// src/pages/NotesVault.jsx
+
 import React, { useState } from "react";
 import logo from "../assets/BIRO.png";
-
-// 🎯 DIRECT LOCAL ASSET PDF FILE PIPELINE
-import biologyPDF from "../assets/biology_core_notes.pdf"; 
+import biologyPDF from "../assets/biology_core_notes.pdf";
 import "./NotesVault.css";
 
-function NotesVault() {
-  const [activeSubject, setActiveSubject] = useState("main");
+const tabs = [
+  { id: "notes", label: "Notes", icon: "▤" },
+  { id: "messages", label: "Messages", icon: "✉" },
+  { id: "texts", label: "Texts", icon: "▤" },
+  { id: "updates", label: "Updates", icon: "↻" },
+];
 
-  // Premium Bounded Dataset Matrix Layout
-  const [adminRealNotes] = useState({
-    main: [
-      {
-        id: "bio-notes-target-01",
-        subjectName: "Biology Core",
-        topicTitle: "🧬 HUMAN ENDOCRINE SYSTEM TARGET",
-        title: "NEET Biology - Complete Human Endocrine System & Glands Handwritten Modules",
-        description: "High-density educational document repository sheet mapping chemical coordination parameters, hormone loop mechanisms, and diagnostic gland structural drawings.",
-        fileSize: "4.8 MB",
-        pdfFileAsset: biologyPDF,
-        exactFileName: "biology_core_notes.pdf"
-      }
-    ]
-  });
+function DownloadIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3v11m-4-4 4 4 4-4M5 16v4h14v-4" />
+    </svg>
+  );
+}
+
+function EnvelopeIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
+
+function BookIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 6c-2.5-2-5-2-9-1v15c4-1 6.5-1 9 1m0-15c2.5-2 5-2 9-1v15c-4-1-6.5-1-9 1m0-15v15" />
+      <path d="M6 9h3M6 12h3m9-3h-2m2 3h-2" />
+    </svg>
+  );
+}
+
+function NotesVault() {
+  const [activeTab, setActiveTab] = useState("notes");
+
+  const note = {
+    subjectName: "Class 10th Complete Biology",
+    topicTitle: "Complete Biology Notes",
+    title: "Class 10th Complete Biology",
+    subtitle: "Handwritten Modules",
+    description:
+      "Class 10th Complete Biology Handwritten Modules with detailed diagrams, important concepts, and exam-oriented notes.",
+    fileSize: "4.8 MB",
+    fileName: "biology_core_notes.pdf",
+    file: biologyPDF,
+  };
 
   return (
-    <section className="notes-vault-container text-white min-h-screen font-sans flex">
-      
-      {/* 🔮 LEFT COLUMN: NAVIGATION CONTROL PANEL DRAWER */}
-      <div className="vault-sidebar w-80 bg-gray-950 border-r border-gray-900 flex flex-col">
-        <div className="sidebar-header p-4 border-b border-gray-900 flex items-center justify-center">
-          <img 
-            src={logo} 
-            alt="BIRO Core Branding" 
-            className="biro-vault-logo-img filter drop-shadow-[0_0_8px_rgba(220,38,38,0.4)]" 
-          />
+    <section className="notes-vault-container">
+      <aside className="vault-sidebar">
+        <div className="sidebar-brand">
+          <img src={logo} alt="BIRO Logo" className="biro-vault-logo-img" />
         </div>
-        
-        <div className="subjects-column-list flex-1 overflow-y-auto p-4">
-          <div 
-            onClick={() => setActiveSubject("main")}
-            className="subject-row-node active-3d-node p-5 rounded-2xl cursor-pointer flex items-center gap-4 transition-all"
-          >
-            <div className="text-xl w-10 h-10 bg-gray-900 border border-gray-800 rounded-xl flex items-center justify-center shadow-md">
-              💬
-            </div>
-            <span className="font-black text-sm uppercase tracking-widest subject-3d-text">
-              BHARATANSH - TELEGRAPH
-            </span>
-          </div>
-        </div>
-      </div>
 
-      {/* 🚀 RIGHT COLUMN: BHARATANSH - TELEGRAPH VIEWPORT GRID CANVAS */}
-      <div className="vault-main flex-1 flex flex-col p-8 overflow-y-auto relative">
-        
-        {/* Dynamic Static Title Container */}
-        <div className="stream-header pb-4 border-b border-gray-900 mb-8 z-10 relative">
-          <div>
-            <h1 className="font-black text-3xl tracking-widest uppercase dynamic-visible-header">
+        <button
+          type="button"
+          className="sidebar-subject active"
+          onClick={() => setActiveTab("notes")}
+        >
+          <span className="sidebar-chat-icon">▣</span>
+          <span>BHARATANSH - TELEGRAPH</span>
+        </button>
+
+        <div className="sidebar-footer">
+          <span className="sidebar-status-dot" />
+          BIRO NOTES VAULT
+        </div>
+      </aside>
+
+      <main className="vault-main">
+        <header className="stream-header">
+          <div className="vault-heading-icon">
+            <BookIcon />
+          </div>
+
+          <div className="vault-heading-content">
+            <h1 className="dynamic-visible-header">
               BHARATANSH - TELEGRAPH
             </h1>
-            <p className="text-[10px] text-red-500 font-extrabold uppercase mt-1 tracking-widest">
-              ⚡ PW-Max Premium Repository Core
+            <p className="vault-subtitle">
+              <span className="subtitle-bolt">ϟ</span>
+              Bharatansh Max Premium Respiratory Course
             </p>
           </div>
-        </div>
+        </header>
 
-        {/* 📜 DISCIPLINED RIGID ENVELOPE BOUNDARY MATRIX ROW */}
-        <div className="notes-row-layout-container space-y-6 z-10 relative">
-          {adminRealNotes[activeSubject].map((note) => (
-            <div key={note.id} className="rigid-envelope-frame-patti flex flex-col p-6 rounded-2xl border-2 border-red-950 transition duration-300">
-              
-              {/* LINE 1 FLOW: TOP LEVEL INTERACTION BLOCK */}
-              <div className="flex items-center gap-4 border-b border-gray-900/60 pb-3">
-                
-                {/* Clickable Square Subject Label Node */}
-                <a 
-                  href={note.pdfFileAsset}
+        <nav className="vault-tabs" aria-label="Notes sections">
+          {tabs.map((tab) => (
+            <button
+              type="button"
+              key={tab.id}
+              className={`vault-tab ${
+                activeTab === tab.id ? "vault-tab-active" : ""
+              }`}
+              onClick={() => setActiveTab(tab.id)}
+              aria-pressed={activeTab === tab.id}
+            >
+              <span className="vault-tab-icon">{tab.icon}</span>
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        <div className="vault-content">
+          {activeTab === "notes" && (
+            <article className="note-glass-card">
+              <div className="note-card-main">
+                <div className="note-card-badges">
+                  <a
+                    className="note-subject-badge"
+                    href={note.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BookIcon />
+                    <span>{note.subjectName}</span>
+                  </a>
+
+                  <a
+                    className="note-view-badge"
+                    href={note.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <EnvelopeIcon />
+                    <span>View Notes</span>
+                  </a>
+                </div>
+
+                <h2>{note.title}</h2>
+                <h3>{note.subtitle}</h3>
+
+                <p className="note-description">{note.description}</p>
+
+                <div className="note-meta">
+                  <span className="note-file-size">
+                    <span className="meta-file-icon">▤</span>
+                    CAPACITY STORAGE SIZE: <strong>{note.fileSize}</strong>
+                  </span>
+
+                  <span className="note-security">
+                    <span className="security-icon">⬡</span>
+                    Verified Security Node Data
+                  </span>
+                </div>
+              </div>
+
+              <div className="note-card-actions">
+                <a
+                  href={note.file}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="thick-square-subject-badge bg-gradient-to-br from-red-950 to-black border border-red-900 px-4 py-2.5 rounded-xl font-black text-xs uppercase tracking-wider text-red-400 hover:border-red-500 transition whitespace-nowrap"
+                  className="round-action view-action"
+                  aria-label="View Biology Notes"
+                  title="View Notes"
                 >
-                  {note.subjectName} (Click to View)
+                  <EnvelopeIcon />
                 </a>
 
-                {/* 🔗 DIRECT COMPACT COMPONENT DOWNLOAD LINK SYMBOL (Replaced rectangular button) */}
-                <a 
-                  href={note.pdfFileAsset}
-                  download={note.exactFileName}
-                  className="thick-blue-anchor-link font-black text-sm tracking-wide uppercase hover:text-blue-400 transition flex items-center gap-1.5"
-                  title="Execute file download token stream"
+                <span className="action-divider" />
+
+                <a
+                  href={note.file}
+                  download={note.fileName}
+                  className="round-action download-action"
+                  aria-label="Download Biology Notes PDF"
+                  title="Download PDF"
                 >
-                  <span>🔗</span> DOWNLOAD LINK PDF
+                  <DownloadIcon />
                 </a>
-
-                {/* Internal specific topic classification layout tracking */}
-                <div className="topic-badge-coordinate ml-auto bg-black/60 border border-gray-800 px-3 py-1.5 rounded-lg text-[10px] font-black text-gray-400 tracking-widest uppercase hidden md:block">
-                  {note.topicTitle}
-                </div>
-
               </div>
+            </article>
+          )}
 
-              {/* LINE 2 FLOW: HIGH DENSITY DENSE BOTTOM ALIGNED CONTENT TEXT PACKAGES */}
-              <div className="dense-bottom-text-package mt-4 space-y-2">
-                <h3 className="font-black text-base text-gray-100 tracking-wide leading-tight dynamic-bone-white-text">
-                  {note.title}
-                </h3>
-                
-                <p className="text-xs text-gray-400 font-semibold leading-relaxed max-w-4xl tracking-wide">
-                  {note.description}
-                </p>
-
-                <div className="pt-2 flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider">
-                  <span>💾 CAPACITY STORAGE SIZE: <strong className="text-gray-300 font-black">{note.fileSize}</strong></span>
-                  <span className="text-red-900/50 font-black">Verified Security Node Data</span>
-                </div>
+          {activeTab === "messages" && (
+            <section className="vault-empty-card">
+              <div className="empty-icon">
+                <EnvelopeIcon />
               </div>
+              <h2>Messages</h2>
+              <p>
+                Messages from the BIRO team will appear here.
+              </p>
+            </section>
+          )}
 
-            </div>
-          ))}
+          {activeTab === "texts" && (
+            <section className="vault-empty-card">
+              <div className="empty-icon">
+                <BookIcon />
+              </div>
+              <h2>Texts</h2>
+              <p>
+                Text-based study material will appear here.
+              </p>
+            </section>
+          )}
+
+          {activeTab === "updates" && (
+            <section className="vault-empty-card">
+              <div className="empty-icon">
+                <span className="updates-symbol">↻</span>
+              </div>
+              <h2>Updates</h2>
+              <p>
+                The latest notes and course updates will appear here.
+              </p>
+            </section>
+          )}
         </div>
 
-        {/* Bounded Square "Notes" identifier preserved at the baseline bottom layout */}
-        <div className="notes-action-footer-panel p-4 border-t border-gray-900 flex justify-start items-center mt-auto z-10 relative">
-          <div className="notes-small-square-indicator bg-gray-900 border border-red-600 text-red-500 font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center shadow-[0_0_15px_rgba(220,38,38,0.15)]">
-            Notes
-          </div>
-        </div>
+        <footer className="vault-footer">
+          <span className="footer-status">
+            <span className="sidebar-status-dot" />
+            BIRO EDUCATIONAL REPOSITORY
+          </span>
 
-      </div>
+          <a
+            href={note.file}
+            download={note.fileName}
+            className="sample-download-button"
+            title="Download Biology Notes PDF"
+          >
+            <DownloadIcon />
+            <span>Download Notes</span>
+          </a>
+        </footer>
+      </main>
     </section>
   );
 }

@@ -1,204 +1,88 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabaseClient";
 import "./CreateMeeting.css";
 
-
-function CreateMeeting() {
-
+export default function CreateMeeting() {
   const navigate = useNavigate();
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
+  async function createMeeting(event) {
+    event.preventDefault();
 
-  async function createMeeting() {
+    if (!title.trim()) {
+      setError("Please enter a meeting title.");
+      return;
+    }
+
+    setLoading(true);
+    setError("");
 
     try {
+      const meetingCode = crypto.randomUUID();
 
-      setLoading(true);
-
-
-      const {
-        data: { user },
-        error: userError
-      } = await supabase.auth.getUser();
-
-
-      if (userError || !user) {
-
-        alert("Please login first");
-        return;
-
-      }
-
-
-      const roomCode = crypto.randomUUID();
-
-
-
-      const { error } = await supabase
+      const { data, error: insertError } = await supabase
         .from("meetings")
         .insert({
+          title: title.trim(),
+          discription: description.trim(),
+          meeting_code: meetingCode,
+          access_type: "public",
+          status: "live"
+        })
+        .select("meeting_code")
+        .single();
 
-          title: title,
-
-          description: description,
-
-          host_id: user.id,
-
-          room_id: roomCode,
-
-          meeting_date: date,
-
-          meeting_time: time,
-
-          status: "scheduled"
-
-        });
-
-
-
-      if (error) {
-
-        throw error;
-
+      if (insertError) throw insertError;
+      if (!data?.meeting_code) {
+        throw new Error("Meeting created but no room code was returned.");
       }
 
-
-      alert("Meeting Created Successfully 🚀");
-
-
-      navigate("/meetings");
-
-
-    }
-
-    catch(error) {
-
-      console.log(
-        "Create Meeting Error:",
-        error.message
-      );
-
-      alert(error.message);
-
-    }
-
-    finally {
-
+      navigate(`/meeting/${encodeURIComponent(data.meeting_code)}`, {
+        replace: true
+      });
+    } catch (err) {
+      setError(err.message || "Could not create the meeting.");
+    } finally {
       setLoading(false);
-
     }
-
   }
 
-
-
   return (
-
     <section className="create-meeting-page">
+      <form className="create-meeting-card" onSubmit={createMeeting}>
+        <h1>Create New Meeting</h1>
+        <p>Create a public BIRO room and invite guests with its link.</p>
 
-
-      <div className="create-meeting-card">
-
-
-        <h1>
-          🚀 Create New Meeting
-        </h1>
-
-
-
+        <label htmlFor="meeting-title">Meeting Title</label>
         <input
-
-          type="text"
-
-          placeholder="Meeting Title"
-
+          id="meeting-title"
           value={title}
-
-          onChange={(e)=>setTitle(e.target.value)}
-
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="e.g. Biology Discussion"
+          maxLength={120}
+          required
         />
 
-
-
+        <label htmlFor="meeting-description">Description</label>
         <textarea
-
-          placeholder="Meeting Description"
-
+          id="meeting-description"
           value={description}
-
-          onChange={(e)=>setDescription(e.target.value)}
-
+          onChange={(event) => setDescription(event.target.value)}
+          placeholder="What will you discuss?"
+          maxLength={1000}
         />
 
+        {error && <p role="alert" className="text-red-400">{error}</p>}
 
-
-        <label>
-          Meeting Date
-        </label>
-
-
-        <input
-
-          type="date"
-
-          value={date}
-
-          onChange={(e)=>setDate(e.target.value)}
-
-        />
-
-
-
-        <label>
-          Meeting Time
-        </label>
-
-
-        <input
-
-          type="time"
-
-          value={time}
-
-          onChange={(e)=>setTime(e.target.value)}
-
-        />
-
-
-
-        <button
-
-          onClick={createMeeting}
-
-          disabled={loading}
-
-        >
-
-          {
-            loading
-            ? "Creating..."
-            : "Create Meeting"
-          }
-
+        <button type="submit" disabled={loading}>
+          {loading ? "Creating..." : "Create and Join Meeting"}
         </button>
-
-
-
-      </div>
-
-
+      </form>
     </section>
-
   );
-
 }
-
-
-export default CreateMeeting;

@@ -1,148 +1,41 @@
+
 import { Link } from "react-router-dom";
 import BIRO from "../assets/BIRO.png";
 import "./MeetingCard.css";
 
-function MeetingCard({ meeting }) {
+export default function MeetingCard({ meeting }) {
+  const code = meeting?.meeting_code;
 
   return (
+    <article className="meeting-card">
+      <img src={BIRO} alt="BIRO Logo" className="meeting-logo" />
 
-    <div className="meeting-card">
+      <span className="live-badge">
+        {meeting?.status === "live" ? "LIVE" : "SCHEDULED"}
+      </span>
 
-      {/* BIRO Logo */}
-
-      <img
-        src={BIRO}
-        alt="BIRO Logo"
-        className="meeting-logo"
-      />
-
-
-
-      {/* LIVE Badge */}
-
-      {meeting?.status === "live" && (
-
-        <span className="live-badge">
-
-          🔴 LIVE
-
-        </span>
-
-      )}
-
-
-
-
-      {/* Meeting Title */}
-
-      <h2>
-
-        {meeting?.title || "Untitled Meeting"}
-
-      </h2>
-
-
-
-
-      {/* Description */}
+      <h2>{meeting?.title || "Untitled Meeting"}</h2>
 
       <p>
-
-        {meeting?.description || "No description available."}
-
+        {meeting?.discription ||
+          meeting?.description ||
+          "Join this BIRO meeting."}
       </p>
 
-
-
-
-
-      {/* Meeting Details */}
-
       <div className="meeting-details">
-
-        <div>
-
-          🌐 <strong>
-
-            {meeting?.access_type || "Public"}
-
-          </strong>
-
-        </div>
-
-
-
-        <div>
-
-          👥 <strong>
-
-            {meeting?.participants || 0}
-
-          </strong>
-
-        </div>
-
-
-
-        <div>
-
-          👨‍🏫 <strong>
-
-            {meeting?.host_name || "BIRO Team"}
-
-          </strong>
-
-        </div>
-
-
-
-        <div>
-
-          📅 <strong>
-
-            {meeting?.meeting_date || "Coming Soon"}
-
-          </strong>
-
-        </div>
-
-
-
-        <div>
-
-          🕒 <strong>
-
-            {meeting?.meeting_time || "--"}
-
-          </strong>
-
-        </div>
-
+        <div>🌐 <strong>{meeting?.access_type || "Public"}</strong></div>
+        <div>🆔 <strong>{code || "Code unavailable"}</strong></div>
       </div>
 
-
-
-
-
-
-      {/* Join Button */}
-
-      <Link
-
-        to={`/meeting/${meeting?.meeting_code || "default-room"}`}
-
-        className="join-btn"
-
-      >
-
-        🚀 Join Meeting
-
-      </Link>
-
-    </div>
-
+      {code ? (
+        <Link to={`/meeting/${encodeURIComponent(code)}`} className="join-btn">
+          Join Meeting
+        </Link>
+      ) : (
+        <button className="join-btn" disabled>
+          Meeting Code Unavailable
+        </button>
+      )}
+    </article>
   );
-
 }
-
-export default MeetingCard;

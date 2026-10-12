@@ -1,153 +1,253 @@
+
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
+import "./Signup.css";
 
 function Profile() {
-
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [loggingOut, setLoggingOut] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    let active = true;
 
     async function loadProfile() {
-
       try {
-
         const { data, error } = await supabase.auth.getUser();
 
+        if (!active) return;
+
         if (error) {
-
-          console.log(error);
+          console.error("Unable to load profile:", error);
           setUser(null);
-
+          setErrorMessage("Unable to load your profile. Please sign in again.");
         } else {
-
           setUser(data.user);
-
         }
+      } catch (error) {
+        console.error("Profile error:", error);
 
-      } catch (err) {
-
-        console.log(err);
-        setUser(null);
-
+        if (active) {
+          setUser(null);
+          setErrorMessage("Something went wrong while loading your profile.");
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
       }
-
-      setLoading(false);
-
     }
 
     loadProfile();
 
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!active) return;
+
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
+    return () => {
+      active = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
-
-
   async function handleLogout() {
+    setLoggingOut(true);
+    setErrorMessage("");
 
-    await supabase.auth.signOut();
+    try {
+      const { error } = await supabase.auth.signOut();
 
-    alert("Logged Out Successfully");
+      if (error) {
+        throw error;
+      }
 
-    window.location.href = "/login";
-
+      window.location.assign("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      setErrorMessage(error.message || "Unable to log out. Please try again.");
+      setLoggingOut(false);
+    }
   }
-
-
 
   if (loading) {
-
     return (
-
-      <section className="contact">
-
-        <h2>Loading Profile...</h2>
-
-      </section>
-
+      <main className="biro-signup-page">
+        <section className="signup-glass-card signup-profile-card">
+          <div className="profile-loading-indicator" />
+          <h2>Loading Your Profile</h2>
+          <p className="profile-subtitle">
+            Preparing your BIRO researcher dashboard...
+          </p>
+        </section>
+      </main>
     );
-
   }
-
-
 
   if (!user) {
-
     return (
+      <main className="biro-signup-page">
+        <section className="signup-glass-card signup-profile-card">
+          <span className="signup-eyebrow">BIRO MEMBER ACCESS</span>
+          <h1>BIRO Profile</h1>
 
-      <section className="contact">
-
-        <h2>BIRO Profile</h2>
-
-        <div className="card">
-
-          <h3>No user is logged in.</h3>
-
-          <br />
+          <p className="profile-subtitle">
+            {errorMessage || "No user is currently logged in."}
+          </p>
 
           <button
-            onClick={() => window.location.href="/login"}
+            type="button"
+            className="signup-submit-button"
+            onClick={() => window.location.assign("/login")}
           >
-            Go to Login
+            Go to Login <span aria-hidden="true">↗</span>
           </button>
-
-        </div>
-
-      </section>
-
+        </section>
+      </main>
     );
-
   }
 
+  const details = user.user_metadata ?? {};
+  const displayName = details.name || "BIRO Researcher";
+  const researchField = details.research_field || "Not selected";
+  const role = details.role || "Not selected";
 
+  const memberSince = user.created_at
+    ? new Date(user.created_at).toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "Not available";
 
   return (
+    <main className="biro-signup-page biro-profile-page">
+      <div className="signup-background-glow signup-glow-one" />
+      <div className="signup-background-glow signup-glow-two" />
 
-    <section className="contact">
+      <section className="signup-content signup-profile-content">
+        <header className="signup-heading">
+          <span className="signup-eyebrow">YOUR BIRO ACCOUNT</span>
 
-      <h2>👨‍🔬 BIRO Researcher Dashboard</h2>
+          <h1>
+            Researcher <span>Dashboard</span>
+          </h1>
 
-      <div className="card">
+          <p>
+            Welcome to your personal space in the BIRO Research Network.
+          </p>
+        </header>
 
-        <h3>Welcome</h3>
+        <div className="signup-glass-card signup-profile-card">
+          <div className="signup-card-highlight" />
 
-        <br />
+          <div className="profile-welcome">
+            <div className="profile-avatar" aria-hidden="true">
+              {displayName.charAt(0).toUpperCase()}
+            </div>
 
-        <p><strong>Name:</strong> {user.user_metadata?.name || "Not Available"}</p>
+            <div className="profile-welcome-text">
+              <span className="profile-member-label">WELCOME BACK</span>
+              <h2>{displayName}</h2>
+              <p>{user.email}</p>
+            </div>
 
-        <br />
+            <div className="profile-status">
+              <span className="profile-status-dot" />
+              Account
+            </div>
+          </div>
 
-        <p><strong>Email:</strong> {user.email}</p>
+          <div className="profile-section-heading">
+            <span className="profile-section-line" />
+            <h3>Researcher Information</h3>
+          </div>
 
-        <br />
+          <div className="signup-profile-details">
+            <div>
+              <span>Full Name</span>
+              <strong>{displayName}</strong>
+            </div>
 
-        <p><strong>Role:</strong> {user.user_metadata?.role || "Not Selected"}</p>
+            <div>
+              <span>Email Address</span>
+              <strong>{user.email || "Not available"}</strong>
+            </div>
 
-        <br />
+            <div>
+              <span>Research Field</span>
+              <strong>{researchField}</strong>
+            </div>
 
-        <p><strong>Research Field:</strong> {user.user_metadata?.research_field || "Not Selected"}</p>
+            <div>
+              <span>Research Role</span>
+              <strong>{role}</strong>
+            </div>
 
-        <br />
+            <div>
+              <span>Member Since</span>
+              <strong>{memberSince}</strong>
+            </div>
 
-        <p><strong>Groups Joined:</strong> 0</p>
+            <div>
+              <span>Account ID</span>
+              <strong className="signup-profile-id">{user.id}</strong>
+            </div>
+          </div>
 
-        <br />
+          <div className="profile-section-heading">
+            <span className="profile-section-line" />
+            <h3>Your Research Activity</h3>
+          </div>
 
-        <p><strong>Research Papers:</strong> 0</p>
+          <div className="profile-stat-grid">
+            <div className="profile-stat-card">
+              <div className="profile-stat-icon" aria-hidden="true">
+                ◈
+              </div>
+              <span>Groups Joined</span>
+              <strong>0</strong>
+              <p>Your research communities</p>
+            </div>
 
-        <br />
+            <div className="profile-stat-card">
+              <div className="profile-stat-icon" aria-hidden="true">
+                ⌑
+              </div>
+              <span>Research Papers</span>
+              <strong>0</strong>
+              <p>Your published contributions</p>
+            </div>
+          </div>
 
-        <button onClick={handleLogout}>
+          <div className="profile-footer">
+            <p>Your research journey starts here.</p>
 
-          Logout
+            {errorMessage && (
+              <div className="signup-message signup-message-error">
+                {errorMessage}
+              </div>
+            )}
 
-        </button>
-
-      </div>
-
-    </section>
-
+            <button
+              type="button"
+              className="signup-submit-button profile-logout-button"
+              onClick={handleLogout}
+              disabled={loggingOut}
+            >
+              {loggingOut ? "Signing Out..." : "Logout"}
+              {!loggingOut && <span aria-hidden="true">↗</span>}
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
   );
-
 }
 
 export default Profile;
