@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/BIRO.png";
 import biologyVideo from "../assets/Biology.mp4";
-
+import originVideo from "../assets/Origin.mp4";
 const SUBJECTS_DATABASE = [
   {
     id: "science",
@@ -22,6 +22,12 @@ const SUBJECTS_DATABASE = [
         desc: "In-depth analysis of chemical equations and experimental parameters.",
         src: "",
       },
+      {
+  id: "science-origin",
+  title: "Science - Origin",
+  desc: "Science Origin Lecture.",
+  src: originVideo,
+},
     ],
   },
   {
