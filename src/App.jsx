@@ -22,6 +22,7 @@ import Calls from "./pages/Calls";
 import Batches from "./pages/Batches";
 import NotesVault from "./pages/NotesVault";
 import Videos from "./pages/Videos";
+import ImagesDocument from "./pages/Images Document";
 
 
 
@@ -100,6 +101,10 @@ function App() {
 <Route path="/batches" element={<Batches />} />
 <Route path="/notes-vault" element={<NotesVault />} />
 <Route path="/videos" element={<Videos />} />
+<Route
+  path="/images-documents"
+  element={<ImagesDocument />}
+/>
 
 
           <Route

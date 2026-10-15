@@ -96,6 +96,11 @@ function Navbar() {
               Videos
             </NavLink>
 
+<NavLink to="/images-document" className="nav-link">
+  Images Document
+</NavLink>
+
+
             <NavLink to="/contact" className={navClass} onClick={closeMenu}>
               Contact
             </NavLink>
