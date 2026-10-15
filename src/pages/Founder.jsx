@@ -234,25 +234,7 @@ function Founder() {
             </div>
           </div>
 
-          {/* कार्ड 2: Dr. Pranjal Tiwari (Pranjal.png) */}
-          <div className="founder-card">
-            <img
-              src={pranjalPhoto}
-              alt="Dr. Pranjal Tiwari"
-            />
-            <div className="founder-info-block">
-              <span className="badge cofounder">Co-Founder</span>
-              <h2>Dr. Pranjal Tiwari</h2>
-              <h4>Research & Innovation</h4>
-              <p>
-                Dedicated to strengthening scientific collaboration,
-                research development, and innovation initiatives within BIRO,
-                helping shape the future of global research.
-              </p>
-            </div>
-          </div>
-
-          {/* कार्ड 3: Dr. Ansh Singh Rajput (Singh.png) */}
+{/* कार्ड 2: Dr. Ansh Singh Rajput (Singh.png) */}
           <div className="founder-card">
             <img
               src={singhPhoto}
@@ -270,6 +252,25 @@ function Founder() {
             </div>
           </div>
 
+          {/* कार्ड 3: Dr. Pranjal Tiwari (Pranjal.png) */}
+          <div className="founder-card">
+            <img
+              src={pranjalPhoto}
+              alt="Dr. Pranjal Tiwari"
+            />
+            <div className="founder-info-block">
+              <span className="badge cofounder">Co-Founder</span>
+              <h2>Dr. Pranjal Tiwari</h2>
+              <h4>Research & Innovation</h4>
+              <p>
+                Dedicated to strengthening scientific collaboration,
+                research development, and innovation initiatives within BIRO,
+                helping shape the future of global research.
+              </p>
+            </div>
+          </div>
+
+          
         </div>
       </div>
     </section>
