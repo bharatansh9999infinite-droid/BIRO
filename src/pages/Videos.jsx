@@ -7,7 +7,7 @@ const SUBJECTS_DATABASE = [
   {
     id: "science",
     title: "Science Core",
-    stats: "PDFs: 0, Videos: 2, Tests: 0",
+    stats: "PDFs: 0, Videos: 3, Tests: 0",
     icon: "🔬",
     videosList: [
       {
