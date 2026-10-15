@@ -3,11 +3,17 @@ import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/BIRO.png";
 import biologyVideo from "../assets/Biology.mp4";
 import originVideo from "../assets/Origin.mp4";
+
+/* =========================================================
+   BIRO CENTRAL VIDEO PORTAL
+   Science: Biology first, Origin second
+   ========================================================= */
+
 const SUBJECTS_DATABASE = [
   {
     id: "science",
     title: "Science Core",
-    stats: "PDFs: 0, Videos: 3, Tests: 0",
+    stats: "PDFs: 0, Videos: 2, Tests: 0",
     icon: "🔬",
     videosList: [
       {
@@ -17,17 +23,11 @@ const SUBJECTS_DATABASE = [
         src: biologyVideo,
       },
       {
-        id: "science-chapter-2",
-        title: "Science - Chapter 2: Chemical Reactions",
-        desc: "In-depth analysis of chemical equations and experimental parameters.",
-        src: "",
+        id: "science-origin",
+        title: "Science - Origin",
+        desc: "Science Origin Lecture.",
+        src: originVideo,
       },
-      {
-  id: "science-origin",
-  title: "Science - Origin",
-  desc: "Science Origin Lecture.",
-  src: originVideo,
-},
     ],
   },
   {
@@ -142,10 +142,12 @@ export default function Videos() {
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [playerError, setPlayerError] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
   const videoRef = useRef(null);
 
   useEffect(() => {
     setPlayerError("");
+    setIsExpanded(false);
   }, [selectedVideo]);
 
   const handleSubjectClick = (subject) => {
@@ -161,30 +163,39 @@ export default function Videos() {
 
   const handleVideoClick = (video) => {
     setPlayerError("");
+    setIsExpanded(false);
     setSelectedVideo(video);
     setCurrentView("player");
   };
 
   const goBackToSubjects = () => {
-    videoRef.current?.pause();
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+
     setCurrentView("subjects");
     setSelectedSubject(null);
     setSelectedVideo(null);
     setPlayerError("");
+    setIsExpanded(false);
   };
 
   const goBackToLectures = () => {
-    videoRef.current?.pause();
+    if (videoRef.current) {
+      videoRef.current.pause();
+    }
+
     setCurrentView("lectures");
     setSelectedVideo(null);
     setPlayerError("");
+    setIsExpanded(false);
   };
 
   const handleVideoError = () => {
     const mediaError = videoRef.current?.error;
     const errorCode = mediaError?.code;
 
-    console.error("Video playback error:", {
+    console.error("BIRO video playback error:", {
       code: errorCode,
       message: mediaError?.message,
       source: videoRef.current?.currentSrc,
@@ -194,27 +205,47 @@ export default function Videos() {
       setPlayerError("This lecture video has not been added yet.");
     } else if (errorCode === 1) {
       setPlayerError(
-        "Video playback was interrupted. Please try playing the video again."
+        "Video playback was interrupted. Please try again."
       );
     } else if (errorCode === 2) {
       setPlayerError(
-        "The video could not be loaded. Check the file path and network connection."
+        "The video could not be loaded. Please check the file path and network connection."
       );
     } else if (errorCode === 3) {
       setPlayerError(
-        "The video could not be decoded. The file may use an unsupported codec or may be damaged."
+        "The video could not be decoded. The file may be damaged or use an unsupported codec."
       );
     } else if (errorCode === 4) {
       setPlayerError(
-        "This video format is not supported or the video file is unavailable. Try an MP4 encoded with H.264 video and AAC audio."
+        "This video format is not supported. Try an MP4 encoded with H.264 video and AAC audio."
       );
     } else {
       setPlayerError(
-        `Video playback failed. Error code: ${errorCode ?? "unknown"}. ${
-          mediaError?.message || "Check whether the video file is valid and complete."
-        }`
+        `Video playback failed. Error code: ${errorCode ?? "unknown"}. Please check the video file.`
       );
     }
+  };
+
+  const retryVideo = () => {
+    const player = videoRef.current;
+
+    setPlayerError("");
+
+    if (player) {
+      player.load();
+
+      const playPromise = player.play();
+
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+          // Browser may require the user to press Play manually.
+        });
+      }
+    }
+  };
+
+  const toggleExpanded = () => {
+    setIsExpanded((previous) => !previous);
   };
 
   return (
@@ -253,6 +284,7 @@ export default function Videos() {
           display: flex;
           align-items: center;
           gap: 20px;
+          min-width: 0;
         }
 
         .biro-videos-logo {
@@ -267,6 +299,7 @@ export default function Videos() {
           color: #fff;
           margin: 0;
           letter-spacing: 1px;
+          overflow-wrap: anywhere;
         }
 
         .videos-header-banner p {
@@ -324,7 +357,9 @@ export default function Videos() {
         }
 
         .pw-premium-curved-row-strip:focus-visible,
-        .back-workspace-btn:focus-visible {
+        .back-workspace-btn:focus-visible,
+        .player-size-btn:focus-visible,
+        .retry-video-btn:focus-visible {
           outline: 3px solid #fbbf24;
           outline-offset: 4px;
         }
@@ -415,17 +450,72 @@ export default function Videos() {
           width: 100%;
           max-width: 950px;
           margin: 0 auto;
+          transition: max-width 0.25s ease;
+        }
+
+        .video-player-workspace.expanded {
+          max-width: 100%;
+        }
+
+        .player-toolbar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 14px;
+        }
+
+        .player-toolbar-label {
+          color: #a7f3d0;
+          font-size: 0.8rem;
+          font-weight: 800;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+        }
+
+        .player-size-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 10px 16px;
+          border: 1px solid rgba(251, 191, 36, 0.55);
+          border-radius: 10px;
+          background: rgba(245, 158, 11, 0.12);
+          color: #fde68a;
+          font: inherit;
+          font-size: 0.85rem;
+          font-weight: 800;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .player-size-btn:hover {
+          background: rgba(245, 158, 11, 0.25);
+          transform: translateY(-1px);
         }
 
         .main-video-player-frame {
+          position: relative;
           width: 100%;
           aspect-ratio: 16 / 9;
           margin-bottom: 28px;
           overflow: hidden;
-          border: 2px solid rgba(255, 255, 255, 0.12);
-          border-radius: 20px;
+          border: 2px solid rgba(255, 255, 255, 0.18);
+          border-radius: 18px;
           background: #000;
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
+          box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.55),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .main-video-player-frame:hover {
+          border-color: rgba(251, 191, 36, 0.55);
+          box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.6),
+            0 0 0 1px rgba(251, 191, 36, 0.12);
         }
 
         .main-video-player-frame video {
@@ -464,6 +554,23 @@ export default function Videos() {
           color: #fecaca;
           line-height: 1.6;
           overflow-wrap: anywhere;
+        }
+
+        .retry-video-btn {
+          margin-top: 12px;
+          padding: 9px 14px;
+          border: 1px solid rgba(248, 113, 113, 0.5);
+          border-radius: 8px;
+          background: rgba(127, 29, 29, 0.3);
+          color: #fee2e2;
+          font: inherit;
+          font-size: 0.85rem;
+          font-weight: 800;
+          cursor: pointer;
+        }
+
+        .retry-video-btn:hover {
+          background: rgba(127, 29, 29, 0.55);
         }
 
         .active-video-details-box {
@@ -549,17 +656,69 @@ export default function Videos() {
           .active-video-details-box {
             padding: 22px;
           }
+
+          .main-video-player-frame {
+            border-radius: 12px;
+          }
+
+          .player-toolbar {
+            align-items: stretch;
+          }
+
+          .player-size-btn {
+            width: 100%;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .free-videos-page-container {
+            padding-right: 4%;
+            padding-left: 4%;
+          }
+
+          .videos-header-banner {
+            padding: 18px 12px;
+          }
+
+          .biro-videos-logo {
+            max-width: 115px;
+            height: 52px;
+          }
+
+          .yellow-accent-brand-block {
+            flex-basis: 48px;
+            font-size: 1.3rem;
+          }
+
+          .subject-row-details-main {
+            padding: 15px 10px;
+          }
+
+          .content-foreground-text-lock h3 {
+            font-size: 0.9rem;
+          }
+
+          .lecture-description {
+            font-size: 0.8rem;
+          }
+
+          .active-video-details-box {
+            padding: 18px;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .pw-premium-curved-row-strip,
           .pw-row-arrow-icon,
-          .back-workspace-btn {
+          .back-workspace-btn,
+          .player-size-btn,
+          .main-video-player-frame {
             transition: none;
           }
         }
       `}</style>
 
+      {/* HEADER */}
       <header className="videos-header-banner">
         <div className="videos-brand">
           <img
@@ -663,7 +822,13 @@ export default function Videos() {
 
       {/* VIEW 3: VIDEO PLAYER */}
       {currentView === "player" && selectedVideo && (
-        <section className="video-player-workspace">
+        <section
+          className={
+            isExpanded
+              ? "video-player-workspace expanded"
+              : "video-player-workspace"
+          }
+        >
           <button
             type="button"
             className="back-workspace-btn"
@@ -671,6 +836,21 @@ export default function Videos() {
           >
             ⬅ Back To Lectures List
           </button>
+
+          <div className="player-toolbar">
+            <span className="player-toolbar-label">
+              BIRO Secure Lecture Frame
+            </span>
+
+            <button
+              type="button"
+              className="player-size-btn"
+              onClick={toggleExpanded}
+              aria-pressed={isExpanded}
+            >
+              {isExpanded ? "↙ Compact Player" : "⛶ Expand Player"}
+            </button>
+          </div>
 
           <div className="main-video-player-frame">
             {selectedVideo.src ? (
@@ -700,9 +880,17 @@ export default function Videos() {
           </div>
 
           {playerError && (
-            <p className="player-error" role="alert">
-              {playerError}
-            </p>
+            <div className="player-error" role="alert">
+              <p>{playerError}</p>
+
+              <button
+                type="button"
+                className="retry-video-btn"
+                onClick={retryVideo}
+              >
+                ↻ Retry Loading Video
+              </button>
+            </div>
           )}
 
           <div className="active-video-details-box">
